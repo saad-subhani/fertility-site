@@ -1,0 +1,412 @@
+/* =====================================================
+   FOOTER
+===================================================== */
+
+.footer {
+  position: relative;
+}
+
+
+/* =====================================================
+   CURVED TOP WAVE — off-white shape that overlaps DOWN
+   into the navy body, so there's no gap/disconnect
+===================================================== */
+
+.waveWrap {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 160px;
+  overflow: hidden;
+  line-height: 0; /* inline svg ke neeche extra space na aaye */
+  margin-bottom: -135px; /* iska matlab: neeche wala navy body isi amount se upar khinch kar wave ke andar overlap karega */
+}
+
+.wave {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.wave path {
+  fill: #ffffff; /* off-white — apne page ke actual background color se match kar lein */
+}
+
+
+/* =====================================================
+   NAVY BODY — footer ka asli navy background, poora
+   content isi ke andar hai. Ye wave ke peeche se
+   "dip" wale hisso mein dikhta hai, isliye seamless hai
+===================================================== */
+
+.footerBody {
+  position: relative;
+  z-index: 1;
+  background: #0f2a4a;
+  color: rgba(255, 255, 255, 0.88);
+  padding-top: 205px; /* wave clearance (135px overlap) + asli spacing (70px) */
+  overflow: hidden;
+}
+
+
+/* =====================================================
+   DECORATIVE GLOW
+===================================================== */
+
+.glowOne {
+  position: absolute;
+  width: 430px;
+  height: 430px;
+  top: -230px;
+  right: -120px;
+  border-radius: 50%;
+  background: rgba(217, 154, 170, 0.10);
+  filter: blur(12px);
+  pointer-events: none;
+}
+
+.glowTwo {
+  position: absolute;
+  width: 350px;
+  height: 350px;
+  bottom: -230px;
+  left: -150px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  filter: blur(15px);
+  pointer-events: none;
+}
+
+
+/* =====================================================
+   CONTAINER
+===================================================== */
+
+.container {
+  position: relative;
+  z-index: 2;
+  width: min(100% - 40px, var(--container, 1280px));
+  margin: 0 auto;
+}
+
+
+/* =====================================================
+   MAIN GRID (5 columns like screenshot)
+===================================================== */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 40px;
+  padding-bottom: 52px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+
+/* =====================================================
+   COLUMN COMMON
+===================================================== */
+
+.col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.col h3 {
+  margin: 8px 0 6px;
+  color: #ffffff;
+  font-family: "DM Sans", sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.col h4 {
+  margin: 0 0 8px;
+  color: #ffffff;
+  font-family: "DM Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.col ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+
+/* =====================================================
+   LOGO
+===================================================== */
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  text-decoration: none;
+}
+
+.logoImage {
+  display: block;
+  width: 150px !important;
+  height: 56px !important;
+  object-fit: contain;
+  object-position: left center;
+  filter: brightness(0) invert(1);
+}
+
+
+/* =====================================================
+   TEXT
+===================================================== */
+
+.plainText {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.68);
+  font-family: "DM Sans", sans-serif;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.note {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.52);
+  font-family: "DM Sans", sans-serif;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+
+/* =====================================================
+   UNDERLINE LINKS
+===================================================== */
+
+.underlineLink {
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-family: "DM Sans", sans-serif;
+  font-size: 13px;
+  line-height: 1.6;
+  transition: color 0.25s ease;
+}
+
+.underlineLink:hover {
+  color: var(--secondary);
+}
+
+
+/* =====================================================
+   BOOK WITH US BUTTON — screenshot jaisa thin pill border
+===================================================== */
+
+.bookBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 14px 32px;
+
+  border: 1.5px solid rgba(255, 255, 255, 0.75);
+  border-radius: 999px;
+
+  color: #ffffff;
+  text-decoration: none;
+  background: transparent;
+
+  font-family: "DM Sans", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.bookBtn:hover {
+  background: #ffffff;
+  color: #0f2a4a;
+  border-color: #ffffff;
+}
+
+
+/* =====================================================
+   SOCIAL
+===================================================== */
+
+.social {
+  margin-top: 8px;
+}
+
+.socialIcons {
+  display: flex;
+  gap: 14px;
+}
+
+.socialIcons a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  color: #ffffff;
+  transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.socialIcons svg {
+  width: 18px;
+  height: 18px;
+}
+
+.socialIcons a:hover {
+  color: var(--secondary);
+  transform: translateY(-2px);
+}
+
+
+/* =====================================================
+   BOTTOM
+===================================================== */
+
+.bottom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 22px 0;
+
+  color: rgba(255, 255, 255, 0.52);
+
+  font-family: "DM Sans", sans-serif;
+  font-size: 12px;
+}
+
+.bottom p {
+  margin: 0;
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 1000px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 35px 30px;
+  }
+}
+
+
+/* =====================================================
+   SMALL TABLET
+===================================================== */
+
+@media (max-width: 700px) {
+  .container {
+    width: min(100% - 32px, var(--container, 1280px));
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px 25px;
+  }
+
+  .waveWrap {
+    height: 95px;
+    margin-bottom: -78px;
+  }
+
+  .footerBody {
+    padding-top: 145px;
+  }
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 560px) {
+  .container {
+    width: calc(100% - 28px);
+  }
+
+  .waveWrap {
+    height: 75px;
+    margin-bottom: -62px;
+  }
+
+  .footerBody {
+    padding-top: 115px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding-bottom: 38px;
+  }
+
+  .col h3 {
+    font-size: 18px;
+  }
+
+  .bottom {
+    text-align: center;
+    font-size: 11px;
+  }
+}
+
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
+@media (max-width: 380px) {
+  .container {
+    width: calc(100% - 24px);
+  }
+
+  .waveWrap {
+    height: 62px;
+    margin-bottom: -52px;
+  }
+
+  .footerBody {
+    padding-top: 95px;
+  }
+
+  .grid {
+    gap: 28px;
+  }
+
+  .logoImage {
+    width: 130px !important;
+    height: 48px !important;
+  }
+
+  .bottom {
+    font-size: 10px;
+  }
+}
+
+
+/* =====================================================
+   REDUCED MOTION
+===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .bookBtn,
+  .underlineLink,
+  .socialIcons a {
+    transition: none;
+  }
+}

@@ -1,0 +1,772 @@
+.section {
+  position: relative;
+  padding: 0px 0 100px;
+  background: #ffffff;
+  scroll-margin-top: 90px;
+  overflow: hidden;
+}
+
+/* =====================================================
+   CONTAINER
+===================================================== */
+
+.container {
+  width: min(100% - 40px, 1240px);
+  margin: 0 auto;
+}
+
+/* =====================================================
+   TOP MARQUEE
+===================================================== */
+
+.marquee {
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: 75px;
+  border-top: 1px solid rgba(85, 127, 128, 0.12);
+  border-bottom: 1px solid rgba(85, 127, 128, 0.12);
+  background: #f8faf9;
+}
+
+.marqueeTrack {
+  width: max-content;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  padding: 14px 0;
+  animation: marquee 28s linear infinite;
+}
+
+.marqueeTrack span {
+  color: var(--primary);
+  font-family: "DM Sans", sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  white-space: nowrap;
+}
+
+.marqueeTrack i {
+  color: rgba(85, 127, 128, 0.45);
+  font-size: 10px;
+  font-style: normal;
+}
+
+/* =====================================================
+   MARQUEE REVERSE MODIFIER
+   (same track/size as top marquee, just runs backwards
+   so both marquees always stay visually identical)
+===================================================== */
+
+.marqueeReverse {
+  animation-direction: reverse;
+}
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.header {
+  max-width: 720px;
+  margin: 0 auto 58px;
+  text-align: center;
+}
+
+/* =====================================================
+   LABEL
+===================================================== */
+
+.labelWrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 17px;
+}
+
+.labelDot {
+  width: 7px;
+  height: 7px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--primary);
+  box-shadow: 0 0 0 5px rgba(85, 127, 128, 0.1);
+}
+
+.label {
+  color: var(--primary);
+  font-family: "DM Sans", sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+/* =====================================================
+   TITLE
+===================================================== */
+
+.title {
+  margin: 0;
+  color: var(--text-dark);
+  font-family: "Playfair Display", serif;
+  font-size: clamp(42px, 5vw, 64px);
+  line-height: 1.05;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+}
+
+.title span {
+  color: var(--primary);
+}
+
+/* =====================================================
+   DESCRIPTION
+===================================================== */
+
+.description {
+  max-width: 600px;
+  margin: 20px auto 0;
+  color: var(--text-muted);
+  font-family: "DM Sans", sans-serif;
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+/* =====================================================
+   FAQ LIST
+===================================================== */
+
+.faqList {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* =====================================================
+   FAQ ITEM
+===================================================== */
+
+.faqItem {
+  position: relative;
+  min-width: 0;
+
+  background: #ffffff;
+  border: 1px solid #e5ece9;
+  border-radius: 18px;
+
+  overflow: hidden;
+
+  box-shadow:
+    0 6px 25px rgba(30, 50, 50, 0.035);
+
+  opacity: 0;
+  transform: translateY(30px);
+
+  animation:
+    faqAppear 0.7s
+    cubic-bezier(0.22, 1, 0.36, 1)
+    forwards;
+
+  animation-delay: var(--delay);
+
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
+}
+
+.faqItem:hover {
+  border-color: rgba(85, 127, 128, 0.3);
+
+  box-shadow:
+    0 16px 38px rgba(30, 50, 50, 0.075);
+
+  transform: translateY(-3px);
+}
+
+.faqItem.active {
+  border-color: rgba(85, 127, 128, 0.45);
+
+  box-shadow:
+    0 18px 42px rgba(30, 50, 50, 0.08);
+}
+
+/* =====================================================
+   QUESTION BUTTON
+===================================================== */
+
+.question {
+  position: relative;
+
+  width: 100%;
+  min-height: 82px;
+
+  display: flex;
+  align-items: center;
+
+  padding: 21px 65px 21px 22px;
+
+  border: none;
+  outline: none;
+
+  background: transparent;
+
+  color: var(--text-dark);
+
+  text-align: left;
+
+  font-family: "DM Sans", sans-serif;
+
+  cursor: pointer;
+
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* =====================================================
+   QUESTION TEXT
+===================================================== */
+
+.questionText {
+  display: block;
+
+  width: 100%;
+  max-width: 100%;
+
+  color: var(--text-dark);
+
+  font-family: "DM Sans", sans-serif;
+
+  font-size: 15px;
+  font-weight: 650;
+
+  line-height: 1.5;
+
+  word-break: normal;
+  overflow-wrap: normal;
+
+  transition: color 0.25s ease;
+}
+
+.faqItem:hover .questionText,
+.faqItem.active .questionText {
+  color: var(--primary);
+}
+
+/* =====================================================
+   QUESTION NUMBER
+===================================================== */
+
+.questionNumber {
+  display: none;
+}
+
+/* =====================================================
+   PLUS ICON
+===================================================== */
+
+.icon {
+  position: absolute;
+
+  right: 19px;
+  top: 50%;
+
+  width: 32px;
+  height: 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transform: translateY(-50%);
+
+  border-radius: 50%;
+
+  background: #f0f5f3;
+  color: var(--primary);
+
+  transition:
+    transform 0.35s ease,
+    background 0.3s ease,
+    color 0.3s ease;
+}
+
+.icon span {
+  position: absolute;
+
+  width: 12px;
+  height: 1.5px;
+
+  border-radius: 10px;
+
+  background: currentColor;
+
+  transition:
+    transform 0.3s ease;
+}
+
+.icon span:first-child {
+  transform: rotate(90deg);
+}
+
+.icon span:last-child {
+  transform: rotate(0deg);
+}
+
+/* =====================================================
+   OPEN ICON
+===================================================== */
+
+.iconOpen {
+  transform:
+    translateY(-50%)
+    rotate(180deg);
+
+  background: var(--primary);
+  color: #ffffff;
+}
+
+.iconOpen span:first-child {
+  transform: rotate(45deg);
+}
+
+.iconOpen span:last-child {
+  transform: rotate(-45deg);
+}
+
+/* =====================================================
+   ANSWER WRAPPER
+===================================================== */
+
+.answerWrapper {
+  max-height: 0;
+  overflow: hidden;
+
+  transition:
+    max-height 0.45s
+    cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.answerInner {
+  overflow: hidden;
+}
+
+/* =====================================================
+   ANSWER OPEN
+===================================================== */
+
+.answerOpen {
+  max-height: 300px;
+}
+
+/* =====================================================
+   ANSWER
+===================================================== */
+
+.answer {
+  margin: 0;
+
+  padding: 0 65px 23px 22px;
+
+  color: var(--text-muted);
+
+  font-family: "DM Sans", sans-serif;
+
+  font-size: 14px;
+
+  line-height: 1.75;
+
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.answerOpen .answer {
+  opacity: 1;
+  transition: opacity 0.3s ease 0.1s;
+}
+
+/* =====================================================
+   BOTTOM CTA
+===================================================== */
+
+.bottom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 15px;
+
+  margin-top: 42px;
+
+  text-align: center;
+}
+
+.bottomText {
+  color: var(--text-muted);
+
+  font-family: "DM Sans", sans-serif;
+
+  font-size: 14px;
+}
+
+/* =====================================================
+   CONTACT LINK
+===================================================== */
+
+.contactLink {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 8px;
+
+  color: var(--primary);
+
+  font-family: "DM Sans", sans-serif;
+
+  font-size: 14px;
+  font-weight: 800;
+
+  text-decoration: none;
+
+  transition:
+    gap 0.25s ease,
+    color 0.25s ease;
+}
+
+.contactLink:hover {
+  gap: 12px;
+}
+
+.arrow {
+  width: 25px;
+  height: 25px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(85, 127, 128, 0.25);
+  border-radius: 50%;
+
+  font-size: 14px;
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease;
+}
+
+.contactLink:hover .arrow {
+  transform: translate(2px, -2px);
+  background: #eef4f2;
+}
+
+/* =====================================================
+   BOTTOM MARQUEE
+===================================================== */
+
+.marqueeBottom {
+  margin-top: 75px;
+  margin-bottom: 0;
+}
+
+/* =====================================================
+   ANIMATIONS
+===================================================== */
+
+@keyframes faqAppear {
+  0% {
+    opacity: 0;
+    transform:
+      translateY(30px)
+      scale(0.98);
+  }
+
+  100% {
+    opacity: 1;
+    transform:
+      translateY(0)
+      scale(1);
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* =====================================================
+   LARGE TABLET
+===================================================== */
+
+@media (max-width: 1000px) {
+
+  .faqList {
+    max-width: 900px;
+    gap: 15px;
+  }
+
+  .question {
+    min-height: 80px;
+  }
+}
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 800px) {
+
+  .section {
+    padding: 90px 0;
+  }
+
+  .marquee {
+    margin-bottom: 65px;
+  }
+
+  .header {
+    margin-bottom: 48px;
+  }
+
+  .faqList {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .question {
+    min-height: 78px;
+    padding: 20px 60px 20px 20px;
+  }
+
+  .questionText {
+    font-size: 14px;
+  }
+
+  .answer {
+    padding:
+      0
+      60px
+      21px
+      20px;
+  }
+}
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 650px) {
+
+  .section {
+    padding: 75px 0 80px;
+  }
+
+  .container {
+    width: min(100% - 28px, 600px);
+  }
+
+  .marquee {
+    margin-bottom: 55px;
+  }
+
+  .marqueeTrack {
+    gap: 22px;
+    padding: 13px 0;
+    animation-duration: 23s;
+  }
+
+  .marqueeTrack span {
+    font-size: 9px;
+    letter-spacing: 0.14em;
+  }
+
+  .marqueeTrack i {
+    font-size: 9px;
+  }
+
+  .header {
+    margin-bottom: 40px;
+  }
+
+  .title {
+    font-size: 40px;
+  }
+
+  .description {
+    margin-top: 18px;
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  .faqList {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .faqItem {
+    border-radius: 17px;
+  }
+
+  .question {
+    min-height: 72px;
+
+    padding:
+      18px
+      55px
+      18px
+      18px;
+  }
+
+  .questionText {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .icon {
+    right: 15px;
+
+    width: 31px;
+    height: 31px;
+  }
+
+  .answer {
+    padding:
+      0
+      55px
+      19px
+      18px;
+
+    font-size: 13.5px;
+    line-height: 1.7;
+  }
+
+  .bottom {
+    flex-direction: column;
+    gap: 9px;
+    margin-top: 32px;
+  }
+
+  .bottomText {
+    font-size: 13px;
+  }
+
+  .contactLink {
+    font-size: 13px;
+  }
+
+  .marqueeBottom {
+    margin-top: 60px;
+  }
+}
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
+@media (max-width: 400px) {
+
+  .title {
+    font-size: 35px;
+  }
+
+  .description {
+    font-size: 14px;
+  }
+
+  .question {
+    padding:
+      17px
+      52px
+      17px
+      17px;
+  }
+
+  .questionText {
+    font-size: 13.5px;
+  }
+
+  .answer {
+    padding:
+      0
+      52px
+      18px
+      17px;
+
+    font-size: 13px;
+  }
+
+  .icon {
+    right: 13px;
+
+    width: 29px;
+    height: 29px;
+  }
+}
+
+/* =====================================================
+   VERY SMALL MOBILE
+===================================================== */
+
+@media (max-width: 340px) {
+
+  .container {
+    width: calc(100% - 22px);
+  }
+
+  .title {
+    font-size: 32px;
+  }
+
+  .questionText {
+    font-size: 13px;
+  }
+}
+
+/* =====================================================
+   ACCESSIBILITY / FOCUS
+===================================================== */
+
+.question:focus-visible {
+  box-shadow:
+    inset 0 0 0 2px var(--primary);
+  border-radius: 12px;
+}
+
+/* =====================================================
+   REDUCED MOTION
+===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .faqItem {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .faqItem:hover {
+    transform: none;
+  }
+
+  .marqueeTrack {
+    animation: none;
+  }
+
+  .icon,
+  .icon span,
+  .answerWrapper,
+  .contactLink,
+  .arrow,
+  .faqItem,
+  .questionText {
+    transition: none;
+  }
+}

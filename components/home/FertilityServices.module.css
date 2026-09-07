@@ -1,0 +1,423 @@
+/* =====================================================
+   SERVICES SECTION (Reverted to Original Style)
+===================================================== */
+
+.servicesSection {
+  position: relative;
+  z-index: 5;
+  margin-top: -80px;
+  padding: 65px 0 5px;
+  background:
+    radial-gradient(
+      circle at 12% 18%,
+      rgba(169, 210, 189, 0.12),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 88% 75%,
+      rgba(183, 210, 237, 0.13),
+      transparent 30%
+    ),
+    #ffffff;
+  border-radius: 54px 54px 0 0;
+  overflow: visible;
+  box-shadow:
+    0 -25px 70px rgba(16, 47, 82, 0.08),
+    0 -3px 15px rgba(16, 47, 82, 0.04);
+  animation: sectionReveal 1s ease both;
+}
+
+.sectionGlow {
+  position: absolute;
+  width: 520px;
+  height: 520px;
+  top: -280px;
+  right: -180px;
+  border-radius: 50%;
+  background: rgba(169, 210, 189, 0.15);
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+.container {
+  position: relative;
+  z-index: 2;
+  width: min(100% - 48px, 1280px);
+  margin: 0 auto;
+}
+
+/* =====================================================
+   HEADER (Reverted to Original Style)
+===================================================== */
+
+.header {
+  max-width: 760px;
+  margin-bottom: 75px;
+  animation: headerReveal 0.9s 0.1s ease both;
+}
+
+.eyebrowWrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: #557f80;
+  font-family: "Archivo", sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.eyebrow::before {
+  content: "";
+  width: 38px;
+  height: 1px;
+  background: #9bb8ad;
+  transition: width 0.5s ease, background 0.5s ease;
+}
+
+.eyebrowDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #a9d2bd;
+  box-shadow:
+    0 0 0 5px rgba(169, 210, 189, 0.13),
+    0 0 15px rgba(169, 210, 189, 0.4);
+  animation: dotPulse 2.5s ease-in-out infinite;
+}
+
+.header:hover .eyebrow::before {
+  width: 55px;
+  background: #557f80;
+}
+
+.header h2 {
+  margin-top: 20px;
+  color: rgb(16, 47, 82);
+  font-family: "Archivo", sans-serif;
+  font-size: clamp(48px, 5.3vw, 72px);
+  line-height: 0.99;
+  font-weight: 700;
+  letter-spacing: -0.065em;
+}
+
+.header h2 span {
+  color: #E0517C;
+  font-weight: 500;
+}
+
+.header p {
+  max-width: 600px;
+  margin-top: 27px;
+  color: #687576;
+  font-family: "Sora", sans-serif;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+/* =====================================================
+   STACK AREA 
+===================================================== */
+
+.stack {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 20vh;
+}
+
+/* =====================================================
+   STACK ITEM (COMPACT MATH)
+===================================================== */
+
+.stackItem {
+  position: sticky;
+  width: 100%;
+  margin-bottom: 55vh;
+}
+
+.stackItem:last-child {
+  margin-bottom: 0;
+}
+
+/* 
+  Top Bar height is now 60px to save space.
+  Gap between cards is exactly 60px to show only the header of previous cards.
+*/
+.stackItem:nth-child(1) { top: 90px; z-index: 1; }
+.stackItem:nth-child(2) { top: 150px; z-index: 2; } /* 90 + 60 */
+.stackItem:nth-child(3) { top: 210px; z-index: 3; } /* 150 + 60 */
+
+/* =====================================================
+   CARD MAIN WRAPPER
+===================================================== */
+
+.card {
+  background-color: #132B48; 
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: 0 -10px 40px rgba(0,0,0,0.12);
+  color: #111111;
+}
+
+/* =====================================================
+   CARD TOP BAR (Compact Height)
+===================================================== */
+
+.cardTopBar {
+  height: 60px; /* Reduced from 75px */
+  display: flex;
+  align-items: center;
+  padding: 0 35px;
+  background-color:#132B48;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  gap: 20px;
+}
+
+.phaseInfo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #FDFDFE;
+  font-family: "Archivo", sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+}
+
+.topBarTitle {
+  font-family: "Archivo", sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  color:#EDC59F;
+}
+
+/* =====================================================
+   CARD BODY (Reduced Padding for Fit)
+===================================================== */
+
+.cardBody {
+  display: flex;
+  padding: 30px 40px; /* Reduced to make card shorter */
+  gap: 40px;
+  align-items: center;
+}
+
+/* =====================================================
+   LEFT: IMAGE COLUMN
+===================================================== */
+
+.imageCol {
+  flex: 0 0 42%;
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10; /* More horizontal/shorter to save vertical height */
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+.image {
+  object-fit: cover;
+}
+
+.imageOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.1); 
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* =====================================================
+   RIGHT: CONTENT COLUMN
+===================================================== */
+
+.contentCol {
+  flex: 1;
+  position: relative;
+}
+
+.plusBtn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: #111;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.plusBtn:hover {
+  background: linear-gradient(
+    135deg,
+    #06345c 0%,
+    #0B4981 35%,
+    #4f8fc2 50%,
+    #0B4981 65%,
+    #06345c 100%
+  );
+  color: #ffffff;
+  border-color: #0B4981;
+  transform: scale(1.05);
+  box-shadow:
+    0 0 12px rgba(11, 73, 129, 0.45),
+    0 0 25px rgba(11, 73, 129, 0.25);
+}
+
+.contentInner {
+  max-width: 90%;
+}
+
+.smallPhase {
+  display: block;
+  font-family: "Archivo", sans-serif;
+  color: #FDFDFE;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  margin-bottom: 12px;
+}
+
+.mainTitle {
+  font-family: "Archivo", sans-serif;
+  font-size: 32px; /* Reduced font size to save height */
+  font-weight: 700;
+  line-height: 1.1;
+  color:#E0517C;
+  margin-bottom: 16px;
+}
+
+.description {
+  font-family: "Sora", sans-serif;
+  font-size: 14px; /* Reduced font size */
+  line-height: 1.6;
+  color: #EDC59F;
+  margin-bottom: 24px;
+}
+
+/* =====================================================
+   BULLET POINTS
+===================================================== */
+
+.bulletList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.bulletList li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 12px;
+  font-family: "Archivo", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: #E0517C;
+}
+
+.bulletList li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 7px;
+  width: 8px;
+  height: 8px;
+  background: linear-gradient(
+    135deg,
+    #06345c,
+    #0B4981,
+    #4f8fc2,
+    #0B4981,
+    #06345c
+  );
+  border-radius: 50%;
+  box-shadow:
+    0 0 7px rgba(11, 73, 129, 0.55),
+    0 0 14px rgba(11, 73, 129, 0.25);
+}
+
+/* =====================================================
+   ANIMATIONS
+===================================================== */
+
+@keyframes sectionReveal {
+  from { opacity: 0; transform: translateY(35px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes headerReveal {
+  from { opacity: 0; transform: translateY(25px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes dotPulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 5px rgba(169, 210, 189, 0.13), 0 0 15px rgba(169, 210, 189, 0.3);
+  }
+  50% {
+    transform: scale(1.25);
+    box-shadow: 0 0 0 8px rgba(169, 210, 189, 0.08), 0 0 22px rgba(169, 210, 189, 0.5);
+  }
+}
+
+/* =====================================================
+   RESPONSIVE DESIGN (TABLET & MOBILE)
+===================================================== */
+
+@media (max-width: 1024px) {
+  .cardBody {
+    padding: 30px;
+    gap: 30px;
+  }
+  .mainTitle { font-size: 28px; }
+}
+
+@media (max-width: 768px) {
+  .stackItem:nth-child(1) { top: 80px; }
+  .stackItem:nth-child(2) { top: 135px; } /* 80 + 55 */
+  .stackItem:nth-child(3) { top: 190px; } /* 135 + 55 */
+  .cardTopBar {
+    height: 55px;
+    padding: 0 20px;
+    gap: 15px;
+  }
+  .topBarTitle { font-size: 16px; }
+  .cardBody {
+    flex-direction: column;
+    padding: 25px 20px;
+    gap: 25px;
+  }
+  .imageCol, .contentCol {
+    flex: none;
+    width: 100%;
+  }
+  .plusBtn {
+    top: -10px;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+  }
+  .mainTitle { font-size: 24px; }
+  .description { font-size: 14px; }
+}
