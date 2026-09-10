@@ -24,9 +24,14 @@ export default function Navbar() {
     };
 
     handleScroll();
-    window.addEventListener("scroll", handleScroll, { passive: true });
 
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, {
+      passive: true,
+    });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   useEffect(() => {
@@ -37,7 +42,13 @@ export default function Navbar() {
     };
   }, [menuOpen]);
 
-  const closeMenu = () => setMenuOpen(false);
+  const closeMenu = () => {
+    setMenuOpen(false);
+  };
+
+  const toggleMenu = () => {
+    setMenuOpen((current) => !current);
+  };
 
   return (
     <header
@@ -46,6 +57,7 @@ export default function Navbar() {
       }`}
     >
       <div className={styles.inner}>
+
         {/* Logo */}
         <Link
           href="#home"
@@ -56,15 +68,19 @@ export default function Navbar() {
           <Image
             src="/pass.png"
             alt="Fertility Clinic by AJ"
-            width={150}
-            height={52}
+            width={1024}
+            height={450}
             priority
             className={styles.logoImage}
           />
         </Link>
 
+
         {/* Desktop Navigation */}
-        <nav className={styles.desktopNav} aria-label="Main navigation">
+        <nav
+          className={styles.desktopNav}
+          aria-label="Main navigation"
+        >
           {navLinks.map((link) => (
             <Link
               key={link.href}
@@ -72,11 +88,15 @@ export default function Navbar() {
               className={styles.navLink}
               onClick={closeMenu}
             >
-              <span className={styles.navLabel}>{link.label}</span>
+              <span className={styles.navLabel}>
+                {link.label}
+              </span>
+
               <span className={styles.navLine} />
             </Link>
           ))}
         </nav>
+
 
         {/* Desktop CTA */}
         <Link
@@ -85,8 +105,12 @@ export default function Navbar() {
           onClick={closeMenu}
         >
           <span>Book a Consultation</span>
-          <span className={styles.ctaArrow}>↗</span>
+
+          <span className={styles.ctaArrow}>
+            ↗
+          </span>
         </Link>
+
 
         {/* Mobile Menu Button */}
         <button
@@ -94,17 +118,20 @@ export default function Navbar() {
           className={`${styles.menuButton} ${
             menuOpen ? styles.menuButtonActive : ""
           }`}
-          onClick={() => setMenuOpen((current) => !current)}
+          onClick={toggleMenu}
           aria-label={menuOpen ? "Close menu" : "Open menu"}
           aria-expanded={menuOpen}
+          aria-controls="mobile-navigation"
         >
           <span />
           <span />
         </button>
       </div>
 
+
       {/* Mobile Navigation */}
       <div
+        id="mobile-navigation"
         className={`${styles.mobileMenu} ${
           menuOpen ? styles.mobileMenuOpen : ""
         }`}
@@ -128,12 +155,14 @@ export default function Navbar() {
           ))}
         </nav>
 
+
+        {/* Mobile CTA */}
         <Link
           href="#contact"
           className={styles.mobileCta}
           onClick={closeMenu}
         >
-          Book a Consultation
+          <span>Book a Consultation</span>
           <span>↗</span>
         </Link>
       </div>

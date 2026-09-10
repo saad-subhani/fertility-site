@@ -1749,3 +1749,568 @@
     transition-duration: 0.01ms !important;
   }
 }
+
+
+
+/* =====================================================
+   MOBILE RESPONSIVE PATCH
+   Desktop design remains unchanged
+===================================================== */
+
+@media (max-width: 850px) {
+
+  .hero {
+    min-height: 100svh;
+    overflow: hidden;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 100%;
+    padding: 110px 22px 32px;
+  }
+
+  .heroContent {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* -----------------------------
+     EYEBROW
+  ----------------------------- */
+
+  .eyebrow {
+    width: 100%;
+    max-width: 100%;
+    gap: 8px;
+    margin-bottom: 22px;
+    align-items: flex-start;
+  }
+
+  .heartIcon {
+    flex-shrink: 0;
+    font-size: 23px;
+  }
+
+  .eyebrow > span:last-child {
+    font-size: 7px;
+    line-height: 1.6;
+    letter-spacing: 0.12em;
+  }
+
+  /* -----------------------------
+     HEADING
+  ----------------------------- */
+
+  .heading {
+    width: 100%;
+    font-size: clamp(48px, 13.5vw, 72px);
+    line-height: 0.88;
+    letter-spacing: -0.05em;
+  }
+
+  .headingSecond {
+    margin-top: 8px;
+  }
+
+  .scriptText {
+    min-width: 0;
+    max-width: 100%;
+    font-size: 0.82em;
+    white-space: nowrap;
+  }
+
+  /* -----------------------------
+     UNDERLINE
+  ----------------------------- */
+
+  .headingUnderline {
+    margin-top: 12px;
+    margin-left: clamp(45px, 18vw, 90px);
+    gap: 7px;
+  }
+
+  .headingUnderline span {
+    width: clamp(90px, 28vw, 130px);
+  }
+
+  .headingUnderline i {
+    font-size: 20px;
+  }
+
+  /* -----------------------------
+     DESCRIPTION
+  ----------------------------- */
+
+  .description {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 22px;
+    padding-left: 13px;
+    font-size: 10px;
+    line-height: 1.85;
+  }
+
+  .desktopBreak {
+    display: none;
+  }
+
+  /* -----------------------------
+     BUTTON
+  ----------------------------- */
+
+  .heroAction {
+    width: 100%;
+    margin-top: 26px;
+  }
+
+  .mainBooking {
+    max-width: 100%;
+    min-height: 56px;
+    padding: 5px 7px 5px 20px;
+    gap: 11px;
+    font-size: 9px;
+  }
+
+  .mainBooking i {
+    width: 38px;
+    height: 38px;
+    flex-shrink: 0;
+  }
+
+  .mainBooking svg {
+    width: 15px;
+  }
+
+  /* -----------------------------
+     STATS
+  ----------------------------- */
+
+  .stats {
+    width: 100%;
+    margin-top: 34px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px 14px;
+  }
+
+  .stat {
+    width: 100%;
+    min-width: 0;
+    min-height: 44px;
+    gap: 7px;
+  }
+
+  .statIcon {
+    width: 33px;
+    height: 33px;
+  }
+
+  .statIcon svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .statText {
+    min-width: 0;
+  }
+
+  .statText strong {
+    font-size: 12px;
+    line-height: 1.2;
+  }
+
+  .statText span {
+    font-size: 6px;
+    line-height: 1.45;
+    white-space: normal;
+  }
+
+  .statDivider {
+    display: none;
+  }
+
+  /* -----------------------------
+     FEATURE STRIP
+  ----------------------------- */
+
+  .featureStrip {
+    width: 100%;
+    margin-top: 34px;
+    padding: 18px 15px;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px 14px;
+    border-radius: 16px;
+  }
+
+  .feature {
+    width: 100%;
+    min-width: 0;
+    gap: 11px;
+  }
+
+  .featureIcon {
+    width: 52px;
+    height: 52px;
+    flex-shrink: 0;
+  }
+
+  .featureIcon svg {
+    width: 27px;
+    height: 27px;
+  }
+
+  .featureContent {
+    min-width: 0;
+  }
+
+  .featureContent h3 {
+    font-size: 10px;
+    line-height: 1.3;
+    white-space: normal;
+    margin-bottom: 4px;
+  }
+
+  .featureContent p {
+    max-width: none;
+    font-size: 7px;
+    line-height: 1.6;
+  }
+
+  .featureDivider {
+    display: none;
+  }
+
+  /* -----------------------------
+     HIDE DESKTOP DECORATIONS
+     THAT CAN CAUSE OVERFLOW
+  ----------------------------- */
+
+  .quoteCard {
+    display: none;
+  }
+
+  .cursorDetail {
+    display: none;
+  }
+
+  .orbitLarge {
+    width: 480px;
+    height: 480px;
+    right: -315px;
+    top: 220px;
+  }
+
+  .orbitSmall {
+    width: 400px;
+    height: 400px;
+    right: -275px;
+    top: 260px;
+  }
+
+  .backgroundGlow {
+    width: 420px;
+    height: 420px;
+    left: -240px;
+    top: 25%;
+  }
+
+  .backgroundGlowTwo {
+    width: 350px;
+    height: 350px;
+    right: -220px;
+    top: -100px;
+  }
+}
+
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
+@media (max-width: 600px) {
+
+  .hero {
+    min-height: 100svh;
+  }
+
+  .container {
+    padding: 104px 18px 26px;
+  }
+
+  /* EYEBROW */
+
+  .eyebrow {
+    gap: 7px;
+    margin-bottom: 20px;
+  }
+
+  .heartIcon {
+    font-size: 21px;
+  }
+
+  .eyebrow > span:last-child {
+    font-size: 6.5px;
+    letter-spacing: 0.11em;
+    line-height: 1.55;
+  }
+
+  /* HEADING */
+
+  .heading {
+    font-size: clamp(45px, 14vw, 65px);
+    line-height: 0.88;
+  }
+
+  .headingSecond {
+    margin-top: 7px;
+  }
+
+  .scriptText {
+    font-size: 0.81em;
+  }
+
+  .typingCursor {
+    width: 1.5px;
+    margin-left: 4px;
+  }
+
+  /* UNDERLINE */
+
+  .headingUnderline {
+    margin-top: 10px;
+    margin-left: 60px;
+    gap: 6px;
+  }
+
+  .headingUnderline span {
+    width: 105px;
+    height: 1.5px;
+  }
+
+  .headingUnderline i {
+    font-size: 19px;
+  }
+
+  /* DESCRIPTION */
+
+  .description {
+    margin-top: 20px;
+    padding-left: 12px;
+    font-size: 9.5px;
+    line-height: 1.85;
+  }
+
+  /* BUTTON */
+
+  .heroAction {
+    margin-top: 24px;
+  }
+
+  .mainBooking {
+    min-height: 54px;
+    padding-left: 18px;
+    gap: 9px;
+    font-size: 8.5px;
+  }
+
+  .mainBooking i {
+    width: 36px;
+    height: 36px;
+  }
+
+  /* STATS */
+
+  .stats {
+    margin-top: 30px;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px 10px;
+  }
+
+  .stat {
+    gap: 6px;
+  }
+
+  .statIcon {
+    width: 31px;
+    height: 31px;
+  }
+
+  .statIcon svg {
+    width: 27px;
+    height: 27px;
+  }
+
+  .statText strong {
+    font-size: 11px;
+  }
+
+  .statText span {
+    font-size: 6px;
+  }
+
+  /* FEATURE STRIP */
+
+  .featureStrip {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    margin-top: 30px;
+    padding: 16px 14px;
+  }
+
+  .feature {
+    gap: 12px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .feature:last-child {
+    padding-bottom: 0;
+    border-bottom: 0;
+  }
+
+  .featureIcon {
+    width: 51px;
+    height: 51px;
+  }
+
+  .featureIcon svg {
+    width: 27px;
+    height: 27px;
+  }
+
+  .featureContent h3 {
+    font-size: 10.5px;
+    margin-bottom: 4px;
+  }
+
+  .featureContent p {
+    font-size: 7px;
+    line-height: 1.6;
+  }
+
+  /* DECORATIONS */
+
+  .orbitLarge {
+    width: 380px;
+    height: 380px;
+    right: -270px;
+    top: 330px;
+  }
+
+  .orbitSmall {
+    width: 325px;
+    height: 325px;
+    right: -235px;
+    top: 365px;
+  }
+
+  .backgroundGlow {
+    width: 350px;
+    height: 350px;
+    left: -230px;
+  }
+
+  .backgroundGlowTwo {
+    width: 300px;
+    height: 300px;
+    right: -190px;
+  }
+}
+
+
+/* =====================================================
+   VERY SMALL PHONES
+===================================================== */
+
+@media (max-width: 390px) {
+
+  .container {
+    padding: 96px 15px 22px;
+  }
+
+  .eyebrow {
+    margin-bottom: 18px;
+  }
+
+  .eyebrow > span:last-child {
+    font-size: 6px;
+  }
+
+  .heading {
+    font-size: 43px;
+  }
+
+  .headingUnderline {
+    margin-left: 48px;
+  }
+
+  .headingUnderline span {
+    width: 90px;
+  }
+
+  .description {
+    font-size: 8.5px;
+  }
+
+  .mainBooking {
+    font-size: 8px;
+  }
+
+  .stats {
+    gap: 16px 8px;
+  }
+
+  .statText strong {
+    font-size: 10px;
+  }
+
+  .featureStrip {
+    padding: 15px 12px;
+  }
+
+  .featureIcon {
+    width: 48px;
+    height: 48px;
+  }
+
+  .featureIcon svg {
+    width: 25px;
+    height: 25px;
+  }
+}
+
+
+/* =====================================================
+   EXTRA SMALL PHONES
+===================================================== */
+
+@media (max-width: 340px) {
+
+  .container {
+    padding-left: 13px;
+    padding-right: 13px;
+  }
+
+  .heading {
+    font-size: 39px;
+  }
+
+  .eyebrow > span:last-child {
+    font-size: 5.7px;
+  }
+
+  .mainBooking {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .stats {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .featureStrip {
+    gap: 13px;
+  }
+}

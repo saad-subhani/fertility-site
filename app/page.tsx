@@ -1,4 +1,4 @@
-import Navbar from "@/components/layout/Navbar";
+
 import Hero from "@/components/home/Hero";
 import AboutClinic from "@/components/home/AboutClinic";
 import FertilityServices from "@/components/home/FertilityServices";

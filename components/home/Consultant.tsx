@@ -136,6 +136,7 @@ export default function Consultant() {
                 src="/fertdoct.jpg"
                 alt="Dr. Ayesha Javed"
                 fill
+                sizes="(max-width: 378px) calc(100vw - 28px), 350px"
                 className={styles.image}
                 priority
               />
