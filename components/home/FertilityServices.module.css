@@ -1,423 +1,923 @@
 /* =====================================================
-   SERVICES SECTION (Reverted to Original Style)
+   SECTION
 ===================================================== */
 
-.servicesSection {
+.section {
   position: relative;
   z-index: 5;
-  margin-top: -80px;
-  padding: 65px 0 5px;
+  padding: 86px 0 96px;
   background:
     radial-gradient(
-      circle at 12% 18%,
-      rgba(169, 210, 189, 0.12),
+      circle at 8% 15%,
+      rgba(169, 210, 189, 0.14),
       transparent 28%
     ),
     radial-gradient(
-      circle at 88% 75%,
-      rgba(183, 210, 237, 0.13),
+      circle at 92% 78%,
+      rgba(183, 210, 237, 0.14),
       transparent 30%
     ),
-    #ffffff;
-  border-radius: 54px 54px 0 0;
+    #fafbff;
   overflow: hidden;
-  box-shadow:
-    0 -25px 70px rgba(16, 47, 82, 0.08),
-    0 -3px 15px rgba(16, 47, 82, 0.04);
-  animation: sectionReveal 1s ease both;
+}
+
+.sectionGlow,
+.sectionGlowTwo {
+  position: absolute;
+  pointer-events: none;
+  border-radius: 50%;
+  filter: blur(90px);
 }
 
 .sectionGlow {
-  position: absolute;
   width: 520px;
   height: 520px;
-  top: -280px;
-  right: -180px;
-  border-radius: 50%;
-  background: rgba(169, 210, 189, 0.15);
-  filter: blur(80px);
-  pointer-events: none;
+  top: -250px;
+  right: -160px;
+  background: rgba(169, 210, 189, 0.16);
+}
+
+.sectionGlowTwo {
+  width: 420px;
+  height: 420px;
+  bottom: -220px;
+  left: -180px;
+  background: rgba(183, 210, 237, 0.12);
 }
 
 .container {
   position: relative;
   z-index: 2;
-  width: min(100% - 48px, 1280px);
+  width: min(100% - 48px, 1200px);
   margin: 0 auto;
 }
 
+
 /* =====================================================
-   HEADER (Reverted to Original Style)
+   HEADER
 ===================================================== */
 
 .header {
-  max-width: 760px;
-  margin-bottom: 75px;
-  animation: headerReveal 0.9s 0.1s ease both;
+  max-width: 650px;
+  margin: 0 auto 52px;
+  text-align: center;
+  animation: headerReveal 0.8s ease both;
 }
 
 .eyebrowWrap {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
+  gap: 9px;
+  margin-bottom: 16px;
+  padding: 7px 13px;
+  border-radius: 999px;
+  background: rgba(255, 224, 239, 0.72);
+  border: 1px solid rgba(224, 81, 124, 0.08);
 }
 
 .eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  color: #557f80;
+  color: #e0517c;
   font-family: "Archivo", sans-serif;
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 700;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.09em;
   text-transform: uppercase;
-}
-
-.eyebrow::before {
-  content: "";
-  width: 38px;
-  height: 1px;
-  background: #9bb8ad;
-  transition: width 0.5s ease, background 0.5s ease;
 }
 
 .eyebrowDot {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: #a9d2bd;
+  background: #e0517c;
   box-shadow:
-    0 0 0 5px rgba(169, 210, 189, 0.13),
-    0 0 15px rgba(169, 210, 189, 0.4);
+    0 0 0 4px rgba(224, 81, 124, 0.08),
+    0 0 12px rgba(224, 81, 124, 0.3);
   animation: dotPulse 2.5s ease-in-out infinite;
 }
 
-.header:hover .eyebrow::before {
-  width: 55px;
-  background: #557f80;
-}
-
 .header h2 {
-  margin-top: 20px;
-  color: rgb(16, 47, 82);
+  margin: 0 0 15px;
+  color: #102f52;
   font-family: "Archivo", sans-serif;
-  font-size: clamp(48px, 5.3vw, 72px);
-  line-height: 0.99;
+  font-size: clamp(30px, 4vw, 43px);
   font-weight: 700;
-  letter-spacing: -0.065em;
+  line-height: 1.13;
+  letter-spacing: -0.04em;
 }
 
 .header h2 span {
-  color: #E0517C;
+  color: #557f80;
   font-weight: 500;
 }
 
 .header p {
-  max-width: 600px;
-  margin-top: 27px;
+  max-width: 570px;
+  margin: 0 auto;
   color: #687576;
   font-family: "Sora", sans-serif;
-  font-size: 15px;
-  line-height: 1.8;
+  font-size: 14px;
+  line-height: 1.75;
 }
 
+
 /* =====================================================
-   STACK AREA 
+   GRID
 ===================================================== */
 
-.stack {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  padding-bottom: 20vh;
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  margin-bottom: 48px;
 }
+
 
 /* =====================================================
-   STACK ITEM (COMPACT MATH)
-===================================================== */
-
-.stackItem {
-  position: sticky;
-  width: 100%;
-  margin-bottom: 55vh;
-}
-
-.stackItem:last-child {
-  margin-bottom: 0;
-}
-
-/* 
-  Top Bar height is now 60px to save space.
-  Gap between cards is exactly 60px to show only the header of previous cards.
-*/
-.stackItem:nth-child(1) { top: 90px; z-index: 1; }
-.stackItem:nth-child(2) { top: 150px; z-index: 2; } /* 90 + 60 */
-.stackItem:nth-child(3) { top: 210px; z-index: 3; } /* 150 + 60 */
-
-/* =====================================================
-   CARD MAIN WRAPPER
+   CARD
 ===================================================== */
 
 .card {
-  background-color: #132B48; 
-  border-radius: 28px;
+  --accent: #102f52;
+
+  position: relative;
   overflow: hidden;
-  box-shadow: 0 -10px 40px rgba(0,0,0,0.12);
-  color: #111111;
+
+  display: flex;
+  flex-direction: column;
+
+  min-height: 0;
+
+  border: 1px solid rgba(16, 47, 82, 0.045);
+  border-radius: 17px;
+
+  opacity: 0;
+  transform: translateY(18px);
+
+  animation:
+    cardReveal 0.7s cubic-bezier(0.22, 1, 0.36, 1)
+    forwards;
+  animation-delay: var(--card-delay);
+
+  transition:
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.4s ease,
+    border-color 0.35s ease;
 }
 
+.card:hover {
+  transform: translateY(-7px);
+  border-color: rgba(16, 47, 82, 0.1);
+
+  box-shadow:
+    0 20px 42px rgba(16, 47, 82, 0.1),
+    0 5px 15px rgba(16, 47, 82, 0.04);
+}
+
+
 /* =====================================================
-   CARD TOP BAR (Compact Height)
+   COLOR VARIANTS
 ===================================================== */
 
-.cardTopBar {
-  height: 60px; /* Reduced from 75px */
-  display: flex;
-  align-items: center;
-  padding: 0 35px;
-  background-color:#132B48;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-  gap: 20px;
+.tileBlue {
+  --accent: #2563eb;
+  background: #e7f0ff;
 }
 
-.phaseInfo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  color: #FDFDFE;
-  font-family: "Archivo", sans-serif;
-  font-weight: 700;
-  font-size: 13px;
-  letter-spacing: 0.05em;
+.tilePink {
+  --accent: #db2777;
+  background: #fce8f3;
 }
 
-.topBarTitle {
-  font-family: "Archivo", sans-serif;
-  font-weight: 600;
-  font-size: 18px;
-  color:#EDC59F;
+.tileMint {
+  --accent: #059669;
+  background: #e5f8ef;
 }
+
+.tileYellow {
+  --accent: #c58b00;
+  background: #fff4c9;
+}
+
+.tileGreen {
+  --accent: #059669;
+  background: #e7f8ee;
+}
+
+.tilePurple {
+  --accent: #6d3fd1;
+  background: #eee9ff;
+}
+
+.tileRose {
+  --accent: #e05263;
+  background: #fff0f1;
+}
+
+.tileSky {
+  --accent: #1685bd;
+  background: #e8f6ff;
+}
+
 
 /* =====================================================
-   CARD BODY (Reduced Padding for Fit)
+   SERVICE NUMBER
+===================================================== */
+
+.serviceNumber {
+  position: absolute;
+  top: 7px;
+  right: 12px;
+  z-index: 1;
+
+  color: rgba(16, 47, 82, 0.07);
+
+  font-family: "Archivo", sans-serif;
+  font-size: 46px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.07em;
+
+  pointer-events: none;
+
+  transition:
+    color 0.35s ease,
+    transform 0.4s ease;
+}
+
+.card:hover .serviceNumber {
+  color: rgba(16, 47, 82, 0.12);
+  transform: translateY(-3px);
+}
+
+
+/* =====================================================
+   ICON
+===================================================== */
+
+.iconWrap {
+  position: relative;
+  z-index: 2;
+  padding: 18px 18px 0;
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 11px;
+
+  color: var(--accent);
+  background: rgba(255, 255, 255, 0.55);
+
+  border: 1px solid rgba(255, 255, 255, 0.65);
+
+  box-shadow:
+    0 5px 14px rgba(16, 47, 82, 0.045),
+    inset 0 1px 0 rgba(255, 255, 255, 0.75);
+
+  transition:
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    background 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.icon svg {
+  width: 22px;
+  height: 22px;
+
+  transition:
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.card:hover .icon {
+  transform: translateY(-3px) rotate(-4deg) scale(1.08);
+
+  background: rgba(255, 255, 255, 0.82);
+
+  box-shadow:
+    0 9px 20px rgba(16, 47, 82, 0.09),
+    0 0 0 5px rgba(255, 255, 255, 0.2);
+}
+
+.card:hover .icon svg {
+  transform: scale(1.08);
+}
+
+
+/* =====================================================
+   BADGE
+===================================================== */
+
+.badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 5;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+
+  padding: 4px 8px;
+
+  border-radius: 999px;
+
+  background: #2563eb;
+  color: #ffffff;
+
+  font-family: "Archivo", sans-serif;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+
+  box-shadow: 0 5px 12px rgba(37, 99, 235, 0.18);
+
+  animation: badgeFloat 3s ease-in-out infinite;
+}
+
+.badgeDot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #ffffff;
+}
+
+
+/* =====================================================
+   CARD BODY
 ===================================================== */
 
 .cardBody {
-  display: flex;
-  padding: 30px 40px; /* Reduced to make card shorter */
-  gap: 40px;
-  align-items: center;
-}
-
-/* =====================================================
-   LEFT: IMAGE COLUMN
-===================================================== */
-
-.imageCol {
-  flex: 0 0 42%;
-}
-
-.imageWrapper {
   position: relative;
-  width: 100%;
-  aspect-ratio: 16 / 10; /* More horizontal/shorter to save vertical height */
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-}
+  z-index: 2;
 
-.image {
-  object-fit: cover;
-}
-
-.imageOverlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.1); 
-  z-index: 1;
-  pointer-events: none;
-}
-
-/* =====================================================
-   RIGHT: CONTENT COLUMN
-===================================================== */
-
-.contentCol {
+  display: flex;
+  flex-direction: column;
   flex: 1;
-  position: relative;
+
+  padding: 15px 18px 18px;
 }
 
-.plusBtn {
+.cardTitle {
+  margin: 0 0 8px;
+
+  color: #102f52;
+
+  font-family: "Archivo", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.3;
+
+  transition: color 0.25s ease;
+}
+
+.card:hover .cardTitle {
+  color: var(--accent);
+}
+
+
+/* =====================================================
+   DECORATIVE LINE
+===================================================== */
+
+.cardLine {
+  width: 26px;
+  height: 2px;
+
+  margin-bottom: 10px;
+
+  border-radius: 999px;
+
+  background: var(--accent);
+
+  opacity: 0.45;
+
+  transform-origin: left;
+
+  transition:
+    width 0.35s ease,
+    opacity 0.35s ease;
+}
+
+.card:hover .cardLine {
+  width: 42px;
+  opacity: 0.8;
+}
+
+
+/* =====================================================
+   DESCRIPTION
+===================================================== */
+
+.cardDesc {
+  margin: 0 0 16px;
+
+  color: #52657a;
+
+  font-family: "Sora", sans-serif;
+  font-size: 11px;
+  line-height: 1.65;
+
+  flex: 1;
+}
+
+
+/* =====================================================
+   LEARN MORE
+===================================================== */
+
+.cardLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  width: fit-content;
+
+  color: #102f52;
+
+  font-family: "Archivo", sans-serif;
+  font-size: 10.5px;
+  font-weight: 700;
+
+  transition:
+    color 0.25s ease,
+    gap 0.3s ease;
+}
+
+.card:hover .cardLink {
+  gap: 10px;
+  color: var(--accent);
+}
+
+.arrow {
+  display: inline-block;
+  font-size: 14px;
+  line-height: 1;
+
+  transition: transform 0.3s ease;
+}
+
+.card:hover .arrow {
+  transform: translateX(4px);
+}
+
+
+/* =====================================================
+   CARD SHINE
+===================================================== */
+
+.cardShine {
   position: absolute;
-  top: 0;
-  right: 0;
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  display: flex;
+  top: -100%;
+  left: -70%;
+
+  width: 45%;
+  height: 300%;
+
+  pointer-events: none;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.34),
+    transparent
+  );
+
+  transform: rotate(22deg);
+
+  transition: left 0.7s ease;
+}
+
+.card:hover .cardShine {
+  left: 125%;
+}
+
+
+/* =====================================================
+   CTA
+===================================================== */
+
+.cta {
+  text-align: center;
+  animation: ctaReveal 0.8s 0.7s ease both;
+}
+
+.ctaHint {
+  margin: 0 0 17px;
+
+  color: #7b8997;
+
+  font-family: "Sora", sans-serif;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.btnPrimary {
+  position: relative;
+  overflow: hidden;
+
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 24px;
-  color: #111;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  z-index: 10;
-}
+  gap: 10px;
 
-.plusBtn:hover {
-  background: linear-gradient(
-    135deg,
-    #06345c 0%,
-    #0B4981 35%,
-    #4f8fc2 50%,
-    #0B4981 65%,
-    #06345c 100%
-  );
+  min-height: 43px;
+  padding: 0 22px;
+
+  border-radius: 999px;
+
+  background: #102f52;
   color: #ffffff;
-  border-color: #0B4981;
-  transform: scale(1.05);
-  box-shadow:
-    0 0 12px rgba(11, 73, 129, 0.45),
-    0 0 25px rgba(11, 73, 129, 0.25);
-}
 
-.contentInner {
-  max-width: 90%;
-}
+  text-decoration: none;
 
-.smallPhase {
-  display: block;
   font-family: "Archivo", sans-serif;
-  color: #FDFDFE;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 700;
-  letter-spacing: 0.1em;
-  margin-bottom: 12px;
+
+  box-shadow: 0 9px 24px rgba(16, 47, 82, 0.16);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    background 0.3s ease;
 }
 
-.mainTitle {
-  font-family: "Archivo", sans-serif;
-  font-size: 32px; /* Reduced font size to save height */
-  font-weight: 700;
-  line-height: 1.1;
-  color:#E0517C;
-  margin-bottom: 16px;
-}
-
-.description {
-  font-family: "Sora", sans-serif;
-  font-size: 14px; /* Reduced font size */
-  line-height: 1.6;
-  color: #EDC59F;
-  margin-bottom: 24px;
-}
-
-/* =====================================================
-   BULLET POINTS
-===================================================== */
-
-.bulletList {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.bulletList li {
-  position: relative;
-  padding-left: 24px;
-  margin-bottom: 12px;
-  font-family: "Archivo", sans-serif;
-  font-size: 15px;
-  font-weight: 600;
-  color: #E0517C;
-}
-
-.bulletList li::before {
+.btnPrimary::before {
   content: "";
+
   position: absolute;
-  left: 0;
-  top: 7px;
-  width: 8px;
-  height: 8px;
+  inset: 0;
+
   background: linear-gradient(
-    135deg,
-    #06345c,
-    #0B4981,
-    #4f8fc2,
-    #0B4981,
-    #06345c
+    110deg,
+    transparent 25%,
+    rgba(255, 255, 255, 0.18) 50%,
+    transparent 75%
   );
-  border-radius: 50%;
-  box-shadow:
-    0 0 7px rgba(11, 73, 129, 0.55),
-    0 0 14px rgba(11, 73, 129, 0.25);
+
+  transform: translateX(-120%);
+  transition: transform 0.6s ease;
 }
+
+.btnPrimary:hover {
+  transform: translateY(-3px);
+
+  background: #173b63;
+
+  box-shadow:
+    0 14px 30px rgba(16, 47, 82, 0.23);
+}
+
+.btnPrimary:hover::before {
+  transform: translateX(120%);
+}
+
+.btnArrow {
+  position: relative;
+
+  font-size: 15px;
+
+  transition: transform 0.3s ease;
+}
+
+.btnPrimary:hover .btnArrow {
+  transform: translateX(4px);
+}
+
 
 /* =====================================================
    ANIMATIONS
 ===================================================== */
 
-@keyframes sectionReveal {
-  from { opacity: 0; transform: translateY(35px); }
-  to { opacity: 1; transform: translateY(0); }
+@keyframes headerReveal {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-@keyframes headerReveal {
-  from { opacity: 0; transform: translateY(25px); }
-  to { opacity: 1; transform: translateY(0); }
+@keyframes cardReveal {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes ctaReveal {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes dotPulse {
-  0%, 100% {
+  0%,
+  100% {
     transform: scale(1);
-    box-shadow: 0 0 0 5px rgba(169, 210, 189, 0.13), 0 0 15px rgba(169, 210, 189, 0.3);
+
+    box-shadow:
+      0 0 0 4px rgba(224, 81, 124, 0.08),
+      0 0 12px rgba(224, 81, 124, 0.25);
   }
+
   50% {
-    transform: scale(1.25);
-    box-shadow: 0 0 0 8px rgba(169, 210, 189, 0.08), 0 0 22px rgba(169, 210, 189, 0.5);
+    transform: scale(1.2);
+
+    box-shadow:
+      0 0 0 7px rgba(224, 81, 124, 0.06),
+      0 0 18px rgba(224, 81, 124, 0.4);
   }
 }
 
+@keyframes badgeFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-2px);
+  }
+}
+
+
 /* =====================================================
-   RESPONSIVE DESIGN (TABLET & MOBILE)
+   TABLET
 ===================================================== */
 
 @media (max-width: 1024px) {
-  .cardBody {
-    padding: 30px;
-    gap: 30px;
+  .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
-  .mainTitle { font-size: 28px; }
 }
 
+
+/* =====================================================
+   TABLET / MOBILE
+===================================================== */
+
 @media (max-width: 768px) {
-  .stackItem:nth-child(1) { top: 80px; }
-  .stackItem:nth-child(2) { top: 135px; } /* 80 + 55 */
-  .stackItem:nth-child(3) { top: 190px; } /* 135 + 55 */
-  .cardTopBar {
-    height: 55px;
-    padding: 0 20px;
-    gap: 15px;
+  .section {
+    padding: 68px 0 76px;
   }
-  .topBarTitle { font-size: 16px; }
+
+  .container {
+    width: min(100% - 32px, 620px);
+  }
+
+  .header {
+    margin-bottom: 40px;
+  }
+
+  .header h2 {
+    font-size: 29px;
+  }
+
+  .header p {
+    font-size: 13px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin-bottom: 42px;
+  }
+
+  .card {
+    min-height: 0;
+    border-radius: 15px;
+  }
+
+  .serviceNumber {
+    font-size: 38px;
+    top: 7px;
+    right: 9px;
+  }
+
+  .iconWrap {
+    padding: 14px 14px 0;
+  }
+
+  .icon {
+    width: 35px;
+    height: 35px;
+  }
+
   .cardBody {
-    flex-direction: column;
-    padding: 25px 20px;
-    gap: 25px;
+    padding: 13px 14px 16px;
   }
-  .imageCol, .contentCol {
-    flex: none;
-    width: 100%;
+
+  .cardTitle {
+    font-size: 13px;
   }
-  .plusBtn {
-    top: -10px;
-    right: 0;
-    width: 40px;
-    height: 40px;
-    font-size: 20px;
+
+  .cardDesc {
+    font-size: 10.5px;
+    line-height: 1.6;
   }
-  .mainTitle { font-size: 24px; }
-  .description { font-size: 14px; }
+
+  .badge {
+    top: 9px;
+    right: 9px;
+    font-size: 7px;
+  }
+}
+
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
+@media (max-width: 480px) {
+  .section {
+    padding: 58px 0 68px;
+  }
+
+  .container {
+    width: min(100% - 24px, 430px);
+  }
+
+  .eyebrowWrap {
+    margin-bottom: 14px;
+    padding: 6px 11px;
+  }
+
+  .header {
+    margin-bottom: 32px;
+  }
+
+  .header h2 {
+    font-size: 25px;
+    line-height: 1.16;
+  }
+
+  .header h2 br {
+    display: none;
+  }
+
+  .header p {
+    font-size: 11.5px;
+    line-height: 1.7;
+  }
+
+  .grid {
+    gap: 9px;
+  }
+
+  .card {
+    min-height: 0;
+    border-radius: 13px;
+  }
+
+  .serviceNumber {
+    font-size: 34px;
+    top: 6px;
+    right: 8px;
+  }
+
+  .iconWrap {
+    padding: 12px 12px 0;
+  }
+
+  .icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 9px;
+  }
+
+  .icon svg {
+    width: 19px;
+    height: 19px;
+  }
+
+  .cardBody {
+    padding: 12px 12px 14px;
+  }
+
+  .cardTitle {
+    font-size: 12px;
+    margin-bottom: 6px;
+  }
+
+  .cardDesc {
+    font-size: 9.5px;
+    line-height: 1.55;
+    margin-bottom: 10px;
+  }
+
+  .cardLine {
+    margin-bottom: 8px;
+  }
+
+  .cardLink {
+    font-size: 9px;
+  }
+
+  .arrow {
+    font-size: 12px;
+  }
+
+  .badge {
+    padding: 3px 6px;
+    font-size: 6.5px;
+  }
+
+  .badgeDot {
+    width: 3px;
+    height: 3px;
+  }
+
+  .ctaHint {
+    max-width: 350px;
+    margin: 0 auto 15px;
+    font-size: 10px;
+  }
+
+  .btnPrimary {
+    min-height: 40px;
+    padding: 0 18px;
+    font-size: 10px;
+  }
+}
+
+
+/* =====================================================
+   VERY SMALL DEVICES
+===================================================== */
+
+@media (max-width: 360px) {
+  .container {
+    width: min(100% - 18px, 340px);
+  }
+
+  .grid {
+    gap: 7px;
+  }
+
+  .card {
+    min-height: 0;
+  }
+
+  .cardBody {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .cardDesc {
+    font-size: 9px;
+  }
+
+  .cardTitle {
+    font-size: 11px;
+  }
+
+  .badge {
+    display: none;
+  }
+}
+
+
+/* =====================================================
+   REDUCED MOTION
+===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .header,
+  .card,
+  .cta,
+  .eyebrowDot,
+  .badge {
+    animation: none !important;
+  }
+
+  .card,
+  .icon,
+  .icon svg,
+  .cardLink,
+  .arrow,
+  .btnPrimary,
+  .btnArrow,
+  .cardShine {
+    transition: none !important;
+  }
 }

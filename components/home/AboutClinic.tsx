@@ -1,59 +1,262 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import styles from "./AboutClinic.module.css";
+
+const highlights = [
+  {
+    title: "Personalized Care",
+    text: "Your care is planned around your individual needs, concerns, and goals.",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path
+          d="M20 12.5C20 17 16.5 20 12 21.5C7.5 20 4 17 4 12.5V6.5L12 3L20 6.5V12.5Z"
+          stroke="currentColor"
+          strokeWidth="1.4"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M8.5 12L11 14.5L15.8 9.5"
+          stroke="currentColor"
+          strokeWidth="1.6"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    ),
+  },
+  {
+    title: "Expert Guidance",
+    text: "Clear and thoughtful guidance helps you understand your options with confidence.",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path
+          d="M12 3L13.8 9.2L20 11L13.8 12.8L12 19L10.2 12.8L4 11L10.2 9.2L12 3Z"
+          stroke="currentColor"
+          strokeWidth="1.3"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M19 17L19.8 19.2L22 20L19.8 20.8L19 23L18.2 20.8L16 20L18.2 19.2L19 17Z"
+          stroke="currentColor"
+          strokeWidth="1.1"
+          strokeLinejoin="round"
+        />
+      </svg>
+    ),
+  },
+  {
+    title: "Confidential Support",
+    text: "A respectful and private environment where you can feel comfortable discussing your journey.",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <rect
+          x="5"
+          y="10"
+          width="14"
+          height="11"
+          rx="2"
+          stroke="currentColor"
+          strokeWidth="1.4"
+        />
+        <path
+          d="M8 10V7.5C8 5.29 9.79 3.5 12 3.5C14.21 3.5 16 5.29 16 7.5V10"
+          stroke="currentColor"
+          strokeWidth="1.4"
+          strokeLinecap="round"
+        />
+        <circle
+          cx="12"
+          cy="15.5"
+          r="1.5"
+          stroke="currentColor"
+          strokeWidth="1.2"
+        />
+        <path
+          d="M12 17V18.5"
+          stroke="currentColor"
+          strokeWidth="1.2"
+          strokeLinecap="round"
+        />
+      </svg>
+    ),
+  },
+  {
+    title: "Human-Centered Care",
+    text: "We combine medical knowledge with empathy, patience, and genuine understanding.",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path
+          d="M20.8 8.8C20.8 13.5 12 19.5 12 19.5C12 19.5 3.2 13.5 3.2 8.8C3.2 6.1 5.2 4.2 7.7 4.2C9.5 4.2 11 5.2 12 6.6C13 5.2 14.5 4.2 16.3 4.2C18.8 4.2 20.8 6.1 20.8 8.8Z"
+          stroke="currentColor"
+          strokeWidth="1.4"
+          strokeLinejoin="round"
+        />
+      </svg>
+    ),
+  },
+];
 
 const stats = [
   {
     number: "01",
     title: "Personalized",
-    subtitle: "Care Approach",
+    subtitle: "Care",
   },
   {
     number: "02",
-    title: "Confidential",
-    subtitle: "Consultations",
-  },
-  {
-    number: "03",
     title: "Expert",
     subtitle: "Guidance",
   },
   {
+    number: "03",
+    title: "Private",
+    subtitle: "Consultations",
+  },
+  {
     number: "04",
     title: "Patient",
-    subtitle: "First Care",
+    subtitle: "First",
   },
-];
-
-const points = [
-  "Personalized consultation",
-  "Confidential patient care",
-  "Clear treatment guidance",
-  "Support throughout your journey",
 ];
 
 export default function AboutClinic() {
   return (
     <section className={styles.section}>
-      <div className={styles.ambientGlow} aria-hidden="true" />
-      <div className={styles.ambientGlowTwo} aria-hidden="true" />
-      <div className={styles.gridPattern} aria-hidden="true" />
+      <div className={styles.backgroundGlow} aria-hidden="true" />
+      <div className={styles.backgroundGlowTwo} aria-hidden="true" />
 
       <div className={`container ${styles.container}`}>
-        <div className={styles.topIntro}>
-          <div className={styles.introLabel}>
-            <span className={styles.introLine} />
-            <span>01 / ABOUT THE CLINIC</span>
+        {/* HEADER */}
+        <div className={styles.header}>
+          <div className={styles.eyebrow}>
+            <span className={styles.eyebrowLine} />
+            <span>ABOUT FERTILITY CLINIC BY AJ</span>
           </div>
 
-          <p className={styles.introText}>
-            A thoughtful approach to fertility care, built around
-            <span> you.</span>
+          <h2>
+            Care that feels personal.
+            <span>Guidance you can trust.</span>
+          </h2>
+
+          <p>
+            We believe fertility care should feel clear, respectful, and
+            personal. Our approach brings together medical expertise and
+            compassionate support at every stage of your journey.
           </p>
         </div>
 
+        {/* LOGO */}
+        <div className={styles.visualWrap}>
+          <div className={styles.visualFrame}>
+            <div className={styles.logoTop}>
+              <div className={styles.logoHalo} aria-hidden="true">
+                <span />
+                <span />
+                <span />
+              </div>
+
+              <div className={styles.logoCircle}>
+                <div className={styles.logoInner}>
+                  <Image
+                    src="/pass.png"
+                    alt="Fertility Clinic by AJ"
+                    width={90}
+                    height={90}
+                    className={styles.logoImage}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* CONTENT */}
+        <div className={styles.contentSection}>
+          <div className={styles.story}>
+            <div className={styles.sectionLabel}>
+              <span />
+              <p>OUR APPROACH</p>
+            </div>
+
+            <h3>
+              Every fertility journey
+              <span>is different.</span>
+            </h3>
+
+            <p className={styles.lead}>
+              At Fertility Clinic by AJ, we understand that fertility is not
+              simply a medical journey. It is deeply personal, and every
+              individual and couple has a different story.
+            </p>
+
+            <p>
+              That is why we focus on listening first, explaining your options
+              clearly, and creating a comfortable environment where you can
+              make informed decisions with confidence.
+            </p>
+
+            <div className={styles.storyAccent}>
+              <span className={styles.accentIcon}>
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path
+                    d="M12 3V21M3 12H21"
+                    stroke="currentColor"
+                    strokeWidth="1.2"
+                    strokeLinecap="round"
+                  />
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="7"
+                    stroke="currentColor"
+                    strokeWidth="1.1"
+                  />
+                </svg>
+              </span>
+
+              <div>
+                <strong>Science with humanity.</strong>
+                <span>
+                  Thoughtful care designed around the person, not just the
+                  treatment.
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* HIGHLIGHTS */}
+          <div className={styles.highlights}>
+            {highlights.map((item, index) => (
+              <article
+                className={styles.highlight}
+                key={item.title}
+                style={
+                  {
+                    "--delay": `${index * 0.08}s`,
+                  } as React.CSSProperties
+                }
+              >
+                <div className={styles.highlightTop}>
+                  <div className={styles.highlightIcon}>{item.icon}</div>
+
+                  <span className={styles.highlightNumber}>
+                    0{index + 1}
+                  </span>
+                </div>
+
+                <div className={styles.highlightContent}>
+                  <h4>{item.title}</h4>
+                  <p>{item.text}</p>
+                </div>
+
+                <div className={styles.highlightLine} />
+              </article>
+            ))}
+          </div>
+        </div>
+
+        {/* BOTTOM STATS */}
         <div className={styles.stats}>
           {stats.map((stat, index) => (
             <div
@@ -67,203 +270,26 @@ export default function AboutClinic() {
             >
               <span className={styles.statNumber}>{stat.number}</span>
 
-              <div className={styles.statContent}>
+              <div className={styles.statText}>
                 <strong>{stat.title}</strong>
                 <span>{stat.subtitle}</span>
               </div>
 
-              <span className={styles.statArrow}>↗</span>
+              <span className={styles.statDot} />
             </div>
           ))}
         </div>
 
-        <div className={styles.aboutGrid}>
-          <div className={styles.imageSide}>
-            <div className={styles.imageOrb} aria-hidden="true" />
+        {/* FINAL STATEMENT */}
+        <div className={styles.finalStatement}>
+          <span className={styles.finalLine} />
 
-            <div className={styles.aboutImage}>
-              <Image
-                src="/fertility.jpg"
-                alt="Fertility Clinic by AJ"
-                fill
-                priority
-                sizes="(max-width: 1000px) 92vw, 48vw"
-                className={styles.clinicImage}
-              />
+          <p>
+            A calmer, clearer approach to
+            <strong> fertility care.</strong>
+          </p>
 
-              <div className={styles.imageOverlay} />
-              <div className={styles.imageShine} />
-
-              <div className={styles.imageTop}>
-                <span>FERTILITY</span>
-                <span>CARE / 2026</span>
-              </div>
-
-              {/* CENTER LOGO */}
-              <div className={styles.logoMark}>
-                <div className={styles.logoOrbit}>
-                  <span className={styles.orbitDot} />
-                  <span className={styles.orbitDotTwo} />
-                </div>
-
-                <div className={styles.logoCircle}>
-                  <Image
-                    src="/pass.png"
-                    alt="Fertility Clinic by AJ"
-                    width={92}
-                    height={92}
-                    className={styles.logoImage}
-                  />
-                </div>
-
-                <div className={styles.logoText}>
-                  <span>FERTILITY</span>
-                  <span>CLINIC BY AJ</span>
-                </div>
-              </div>
-
-              <div className={styles.imageBottom}>
-                <div className={styles.imageBottomLine} />
-                <span>COMPASSION + SCIENCE</span>
-              </div>
-            </div>
-
-            <div className={styles.expertiseCard}>
-              <div className={styles.expertiseIcon}>
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  aria-hidden="true"
-                >
-                  <path
-                    d="M12 3L13.8 9.2L20 11L13.8 12.8L12 19L10.2 12.8L4 11L10.2 9.2L12 3Z"
-                    stroke="currentColor"
-                    strokeWidth="1.2"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </div>
-
-              <div>
-                <small>TRUSTED APPROACH</small>
-                <strong>Patient First</strong>
-              </div>
-            </div>
-
-            <div className={styles.imageBadge}>
-              <span className={styles.badgePulse} />
-              <span>CARE THAT LISTENS</span>
-            </div>
-
-            <div className={styles.cornerDetail} aria-hidden="true">
-              <span />
-              <span />
-              <span />
-            </div>
-          </div>
-
-          <div className={styles.content}>
-            <div className={styles.labelWrap}>
-              <span className={styles.labelDot} />
-              <span className={styles.label}>ABOUT OUR CLINIC</span>
-            </div>
-
-            <h2>
-              Compassionate care for
-              <span>your fertility journey.</span>
-            </h2>
-
-            <div className={styles.headingLine}>
-              <span />
-              <i />
-            </div>
-
-            <p className={styles.lead}>
-              At Fertility Clinic by AJ, we understand that every
-              fertility journey is personal. Our approach focuses on
-              listening, understanding your needs, and providing
-              thoughtful guidance at every stage.
-            </p>
-
-            <p>
-              From your first consultation to understanding your
-              options, we aim to create a comfortable, respectful,
-              and confidential environment for every patient.
-            </p>
-
-            <div className={styles.points}>
-              {points.map((point) => (
-                <div className={styles.point} key={point}>
-                  <span className={styles.check}>
-                    <svg
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      aria-hidden="true"
-                    >
-                      <path
-                        d="M6 12.5L10 16.5L18.5 7.5"
-                        stroke="currentColor"
-                        strokeWidth="1.8"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </span>
-
-                  <span className={styles.pointText}>{point}</span>
-
-                  <span className={styles.pointArrow}>→</span>
-                </div>
-              ))}
-            </div>
-
-            <div className={styles.bottomContent}>
-              <Link href="/about" className={styles.learnMore}>
-                <span>Learn More About Us</span>
-
-                <i>
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M5 12H19M13 6L19 12L13 18"
-                      stroke="currentColor"
-                      strokeWidth="1.6"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </i>
-              </Link>
-
-              <div className={styles.signature}>
-                <span />
-                <div>
-                  <small>OUR PHILOSOPHY</small>
-                  <strong>Science with humanity.</strong>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className={styles.philosophy}>
-          <div className={styles.philosophyLeft}>
-            <span className={styles.philosophyDot} />
-            <span>HEALTHCARE WITH HUMANITY</span>
-          </div>
-
-          <div className={styles.philosophyCenter}>
-            <span>Every journey deserves</span>
-            <strong>care, clarity & hope.</strong>
-          </div>
-
-          <div className={styles.philosophyRight}>
-            <span>FERTILITY CLINIC BY AJ</span>
-            <i>✦</i>
-          </div>
+          <span className={styles.finalLine} />
         </div>
       </div>
     </section>
