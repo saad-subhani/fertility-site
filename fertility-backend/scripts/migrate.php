@@ -12,7 +12,7 @@ try {
         if ($check->fetchColumn()) continue;
         // MySQL DDL commits implicitly. Resume safely if an earlier run was interrupted.
         $sql = file_get_contents($file);
-        if (preg_match('/ALTER TABLE bookings\s+(.*?);/s', $sql, $match)) {
+        if (preg_match('/ALTER TABLE bookings\s+ADD COLUMN\s+/s', $sql) && preg_match('/ALTER TABLE bookings\s+(.*?);/s', $sql, $match)) {
             foreach (preg_split('/,\s*(?=ADD COLUMN)/', trim($match[1])) as $definition) {
                 if (!preg_match('/^ADD COLUMN ([a-z_]+)\s/', $definition, $column)) throw new RuntimeException('Invalid migration');
                 $exists = $db->prepare('SELECT COUNT(*) FROM information_schema.COLUMNS WHERE TABLE_SCHEMA=DATABASE() AND TABLE_NAME=\'bookings\' AND COLUMN_NAME=?');
