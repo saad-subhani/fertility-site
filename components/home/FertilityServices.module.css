@@ -180,21 +180,20 @@
   box-shadow: 0 12px 32px rgba(16, 47, 82, 0.12);
 }
 
-/* Background image – properly fitted */
+/* Background image – slightly zoomed so image's own border is cropped out */
 .cardBg {
   position: absolute;
-  inset: 0;
+  inset: -8px;
   z-index: 0;
-  border-radius: inherit;
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  transform: scale(1);
+  transform: scale(1.06);
   transition: transform 0.5s ease;
 }
 
 .card:hover .cardBg {
-  transform: scale(1.05);
+  transform: scale(1.1);
 }
 
 /* Soft bottom gradient so title stays readable */
