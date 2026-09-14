@@ -132,10 +132,7 @@ export default function Contact() {
   ) => {
     event.preventDefault();
 
-    const isPayAtClinic =
-      formData.paymentMethod === "Pay at Clinic";
-
-    if (!isPayAtClinic && !formData.paymentScreenshot) {
+    if (!formData.paymentScreenshot) {
       setSubmitError("Payment screenshot is required to book.");
       return;
     }
@@ -1084,59 +1081,6 @@ export default function Contact() {
                       </div>
                     </button>
 
-                    {/* PAY AT CLINIC */}
-
-                    <button
-                      type="button"
-                      className={`${styles.paymentOption} ${
-                        formData.paymentMethod ===
-                        "Pay at Clinic"
-                          ? styles.selected
-                          : ""
-                      }`}
-                      onClick={() => {
-                        updateField(
-                          "paymentMethod",
-                          "Pay at Clinic"
-                        );
-                        updateField(
-                          "paymentScreenshot",
-                          null
-                        );
-                        setScreenshotPreview(null);
-                      }}
-                    >
-                      <span
-                        className={
-                          styles.paymentIcon
-                        }
-                      >
-                        🏥
-                      </span>
-
-                      <div
-                        className={
-                          styles.paymentContent
-                        }
-                      >
-                        <strong>
-                          Pay at Clinic
-                        </strong>
-
-                        <span>
-                          Pay during your visit
-                        </span>
-                      </div>
-
-                      <div
-                        className={styles.radio}
-                      >
-                        {formData.paymentMethod ===
-                        "Pay at Clinic"
-                          ? "✓"
-                          : ""}
-                      </div>
-                    </button>
                   </div>
 
                   {/* BANK DETAILS */}
@@ -1215,43 +1159,9 @@ export default function Contact() {
                     </div>
                   )}
 
-                  {/* PAY AT CLINIC NOTE */}
+                  {/* SCREENSHOT UPLOAD */}
 
-                  {formData.paymentMethod ===
-                    "Pay at Clinic" && (
-                    <div
-                      className={
-                        styles.paymentInstructions
-                      }
-                    >
-                      <div
-                        className={
-                          styles.instructionIcon
-                        }
-                      >
-                        🏥
-                      </div>
-
-                      <div>
-                        <h3>
-                          Pay at Clinic
-                        </h3>
-
-                        <p>
-                          No payment screenshot
-                          needed. Please pay the
-                          consultation fee at the
-                          clinic during your visit.
-                        </p>
-                      </div>
-                    </div>
-                  )}
-
-                  {/* SCREENSHOT UPLOAD — only for online/bank/card payments */}
-
-                  {formData.paymentMethod &&
-                    formData.paymentMethod !==
-                      "Pay at Clinic" && (
+                  {formData.paymentMethod && (
                     <div
                       className={
                         styles.uploadSection
@@ -1493,9 +1403,7 @@ export default function Contact() {
                       disabled={
                         submitting ||
                         !formData.paymentMethod ||
-                        (formData.paymentMethod !==
-                          "Pay at Clinic" &&
-                          !formData.paymentScreenshot)
+                        !formData.paymentScreenshot
                       }
                     >
                       {submitting ? "Booking..." : "Confirm Appointment"}

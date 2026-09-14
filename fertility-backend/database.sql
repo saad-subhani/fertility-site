@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS bookings (
   consultation_type    VARCHAR(120)  NOT NULL,
   payment_method       VARCHAR(60)   NOT NULL,
   payment_screenshot   VARCHAR(255)  DEFAULT NULL,
-  status               ENUM('pending', 'paid', 'paid_at_clinic') NOT NULL DEFAULT 'pending',
+  status               ENUM('pending', 'paid') NOT NULL DEFAULT 'pending',
   is_paid              TINYINT(1)    NOT NULL DEFAULT 0,
   created_at           DATETIME      NOT NULL DEFAULT CURRENT_TIMESTAMP,
   updated_at           DATETIME      DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,

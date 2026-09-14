@@ -20,7 +20,7 @@ type Booking = {
   consultation_type: string;
   payment_method: string;
   payment_screenshot: string | null;
-  status: "pending" | "paid" | "paid_at_clinic";
+  status: "pending" | "paid";
   is_paid: number;
   created_at: string;
   appointment_assigned_at: string | null;
@@ -36,7 +36,6 @@ type Booking = {
 const STATUS_LABELS: Record<string, string> = {
   pending: "Pending",
   paid: "Paid",
-  paid_at_clinic: "Pay at Clinic",
 };
 
 export default function BookingDetailPage() {
@@ -139,8 +138,6 @@ export default function BookingDetailPage() {
   const statusClass =
     booking.status === "paid"
       ? styles.paid
-      : booking.status === "paid_at_clinic"
-      ? styles.clinic
       : styles.pending;
 
   return (
@@ -259,14 +256,6 @@ export default function BookingDetailPage() {
               onClick={() => updateStatus("paid")}
             >
               Mark as Paid
-            </button>
-            <button
-              type="button"
-              disabled={updating || booking.status === "paid_at_clinic"}
-              className={`${styles.statusBtn} ${styles.btnClinic}`}
-              onClick={() => updateStatus("paid_at_clinic")}
-            >
-              Pay at Clinic
             </button>
           </div>
         </div>

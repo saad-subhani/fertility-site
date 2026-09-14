@@ -115,11 +115,9 @@ if (!$isPayAtClinic && !empty($_FILES['paymentScreenshot']['name'])) {
 }
 
 // ---------- Status ----------
-// pending  = online payment, waiting verification
-// paid     = verified / confirmed paid
-// paid_at_clinic = chose Pay at Clinic
-$status = $isPayAtClinic ? 'paid_at_clinic' : 'pending';
-$isPaid = $isPayAtClinic ? 0 : 0;   // both start unpaid until admin marks paid
+// Every booking starts pending until an admin verifies the payment.
+$status = 'pending';
+$isPaid = 0;
 
 // ---------- Insert ----------
 try {

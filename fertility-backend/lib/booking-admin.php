@@ -28,7 +28,7 @@ function changeBooking(PDO $db, int $id, array $body, bool $appointmentOnly = fa
         } else {
             $status = $body['status'] ?? '';
             if ($status === 'verified') $status = 'paid';
-            if (!in_array($status, ['pending','paid','paid_at_clinic'], true)) throw new DomainException('Invalid payment status.');
+            if (!in_array($status, ['pending','paid'], true)) throw new DomainException('Invalid payment status.');
             $db->prepare("UPDATE bookings SET status=?, is_paid=?, payment_verified_at=IF(? = 'paid', COALESCE(payment_verified_at, NOW()), payment_verified_at) WHERE id=?")
                 ->execute([$status, $status === 'paid' ? 1 : 0, $status, $id]);
             // Queue only on first verification; retries use the explicit resend action.

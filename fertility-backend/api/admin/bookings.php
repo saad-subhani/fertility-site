@@ -1,7 +1,7 @@
 <?php
 /**
  * List all bookings with optional filter + search
- * GET ?status=pending|paid|paid_at_clinic|all
+ * GET ?status=pending|paid|all
  *     &search=keyword
  *     &page=1&limit=50
  */
@@ -29,7 +29,7 @@ $where  = [];
 $params = [];
 
 // Status filter
-$validStatuses = ['pending', 'paid', 'paid_at_clinic'];
+$validStatuses = ['pending', 'paid'];
 if (in_array($status, $validStatuses, true)) {
     $where[]         = 'status = :status';
     $params[':status'] = $status;
@@ -73,7 +73,7 @@ try {
             COUNT(*) AS total,
             SUM(status = 'pending') AS pending,
             SUM(status = 'paid') AS paid,
-            SUM(status = 'paid_at_clinic') AS paid_at_clinic
+            SUM(status = 'paid') AS paid
         FROM bookings
     ")->fetch();
 
@@ -88,7 +88,6 @@ try {
                 'all'            => (int) $counts['total'],
                 'pending'        => (int) $counts['pending'],
                 'paid'           => (int) $counts['paid'],
-                'paid_at_clinic' => (int) $counts['paid_at_clinic'],
             ],
         ],
     ]);
