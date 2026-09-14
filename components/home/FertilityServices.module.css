@@ -4,8 +4,9 @@
 
 .section {
   position: relative;
-  z-index: 5;
+  z-index: 1;
   padding: 86px 0 96px;
+  padding-top: 100px;
   background:
     radial-gradient(
       circle at 8% 15%,
@@ -18,7 +19,7 @@
       transparent 30%
     ),
     #fafbff;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .sectionGlow,

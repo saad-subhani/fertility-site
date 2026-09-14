@@ -708,6 +708,12 @@ select:focus {
   overflow: visible;
 }
 
+#treatments {
+  position: relative;
+  z-index: 1;
+  overflow: visible;
+}
+
 #about {
   position: relative;
   z-index: 1;
