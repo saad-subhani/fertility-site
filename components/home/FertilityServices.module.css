@@ -128,7 +128,7 @@
 .grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 22px;
+  gap: 28px;
   margin-bottom: 48px;
 }
 
@@ -152,8 +152,8 @@
   min-height: 240px;
   aspect-ratio: 4 / 3;
 
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  border-radius: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 18px;
   background: #fff;
 
   opacity: 0;
@@ -168,17 +168,17 @@
     transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
     box-shadow 0.4s ease;
   box-shadow:
-    0 4px 20px rgba(0, 0, 0, 0.12),
-    0 1px 4px rgba(0, 0, 0, 0.06);
+    0 6px 24px rgba(16, 47, 82, 0.1),
+    0 2px 8px rgba(0, 0, 0, 0.04);
   cursor: pointer;
 }
 
 .card:hover {
   z-index: 2;
-  transform: translateY(-4px);
+  transform: translateY(-6px);
   box-shadow:
-    0 10px 28px rgba(0, 0, 0, 0.14),
-    0 4px 10px rgba(0, 0, 0, 0.08);
+    0 16px 40px rgba(16, 47, 82, 0.14),
+    0 6px 16px rgba(0, 0, 0, 0.06);
 }
 
 /* Background image – fully visible */
@@ -628,7 +628,7 @@
 
   .grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 16px;
+    gap: 20px;
     margin-bottom: 42px;
   }
 
