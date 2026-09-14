@@ -146,7 +146,7 @@
   display: flex;
   flex-direction: column;
 
-  min-height: 0;
+  min-height: 220px;
 
   border: 1px solid rgba(16, 47, 82, 0.045);
   border-radius: 17px;
@@ -172,6 +172,56 @@
   box-shadow:
     0 20px 42px rgba(16, 47, 82, 0.1),
     0 5px 15px rgba(16, 47, 82, 0.04);
+}
+
+
+/* Background image layer */
+.cardBg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scale(1.02);
+  transition: transform 0.55s ease;
+}
+
+.card:hover .cardBg {
+  transform: scale(1.08);
+}
+
+/* Soft color wash so text stays readable */
+.cardOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    165deg,
+    rgba(255, 255, 255, 0.92) 0%,
+    rgba(255, 255, 255, 0.82) 45%,
+    rgba(255, 255, 255, 0.72) 100%
+  );
+  transition: background 0.35s ease;
+}
+
+.card:hover .cardOverlay {
+  background: linear-gradient(
+    165deg,
+    rgba(255, 255, 255, 0.88) 0%,
+    rgba(255, 255, 255, 0.76) 50%,
+    rgba(255, 255, 255, 0.68) 100%
+  );
+}
+
+/* Keep content above bg */
+.card > .badge,
+.card > .serviceNumber,
+.card > .iconWrap,
+.card > .cardBody,
+.card > .cardShine {
+  position: relative;
+  z-index: 2;
 }
 
 

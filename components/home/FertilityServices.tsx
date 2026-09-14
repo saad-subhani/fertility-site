@@ -22,6 +22,7 @@ type Service = {
   colorClass: string;
   badge?: string;
   icon: IconName;
+  image: string;
   details: {
     overview: string;
     points: string[];
@@ -39,6 +40,7 @@ const services: Service[] = [
     colorClass: "tileBlue",
     badge: "Most popular",
     icon: "ivf",
+    image: "/ivf-fertility-treatment.jpg",
     details: {
       overview:
         "In-vitro fertilisation (IVF) is a carefully guided process where eggs are retrieved, fertilised in our advanced lab, and the healthiest embryo is transferred to the uterus. Every protocol is tailored to your medical history, age, and goals.",
@@ -60,6 +62,7 @@ const services: Service[] = [
       "Carefully screened egg and sperm donors, matched to your profile with full confidentiality.",
     colorClass: "tilePink",
     icon: "donor",
+    image: "/ser22.jpg",
     details: {
       overview:
         "Our donor program connects you with rigorously screened egg or sperm donors. Matching considers medical, genetic, and personal preferences while protecting everyone’s privacy at every step.",
@@ -81,6 +84,7 @@ const services: Service[] = [
       "Preserve your fertility today — start your family when the time feels right for you.",
     colorClass: "tileMint",
     icon: "egg",
+    image: "/Fertility%20Preservation.jpg",
     details: {
       overview:
         "Egg freezing (oocyte cryopreservation) lets you preserve healthy eggs now for use in the future. It is a proactive option for career, health, or personal timing — without the pressure of starting a family immediately.",
@@ -102,6 +106,7 @@ const services: Service[] = [
       "A gentle, low-cost first step — sperm placed directly in the uterus at peak fertility.",
     colorClass: "tileYellow",
     icon: "iui",
+    image: "/ser3.jpg",
     details: {
       overview:
         "Intrauterine insemination (IUI) places prepared sperm directly into the uterus around ovulation. It is less invasive than IVF and often recommended as a first-line treatment when clinically appropriate.",
@@ -123,6 +128,7 @@ const services: Service[] = [
       "Single healthy sperm injected directly into the egg — ideal for male factor infertility.",
     colorClass: "tileGreen",
     icon: "icsi",
+    image: "/ser4.jpg",
     details: {
       overview:
         "Intracytoplasmic sperm injection (ICSI) is a specialised IVF technique where a single sperm is injected into each mature egg. It significantly improves fertilisation chances when sperm quality or quantity is limited.",
@@ -144,6 +150,7 @@ const services: Service[] = [
       "PGT embryo screening before transfer — selecting the healthiest for the best outcome.",
     colorClass: "tilePurple",
     icon: "genetic",
+    image: "/ser5.jpg",
     details: {
       overview:
         "Preimplantation genetic testing (PGT) screens embryos for chromosomal abnormalities or specific genetic conditions before transfer. This helps select the embryo with the highest chance of a healthy pregnancy.",
@@ -165,6 +172,7 @@ const services: Service[] = [
       "Complete diagnostics for both partners — hormones, semen analysis, and ultrasound scan.",
     colorClass: "tileRose",
     icon: "testing",
+    image: "/fertility-assessment-testing.jpg",
     details: {
       overview:
         "A thorough fertility assessment is the foundation of a successful plan. We evaluate both partners with targeted tests so recommendations are based on clear evidence, not guesswork.",
@@ -186,6 +194,7 @@ const services: Service[] = [
       "Dedicated emotional support and wellness care — because this journey matters beyond medicine.",
     colorClass: "tileSky",
     icon: "support",
+    image: "/fertdoct.jpg",
     details: {
       overview:
         "Fertility treatment is emotional as well as medical. Our counselling and support services help you manage stress, communicate as a couple, and feel steady through every stage of care.",
@@ -452,6 +461,13 @@ export default function FertilityServices() {
                 } as React.CSSProperties
               }
             >
+              <div
+                className={styles.cardBg}
+                style={{ backgroundImage: `url("${service.image}")` }}
+                aria-hidden="true"
+              />
+              <div className={styles.cardOverlay} aria-hidden="true" />
+
               {service.badge && (
                 <span className={styles.badge}>
                   <span className={styles.badgeDot} />
