@@ -308,9 +308,8 @@ export default function Hero() {
           </div>
 
           <h1 className={styles.heading}>
-            <span>Turning Hope</span>
+            <span>Turning Hope Into</span>
             <span className={styles.headingSecond}>
-              Into{" "}
               <em className={styles.scriptText}>
                 {typedText}
                 <i className={styles.typingCursor} />
