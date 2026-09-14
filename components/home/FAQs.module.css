@@ -180,7 +180,8 @@
 
 .bannerArt {
   position: relative;
-  min-height: 200px;
+  min-height: 260px;
+  height: 100%;
   border-radius: 18px;
   overflow: hidden;
   background: #eef2f5;
@@ -188,7 +189,7 @@
 
 .bannerImage {
   object-fit: cover;
-  object-position: center;
+  object-position: center 18%;
 }
 
 .note {
@@ -209,7 +210,7 @@
   }
 
   .bannerArt {
-    min-height: 180px;
+    min-height: 220px;
   }
 }
 
