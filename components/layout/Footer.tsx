@@ -3,27 +3,27 @@ import Image from "next/image";
 import styles from "./Footer.module.css";
 
 const whoWeAre = [
-  { label: "About", href: "/#about" },
-  { label: "Our Team", href: "/#team" },
-  { label: "Work With Us", href: "/#careers" },
-  { label: "Our Locations", href: "/#locations" },
+  { label: "About", href: "/#home" },
+  { label: "Our Team", href: "/#consultant" },
+  { label: "Work With Us", href: "/#contact" },
+  { label: "Our Locations", href: "/#contact" },
 ];
 
 const ourServices = [
-  { label: "Fertility Assessment & Testing", href: "/services/fertility-assessment" },
-  { label: "IVF & Fertility Treatment", href: "/services/ivf" },
-  { label: "Fertility Preservation", href: "/services/fertility-preservation" },
-  { label: "Trying to Conceive", href: "/services/trying-to-conceive" },
-  { label: "Early Pregnancy Program", href: "/services/early-pregnancy" },
-  { label: "Wellness & Acupuncture", href: "/services/wellness" },
+  { label: "Fertility Assessment & Testing", href: "/#treatments" },
+  { label: "IVF & Fertility Treatment", href: "/#treatments" },
+  { label: "Fertility Preservation", href: "/#treatments" },
+  { label: "Trying to Conceive", href: "/#journey" },
+  { label: "Early Pregnancy Program", href: "/#treatments" },
+  { label: "Wellness & Acupuncture", href: "/#treatments" },
 ];
 
 const resources = [
-  { label: "Pricing", href: "/pricing" },
-  { label: "Financing Options", href: "/financing" },
-  { label: "Patient Stories", href: "/patient-stories" },
-  { label: "Blogs", href: "/blogs" },
-  { label: "Frequently Asked Questions", href: "/faqs" },
+  { label: "Pricing", href: "/#contact" },
+  { label: "Financing Options", href: "/#contact" },
+  { label: "Patient Stories", href: "/#testimonials" },
+  { label: "Blogs", href: "/#faqs" },
+  { label: "Frequently Asked Questions", href: "/#faqs" },
 ];
 
 export default function Footer() {

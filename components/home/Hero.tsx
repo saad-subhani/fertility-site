@@ -362,7 +362,8 @@ export default function Hero() {
 
           <div className={styles.heroAction}>
             <Link href="/book-consultation" className={styles.mainBooking}>
-              <span>Book a consultation</span>
+              <span className={styles.desktopButtonLabel}>Book a consultation</span>
+              <span className={styles.mobileButtonLabel}>Book now</span>
               <i>
                 <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
                   <path
@@ -377,7 +378,8 @@ export default function Hero() {
             </Link>
 
             <Link href="#treatments" className={styles.secondaryBtn}>
-              <span>Explore treatments</span>
+              <span className={styles.desktopButtonLabel}>Explore treatments</span>
+              <span className={styles.mobileButtonLabel}>Explore</span>
               <i>
                 <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
                   <path

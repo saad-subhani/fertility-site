@@ -476,6 +476,10 @@
   gap: 14px;
 }
 
+.mobileButtonLabel {
+  display: none;
+}
+
 .secondaryBtn {
   position: relative;
   display: inline-flex;
@@ -1615,6 +1619,14 @@
     gap: 11px;
 
     font-size: 9px;
+  }
+
+  .desktopButtonLabel {
+    display: none;
+  }
+
+  .mobileButtonLabel {
+    display: inline;
   }
 
   .mainBooking i {
