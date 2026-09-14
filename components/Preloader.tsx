@@ -4,33 +4,13 @@ import { useEffect, useState } from "react";
 import styles from "./Preloader.module.css";
 
 export default function Preloader() {
-  const [hiding, setHiding] = useState(false);
   const [gone, setGone] = useState(false);
 
   useEffect(() => {
-    const minTime = 1200;
-    const start = Date.now();
-
-    const finish = () => {
-      const elapsed = Date.now() - start;
-      const wait = Math.max(0, minTime - elapsed);
-      window.setTimeout(() => {
-        setHiding(true);
-        window.setTimeout(() => setGone(true), 550);
-      }, wait);
-    };
-
-    if (document.readyState === "complete") {
-      finish();
-    } else {
-      window.addEventListener("load", finish, { once: true });
-      // safety fallback
-      window.setTimeout(finish, 2800);
-    }
-
-    return () => {
-      window.removeEventListener("load", finish);
-    };
+    const finish = () => setGone(true);
+    if (document.readyState === "complete") finish();
+    else window.addEventListener("load", finish, { once: true });
+    return () => window.removeEventListener("load", finish);
   }, []);
 
   useEffect(() => {
@@ -48,8 +28,8 @@ export default function Preloader() {
 
   return (
     <div
-      className={`${styles.preloader} ${hiding ? styles.hide : ""}`}
-      aria-hidden={hiding}
+      className={styles.preloader}
+      aria-hidden="true"
     >
       <div className={styles.inner}>
         <div className={styles.ring}>

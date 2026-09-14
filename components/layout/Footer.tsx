@@ -104,12 +104,12 @@ export default function Footer() {
             <div className={styles.social}>
               <h4>Social</h4>
               <div className={styles.socialIcons}>
-                <a href="#" aria-label="LinkedIn">
+                <a href="https://www.facebook.com/profile.php?id=61567219496373" target="_blank" rel="noreferrer" aria-label="Facebook">
                   <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                    <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-.95 1.8-1.95 3.7-1.95 3.95 0 4.68 2.6 4.68 5.98V21H17.4v-5.6c0-1.34-.03-3.06-1.87-3.06-1.87 0-2.16 1.46-2.16 2.96V21H9z" />
+                    <path d="M14 8h3V4h-3c-3.3 0-5 1.9-5 5v3H6v4h3v8h4v-8h3l1-4h-4V9c0-.7.3-1 1-1Z" />
                   </svg>
                 </a>
-                <a href="#" aria-label="Instagram">
+                <a href="https://www.instagram.com/fertility.clinic.by.aj/" target="_blank" rel="noreferrer" aria-label="Instagram">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
                     <rect x="3" y="3" width="18" height="18" rx="5" />
                     <circle cx="12" cy="12" r="4" />
