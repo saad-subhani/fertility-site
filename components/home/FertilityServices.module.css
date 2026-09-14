@@ -936,17 +936,19 @@
 .modalOverlay {
   position: fixed;
   inset: 0;
-  z-index: 1000;
+  z-index: 200000;
   display: grid;
   place-items: center;
   padding: 24px;
-  background: rgba(10, 28, 48, 0.55);
-  backdrop-filter: blur(6px);
+  background: rgba(10, 28, 48, 0.62);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   animation: modalFade 0.25s ease;
 }
 
 .modal {
   position: relative;
+  z-index: 200001;
   width: min(100%, 560px);
   max-height: min(88vh, 720px);
   overflow: auto;
