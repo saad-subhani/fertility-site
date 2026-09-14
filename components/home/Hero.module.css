@@ -4,6 +4,7 @@
 
 .hero {
   position: relative;
+  z-index: 5;
 
   min-height: 100svh;
 
@@ -12,13 +13,11 @@
 
   overflow: visible;
 
-  isolation: isolate;
-
   color: #fff;
 
   background: #071827;
 
-  padding-bottom: 72px;
+  padding-bottom: 48px;
 }
 
 /* =====================================================
@@ -2380,7 +2379,7 @@
   right: 0;
   bottom: 0;
   transform: translateY(50%);
-  z-index: 20;
+  z-index: 30;
   pointer-events: none;
   padding: 0 20px;
 }

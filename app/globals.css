@@ -699,3 +699,20 @@ select:focus {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Hero overlap stats banner */
+#home {
+  position: relative;
+  z-index: 5;
+  overflow: visible;
+}
+
+#about {
+  position: relative;
+  z-index: 1;
+  overflow: visible;
+}
+
+main {
+  overflow: visible;
+}
