@@ -49,7 +49,7 @@
 .container {
   position: relative;
   z-index: 2;
-  width: min(100% - 48px, 1200px);
+  width: min(100% - 48px, 1080px);
   margin: 0 auto;
 }
 
@@ -128,7 +128,7 @@
 .grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 18px;
+  gap: 22px;
   margin-bottom: 48px;
 }
 
@@ -149,11 +149,11 @@
   flex-direction: column;
   justify-content: flex-end;
 
-  min-height: 260px;
-  aspect-ratio: 4 / 3;
+  min-height: 220px;
+  aspect-ratio: 1.35 / 1;
 
   border: none;
-  border-radius: 16px;
+  border-radius: 14px;
   background: #0a1628;
 
   opacity: 0;
@@ -198,17 +198,16 @@
   transform: scale(1.08);
 }
 
-/* Dark gradient – stronger so each card looks clean & separate like reference */
+/* Soft dark gradient – only bottom for arrow, image stays clear */
 .cardOverlay {
   position: absolute;
   inset: 0;
   z-index: 1;
   background: linear-gradient(
     180deg,
-    rgba(6, 14, 26, 0.25) 0%,
-    rgba(6, 14, 26, 0.35) 30%,
-    rgba(6, 14, 26, 0.82) 70%,
-    rgba(4, 10, 20, 0.95) 100%
+    rgba(6, 14, 26, 0.1) 0%,
+    rgba(6, 14, 26, 0.2) 50%,
+    rgba(6, 14, 26, 0.55) 100%
   );
   transition: background 0.35s ease;
 }
@@ -216,17 +215,15 @@
 .card:hover .cardOverlay {
   background: linear-gradient(
     180deg,
-    rgba(6, 14, 26, 0.3) 0%,
-    rgba(6, 14, 26, 0.42) 30%,
-    rgba(6, 14, 26, 0.88) 70%,
-    rgba(4, 10, 20, 0.97) 100%
+    rgba(6, 14, 26, 0.15) 0%,
+    rgba(6, 14, 26, 0.3) 50%,
+    rgba(6, 14, 26, 0.65) 100%
   );
 }
 
 .card > .iconWrap {
   display: none;
 }
-/* Keep badge, serviceNumber, cardBody visible for attractive overlay (like reference cards) */
 .cardShine {
   display: none;
 }
@@ -247,21 +244,7 @@
 ===================================================== */
 
 .serviceNumber {
-  position: absolute;
-  top: 14px;
-  right: 16px;
-  z-index: 2;
-  font-size: 42px;
-  font-weight: 800;
-  line-height: 1;
-  color: rgba(255, 255, 255, 0.18);
-  letter-spacing: -0.04em;
-  pointer-events: none;
-}
-
-.card:hover .serviceNumber {
-  color: rgba(16, 47, 82, 0.12);
-  transform: translateY(-3px);
+  display: none !important;
 }
 
 
@@ -325,29 +308,9 @@
    BADGE
 ===================================================== */
 
-.badge {
-  position: absolute;
-  top: 14px;
-  left: 14px;
-  z-index: 3;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 5px 12px;
-  border-radius: 999px;
-  background: rgba(37, 99, 235, 0.95);
-  color: #fff;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
-}
-
+.badge,
 .badgeDot {
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background: #ffffff;
+  display: none !important;
 }
 
 
@@ -359,50 +322,14 @@
   position: relative;
   z-index: 2;
   margin-top: auto;
-  padding: 18px 18px 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 0;
+  padding: 0;
+  display: block;
 }
 
-.cardTitle {
-  margin: 0 0 6px;
-  color: #ffffff;
-  font-size: 17px;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  line-height: 1.25;
-}
-
-.card:hover .cardTitle {
-  color: #ffffff;
-}
-
-
-/* =====================================================
-   DECORATIVE LINE
-===================================================== */
-
+.cardTitle,
+.cardDesc,
 .cardLine {
-  display: none;
-}
-
-.card:hover .cardLine {
-  width: 42px;
-  opacity: 0.8;
-}
-
-
-/* =====================================================
-   DESCRIPTION
-===================================================== */
-
-.cardDesc {
-  margin: 0;
-  color: rgba(255, 255, 255, 0.78);
-  font-size: 13px;
-  line-height: 1.5;
-  max-width: 85%;
+  display: none !important;
 }
 
 
@@ -412,11 +339,11 @@
 
 .cardLink {
   position: absolute;
-  right: 16px;
-  bottom: 18px;
+  right: 12px;
+  bottom: 14px;
   z-index: 3;
-  width: 40px;
-  height: 40px;
+  width: 34px;
+  height: 34px;
   padding: 0;
   border: none;
   border-radius: 50%;
