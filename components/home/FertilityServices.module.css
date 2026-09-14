@@ -134,7 +134,7 @@
 
 
 /* =====================================================
-   CARD
+   CARD – reference style: full image + bottom text
 ===================================================== */
 
 .card {
@@ -145,11 +145,13 @@
 
   display: flex;
   flex-direction: column;
+  justify-content: flex-end;
 
-  min-height: 220px;
+  min-height: 260px;
+  aspect-ratio: 4 / 3;
 
-  border: 1px solid rgba(16, 47, 82, 0.045);
-  border-radius: 17px;
+  border: none;
+  border-radius: 20px;
 
   opacity: 0;
   transform: translateY(18px);
@@ -161,21 +163,19 @@
 
   transition:
     transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 0.4s ease,
-    border-color 0.35s ease;
+    box-shadow 0.4s ease;
+  box-shadow: 0 10px 28px rgba(16, 47, 82, 0.12);
+  cursor: pointer;
 }
 
 .card:hover {
-  transform: translateY(-7px);
-  border-color: rgba(16, 47, 82, 0.1);
-
+  transform: translateY(-6px);
   box-shadow:
-    0 20px 42px rgba(16, 47, 82, 0.1),
-    0 5px 15px rgba(16, 47, 82, 0.04);
+    0 22px 48px rgba(16, 47, 82, 0.18),
+    0 6px 16px rgba(16, 47, 82, 0.08);
 }
 
-
-/* Background image layer */
+/* Background image – fully visible */
 .cardBg {
   position: absolute;
   inset: 0;
@@ -183,91 +183,60 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scale(1.02);
+  transform: scale(1.03);
   transition: transform 0.55s ease;
 }
 
 .card:hover .cardBg {
-  transform: scale(1.08);
+  transform: scale(1.1);
 }
 
-/* Soft color wash so text stays readable */
+/* Dark gradient from bottom only (reference style) */
 .cardOverlay {
   position: absolute;
   inset: 0;
   z-index: 1;
   background: linear-gradient(
-    165deg,
-    rgba(255, 255, 255, 0.92) 0%,
-    rgba(255, 255, 255, 0.82) 45%,
-    rgba(255, 255, 255, 0.72) 100%
+    180deg,
+    rgba(8, 20, 35, 0.15) 0%,
+    rgba(8, 20, 35, 0.25) 40%,
+    rgba(8, 20, 35, 0.78) 78%,
+    rgba(6, 16, 28, 0.92) 100%
   );
   transition: background 0.35s ease;
 }
 
 .card:hover .cardOverlay {
   background: linear-gradient(
-    165deg,
-    rgba(255, 255, 255, 0.88) 0%,
-    rgba(255, 255, 255, 0.76) 50%,
-    rgba(255, 255, 255, 0.68) 100%
+    180deg,
+    rgba(8, 20, 35, 0.2) 0%,
+    rgba(8, 20, 35, 0.35) 35%,
+    rgba(8, 20, 35, 0.82) 75%,
+    rgba(6, 16, 28, 0.95) 100%
   );
 }
 
-/* Keep content above bg */
 .card > .badge,
 .card > .serviceNumber,
 .card > .iconWrap,
 .card > .cardBody,
 .card > .cardShine {
+  display: none;
+}
+.cardShineHidden {
   position: relative;
   z-index: 2;
 }
 
-
-/* =====================================================
-   COLOR VARIANTS
-===================================================== */
-
-.tileBlue {
-  --accent: #2563eb;
-  background: #e7f0ff;
-}
-
-.tilePink {
-  --accent: #db2777;
-  background: #fce8f3;
-}
-
-.tileMint {
-  --accent: #059669;
-  background: #e5f8ef;
-}
-
-.tileYellow {
-  --accent: #c58b00;
-  background: #fff4c9;
-}
-
-.tileGreen {
-  --accent: #059669;
-  background: #e7f8ee;
-}
-
-.tilePurple {
-  --accent: #6d3fd1;
-  background: #eee9ff;
-}
-
-.tileRose {
-  --accent: #e05263;
-  background: #fff0f1;
-}
-
-.tileSky {
-  --accent: #1685bd;
-  background: #e8f6ff;
-}
+/* Color variants – only keep accent for badge/line */
+.tileBlue { --accent: #3b82f6; }
+.tilePink { --accent: #ec4899; }
+.tileMint { --accent: #10b981; }
+.tileYellow { --accent: #eab308; }
+.tileGreen { --accent: #10b981; }
+.tilePurple { --accent: #8b5cf6; }
+.tileRose { --accent: #f43f5e; }
+.tileSky { --accent: #0ea5e9; }
 
 
 /* =====================================================
@@ -276,23 +245,15 @@
 
 .serviceNumber {
   position: absolute;
-  top: 7px;
-  right: 12px;
-  z-index: 1;
-
-  color: rgba(16, 47, 82, 0.07);
-
-  font-family: "DM Sans", sans-serif;
-  font-size: 46px;
+  top: 14px;
+  right: 16px;
+  z-index: 2;
+  font-size: 42px;
   font-weight: 800;
   line-height: 1;
-  letter-spacing: -0.07em;
-
+  color: rgba(255, 255, 255, 0.18);
+  letter-spacing: -0.04em;
   pointer-events: none;
-
-  transition:
-    color 0.35s ease,
-    transform 0.4s ease;
 }
 
 .card:hover .serviceNumber {
@@ -306,9 +267,7 @@
 ===================================================== */
 
 .iconWrap {
-  position: relative;
-  z-index: 2;
-  padding: 18px 18px 0;
+  display: none;
 }
 
 .icon {
@@ -365,29 +324,20 @@
 
 .badge {
   position: absolute;
-  top: 10px;
-  right: 10px;
-  z-index: 5;
-
+  top: 14px;
+  left: 14px;
+  z-index: 3;
   display: inline-flex;
   align-items: center;
-  gap: 5px;
-
-  padding: 4px 8px;
-
+  gap: 6px;
+  padding: 5px 12px;
   border-radius: 999px;
-
-  background: #2563eb;
-  color: #ffffff;
-
-  font-family: "DM Sans", sans-serif;
-  font-size: 8px;
+  background: rgba(37, 99, 235, 0.95);
+  color: #fff;
+  font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.02em;
-
-  box-shadow: 0 5px 12px rgba(37, 99, 235, 0.18);
-
-  animation: badgeFloat 3s ease-in-out infinite;
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
 }
 
 .badgeDot {
@@ -405,29 +355,24 @@
 .cardBody {
   position: relative;
   z-index: 2;
-
+  margin-top: auto;
+  padding: 18px 18px 20px;
   display: flex;
   flex-direction: column;
-  flex: 1;
-
-  padding: 15px 18px 18px;
+  gap: 0;
 }
 
 .cardTitle {
-  margin: 0 0 8px;
-
-  color: #102f52;
-
-  font-family: "DM Sans", sans-serif;
-  font-size: 14px;
+  margin: 0 0 6px;
+  color: #ffffff;
+  font-size: 17px;
   font-weight: 700;
-  line-height: 1.3;
-
-  transition: color 0.25s ease;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
 }
 
 .card:hover .cardTitle {
-  color: var(--accent);
+  color: #ffffff;
 }
 
 
@@ -436,22 +381,7 @@
 ===================================================== */
 
 .cardLine {
-  width: 26px;
-  height: 2px;
-
-  margin-bottom: 10px;
-
-  border-radius: 999px;
-
-  background: var(--accent);
-
-  opacity: 0.45;
-
-  transform-origin: left;
-
-  transition:
-    width 0.35s ease,
-    opacity 0.35s ease;
+  display: none;
 }
 
 .card:hover .cardLine {
@@ -465,15 +395,11 @@
 ===================================================== */
 
 .cardDesc {
-  margin: 0 0 16px;
-
-  color: #52657a;
-
-  font-family: "DM Sans", sans-serif;
-  font-size: 11px;
-  line-height: 1.65;
-
-  flex: 1;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 13px;
+  line-height: 1.5;
+  max-width: 85%;
 }
 
 
@@ -482,43 +408,40 @@
 ===================================================== */
 
 .cardLink {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-
-  width: fit-content;
-  margin: 0;
+  position: absolute;
+  right: 16px;
+  bottom: 18px;
+  z-index: 3;
+  width: 40px;
+  height: 40px;
   padding: 0;
   border: none;
-  background: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+  display: grid;
+  place-items: center;
   cursor: pointer;
-
-  color: #102f52;
-
-  font-family: "DM Sans", sans-serif;
-  font-size: 10.5px;
-  font-weight: 700;
-
-  transition:
-    color 0.25s ease,
-    gap 0.3s ease;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: background 0.25s ease, transform 0.25s ease;
+  font-size: 0;
 }
 
 .card:hover .cardLink {
-  gap: 10px;
-  color: var(--accent);
+  background: rgba(255, 255, 255, 0.32);
+  transform: scale(1.08);
 }
 
 .arrow {
-  display: inline-block;
-  font-size: 14px;
+  font-size: 18px;
   line-height: 1;
-
-  transition: transform 0.3s ease;
+  color: #fff;
+  display: block;
 }
 
 .card:hover .arrow {
-  transform: translateX(4px);
+  transform: translateX(2px);
 }
 
 
@@ -527,6 +450,9 @@
 ===================================================== */
 
 .cardShine {
+  display: none;
+}
+.cardShineHidden {
   position: absolute;
   top: -100%;
   left: -70%;
@@ -549,6 +475,9 @@
 }
 
 .card:hover .cardShine {
+  display: none;
+}
+.cardShineHidden {
   left: 125%;
 }
 
@@ -975,6 +904,9 @@
   .btnPrimary,
   .btnArrow,
   .cardShine {
+  display: none;
+}
+.cardShineHidden {
     transition: none !important;
   }
 }

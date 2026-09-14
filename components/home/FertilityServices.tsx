@@ -492,8 +492,8 @@ export default function FertilityServices() {
                   type="button"
                   className={styles.cardLink}
                   onClick={() => setActive(service)}
+                  aria-label={`Learn more about ${service.title}`}
                 >
-                  Learn more
                   <span className={styles.arrow}>→</span>
                 </button>
               </div>
