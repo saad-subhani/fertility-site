@@ -32,6 +32,11 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+!.env.example
+/fertility-backend/vendor/
+/fertility-backend/composer.phar
+/fertility-backend/composer.sha256
+/fertility-backend/tests/.runtime/
 
 # vercel
 .vercel

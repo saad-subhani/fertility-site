@@ -1,5 +1,7 @@
 "use client";
 
+import { API_URL } from "@/lib/api";
+
 import { ChangeEvent, useState } from "react";
 import styles from "./Contact.module.css";
 
@@ -57,6 +59,7 @@ export default function Contact() {
     useState<FormData>(initialData);
 
   const [submitted, setSubmitted] = useState(false);
+  const [bookingId, setBookingId] = useState<number | null>(null);
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [screenshotPreview, setScreenshotPreview] =
@@ -158,13 +161,13 @@ export default function Contact() {
         );
       }
 
-      const res = await fetch("http://localhost:8000/api/book.php", {
+      const res = await fetch(`${API_URL}/api/book.php`, {
         method: "POST",
         body: formDataToSend,
       });
 
       const text = await res.text();
-      let data: { success?: boolean; message?: string };
+      let data: { success?: boolean; message?: string; data?: { id: number } };
 
       try {
         data = JSON.parse(text);
@@ -178,6 +181,7 @@ export default function Contact() {
         throw new Error(data.message || "Booking failed");
       }
 
+      setBookingId(data.data?.id ?? null);
       setSubmitted(true);
     } catch (err) {
       setSubmitError(
@@ -202,16 +206,16 @@ export default function Contact() {
             </div>
 
             <span className={styles.successLabel}>
-              Appointment Confirmed
+              Request Received
             </span>
 
             <h1>
-              Your Consultation Is Booked!
+              Your Consultation Request Is Saved!
             </h1>
 
             <p>
               Thank you for booking with our clinic.
-              Your appointment details are shown below.
+              Your requested details are shown below. Our team will email confirmation after payment verification and appointment assignment.
             </p>
 
             <div className={styles.confirmation}>
@@ -255,7 +259,7 @@ export default function Contact() {
             <div className={styles.appointmentId}>
               Appointment ID:
               <strong>
-                FC-{Date.now().toString().slice(-8)}
+                {bookingId}
               </strong>
             </div>
 

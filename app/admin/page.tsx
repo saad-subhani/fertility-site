@@ -1,11 +1,13 @@
 "use client";
 
+import { API_URL } from "@/lib/api";
+
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import styles from "./admin.module.css";
 
-const API = "http://localhost:8000";
+const API = API_URL;
 
 type Booking = {
   id: number;

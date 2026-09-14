@@ -1,14 +1,7 @@
-# Apache – enable if using XAMPP / Apache
+Options -Indexes
 RewriteEngine On
-
-# CORS preflight
-RewriteCond %{REQUEST_METHOD} OPTIONS
-RewriteRule ^(.*)$ $1 [R=200,L]
-
-# Serve uploads
-RewriteCond %{REQUEST_FILENAME} -f
-RewriteRule ^uploads/ - [L]
-
-# Route API
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^api/(.*)$ api/$1 [L,QSA]
+# Deny all private files even if they exist. Route only explicitly allowed APIs/uploads.
+RewriteRule ^(?:\.|config/|lib/|vendor/|scripts/|tests/|migrations/|composer\.|database\.sql|README) - [F,L,NC]
+RewriteRule ^api/(?:book|admin/(?:login|bookings|booking-detail|update-status|appointment|resend-email))\.php$ - [L]
+RewriteRule ^uploads/payments/pay_[a-zA-Z0-9_]+\.(?:jpg|png|webp|gif)$ - [L]
+RewriteRule ^ - [F,L]

@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/../lib/bootstrap.php';
 /**
  * PDO Database Connection
  */
@@ -30,8 +31,7 @@ function getDB(): PDO
         http_response_code(500);
         echo json_encode([
             'success' => false,
-            'message' => 'Database connection failed. Check config/env.php and run the SQL first.',
-            'error'   => $e->getMessage(),
+            'message' => 'Database unavailable. Contact the administrator.',
         ]);
         exit;
     }

@@ -1,11 +1,13 @@
 "use client";
 
+import { API_URL } from "@/lib/api";
+
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import styles from "../../admin.module.css";
 
-const API = "http://localhost:8000";
+const API = API_URL;
 
 type Booking = {
   id: number;
@@ -21,6 +23,14 @@ type Booking = {
   status: "pending" | "paid" | "paid_at_clinic";
   is_paid: number;
   created_at: string;
+  appointment_assigned_at: string | null;
+  appointment_mode: string | null;
+  meeting_url: string | null;
+  clinic_address: string | null;
+  consultation_confirmation_sent_at: string | null;
+  email_delivery_status: string;
+  email_failure_reason: string | null;
+  email_deliveries: { kind: string; status: string; sent_at: string | null; failure_reason: string | null }[];
 };
 
 const STATUS_LABELS: Record<string, string> = {
@@ -39,6 +49,8 @@ export default function BookingDetailPage() {
   const [error, setError] = useState("");
   const [updating, setUpdating] = useState(false);
   const [lightbox, setLightbox] = useState(false);
+  const [notice, setNotice] = useState("");
+  const [appointment, setAppointment] = useState({ consultant: "", date: "", time: "", consultation_type: "", appointment_mode: "clinic", meeting_url: "", clinic_address: "" });
 
   const load = () => {
     const token = localStorage.getItem("adminToken");
@@ -59,6 +71,8 @@ export default function BookingDetailPage() {
         const data = await res.json();
         if (!data.success) throw new Error(data.message);
         setBooking(data.data);
+        const b = data.data;
+        setAppointment({ consultant: b.consultant || "", date: String(b.date || "").slice(0, 10), time: b.time || "", consultation_type: b.consultation_type || "", appointment_mode: b.appointment_mode || (b.consultation_type === "Online Consultation" ? "online" : "clinic"), meeting_url: b.meeting_url || "", clinic_address: b.clinic_address || "" });
       })
       .catch((err) => setError(err.message || "Failed to load"))
       .finally(() => setLoading(false));
@@ -86,14 +100,32 @@ export default function BookingDetailPage() {
       });
       const data = await res.json();
       if (!data.success) throw new Error(data.message);
-      setBooking((prev) =>
-        prev ? { ...prev, status: status as Booking["status"], is_paid: status === "paid" ? 1 : 0 } : prev
-      );
+      setNotice([data.message, data.validation_error, data.email?.message].filter(Boolean).join(" "));
+      load();
     } catch (err) {
       alert(err instanceof Error ? err.message : "Update failed");
     } finally {
       setUpdating(false);
     }
+  };
+
+  const saveOrResend = async (action: "appointment" | "resend-email") => {
+    if (!booking) return;
+    setUpdating(true);
+    setNotice("");
+    try {
+      const res = await fetch(`${API}/api/admin/${action}.php`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Authorization: `Bearer ${localStorage.getItem("adminToken") || ""}` },
+        body: JSON.stringify({ id: booking.id, ...(action === "appointment" ? appointment : {}) }),
+      });
+      if (res.status === 401) { router.replace("/admin/login"); return; }
+      const data = await res.json();
+      if (!res.ok || !data.success) throw new Error(data.message || "Action failed");
+      setNotice([data.message, data.email?.message].filter(Boolean).join(" "));
+      load();
+    } catch (err) { setNotice(err instanceof Error ? err.message : "Action failed"); }
+    finally { setUpdating(false); }
   };
 
   if (loading) {
@@ -173,6 +205,40 @@ export default function BookingDetailPage() {
             <strong>{new Date(booking.created_at).toLocaleString()}</strong>
           </div>
         </div>
+
+        <section className={styles.statusActions} aria-label="Appointment assignment">
+          <h2>Confirm appointment details</h2>
+          <p>Review the requested details and enter the appointment location. Times use the clinic’s configured time zone.</p>
+          <div className={styles.detailGrid}>
+            {([['consultant', 'Consultant'], ['date', 'Consultation date'], ['time', 'Time (HH:MM or HH:MM AM/PM)'], ['consultation_type', 'Consultation type']] as const).map(([key, label]) => (
+              <label key={key} className={styles.detailItem}>{label}
+                <input type={key === 'date' ? 'date' : 'text'} value={appointment[key]} disabled={updating || !!booking.consultation_confirmation_sent_at} onChange={e => setAppointment(prev => ({ ...prev, [key]: e.target.value }))} />
+              </label>
+            ))}
+            <label className={styles.detailItem}>Appointment mode
+              <select value={appointment.appointment_mode} disabled={updating || !!booking.consultation_confirmation_sent_at} onChange={e => setAppointment(prev => ({ ...prev, appointment_mode: e.target.value }))}>
+                <option value="clinic">At clinic</option><option value="online">Online</option>
+              </select>
+            </label>
+            {appointment.appointment_mode === 'online' ? (
+              <label className={styles.detailItem}>HTTPS meeting link<input type="url" value={appointment.meeting_url} disabled={updating || !!booking.consultation_confirmation_sent_at} onChange={e => setAppointment(prev => ({ ...prev, meeting_url: e.target.value }))} /></label>
+            ) : (
+              <label className={styles.detailItem}>Clinic address<textarea value={appointment.clinic_address} disabled={updating || !!booking.consultation_confirmation_sent_at} onChange={e => setAppointment(prev => ({ ...prev, clinic_address: e.target.value }))} /></label>
+            )}
+          </div>
+          <button type="button" className={`${styles.statusBtn} ${styles.btnPaid}`} disabled={updating || !!booking.consultation_confirmation_sent_at} onClick={() => saveOrResend('appointment')}>Save appointment details</button>
+          {booking.consultation_confirmation_sent_at && <p>Confirmation sent. Contact the patient to arrange any changes.</p>}
+        </section>
+
+        <section className={styles.statusActions} aria-label="Email delivery">
+          <h2>Email delivery</h2>
+          <p>Status: {booking.email_delivery_status}</p>
+          {booking.email_failure_reason && <p>{booking.email_failure_reason}</p>}
+          <ul>{booking.email_deliveries?.map(email => <li key={email.kind}>{email.kind.replaceAll('_', ' ')}: {email.status}{email.sent_at ? ` (${email.sent_at})` : ''}{email.failure_reason ? ` — ${email.failure_reason}` : ''}</li>)}</ul>
+          <button type="button" className={styles.statusBtn} disabled={updating || !booking.email_deliveries?.some(email => ['pending', 'failed'].includes(email.status))} onClick={() => saveOrResend('resend-email')}>Resend Email</button>
+          <p>Retries only unsent emails. Delivery outcomes requiring review must be checked against the provider’s records first.</p>
+          {notice && <p role="status">{notice}</p>}
+        </section>
 
         {/* Status actions */}
         <div className={styles.statusActions}>

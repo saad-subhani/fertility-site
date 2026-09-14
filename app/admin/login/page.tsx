@@ -1,11 +1,13 @@
 "use client";
 
+import { API_URL } from "@/lib/api";
+
 import { FormEvent, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import styles from "./login.module.css";
 
-const API = "http://localhost:8000";
+const API = API_URL;
 
 export default function AdminLoginPage() {
   const router = useRouter();

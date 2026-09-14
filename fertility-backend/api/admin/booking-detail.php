@@ -31,7 +31,10 @@ try {
         SELECT
             id, name, email, phone, consultant, date, time,
             consultation_type, payment_method, payment_screenshot,
-            status, is_paid, created_at, updated_at
+            status, is_paid, created_at, updated_at,
+            appointment_assigned_at, appointment_mode, meeting_url, clinic_address,
+            admin_notification_sent_at, payment_verified_email_sent_at,
+            consultation_confirmation_sent_at, email_delivery_status, email_failure_reason
         FROM bookings
         WHERE id = :id
         LIMIT 1
@@ -45,6 +48,9 @@ try {
         exit;
     }
 
+    $emails = $db->prepare('SELECT kind, status, sent_at, failure_reason FROM email_deliveries WHERE booking_id=? ORDER BY id');
+    $emails->execute([$id]);
+    $row['email_deliveries'] = $emails->fetchAll();
     echo json_encode([
         'success' => true,
         'data'    => $row,
@@ -54,6 +60,5 @@ try {
     echo json_encode([
         'success' => false,
         'message' => 'Failed to load booking',
-        'error'   => $e->getMessage(),
     ]);
 }

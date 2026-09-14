@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    "fertility-backend/vendor/**",
+    "fertility-backend/tests/.runtime/**",
   ]),
 ]);
 

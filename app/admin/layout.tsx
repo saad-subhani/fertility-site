@@ -1,9 +1,16 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useSyncExternalStore } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 import styles from "./admin.module.css";
+
+const subscribeToStorage = (callback: () => void) => {
+  window.addEventListener("storage", callback);
+  return () => window.removeEventListener("storage", callback);
+};
+const getToken = () => localStorage.getItem("adminToken");
+const getServerToken = () => null;
 
 export default function AdminLayout({
   children,
@@ -12,22 +19,15 @@ export default function AdminLayout({
 }) {
   const pathname = usePathname();
   const router = useRouter();
-  const [ready, setReady] = useState(false);
+  const token = useSyncExternalStore(subscribeToStorage, getToken, getServerToken);
   const isLogin = pathname === "/admin/login";
+  const ready = isLogin || !!token;
 
   useEffect(() => {
-    if (isLogin) {
-      setReady(true);
-      return;
-    }
-
-    const token = localStorage.getItem("adminToken");
-    if (!token) {
+    if (!isLogin && !localStorage.getItem("adminToken")) {
       router.replace("/admin/login");
-    } else {
-      setReady(true);
     }
-  }, [isLogin, router, pathname]);
+  }, [isLogin, router, pathname, token]);
 
   const logout = () => {
     localStorage.removeItem("adminToken");

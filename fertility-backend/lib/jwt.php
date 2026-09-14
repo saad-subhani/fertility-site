@@ -39,6 +39,8 @@ function verifyJWT(string $token, string $secret): ?array
     }
 
     [$headerB64, $payloadB64, $sigB64] = $parts;
+    $header = json_decode(base64UrlDecode($headerB64), true);
+    if (!is_array($header) || ($header['alg'] ?? '') !== 'HS256' || ($header['typ'] ?? '') !== 'JWT') return null;
 
     $expected = base64UrlEncode(
         hash_hmac('sha256', "$headerB64.$payloadB64", $secret, true)
@@ -50,7 +52,7 @@ function verifyJWT(string $token, string $secret): ?array
 
     $payload = json_decode(base64UrlDecode($payloadB64), true);
 
-    if (!$payload || !isset($payload['exp']) || $payload['exp'] < time()) {
+    if (!is_array($payload) || !is_int($payload['exp'] ?? null) || $payload['exp'] <= time()) {
         return null;
     }
 
@@ -95,11 +97,19 @@ function requireAdminAuth(): array
 
     $payload = verifyJWT($token, $cfg['jwt_secret']);
 
-    if (!$payload || ($payload['role'] ?? '') !== 'admin') {
+    if (!$payload || ($payload['role'] ?? '') !== 'admin' || empty($payload['sub'])) {
         http_response_code(401);
         echo json_encode(['success' => false, 'message' => 'Unauthorized – invalid or expired token']);
         exit;
     }
 
+    require_once __DIR__ . '/../config/database.php';
+    $stmt = getDB()->prepare('SELECT id FROM admins WHERE id=? AND username=?');
+    $stmt->execute([$payload['sub'], $payload['username'] ?? '']);
+    if (!$stmt->fetchColumn()) {
+        http_response_code(401);
+        echo json_encode(['success'=>false,'message'=>'Unauthorized']);
+        exit;
+    }
     return $payload;
 }

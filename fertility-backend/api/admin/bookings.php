@@ -37,8 +37,8 @@ if (in_array($status, $validStatuses, true)) {
 
 // Search (name, email, phone, consultant)
 if ($search !== '') {
-    $where[] = '(name LIKE :q OR email LIKE :q OR phone LIKE :q OR consultant LIKE :q)';
-    $params[':q'] = '%' . $search . '%';
+    $where[] = '(name LIKE :q1 OR email LIKE :q2 OR phone LIKE :q3 OR consultant LIKE :q4)';
+    foreach ([':q1', ':q2', ':q3', ':q4'] as $key) $params[$key] = '%' . $search . '%';
 }
 
 $whereSql = $where ? 'WHERE ' . implode(' AND ', $where) : '';
@@ -97,6 +97,5 @@ try {
     echo json_encode([
         'success' => false,
         'message' => 'Failed to load bookings',
-        'error'   => $e->getMessage(),
     ]);
 }

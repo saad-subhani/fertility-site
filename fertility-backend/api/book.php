@@ -7,6 +7,7 @@
 require_once __DIR__ . '/../lib/cors.php';
 require_once __DIR__ . '/../config/database.php';
 
+require_once __DIR__ . '/../lib/email-service.php';
 enableCORS();
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
@@ -16,6 +17,11 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 }
 
 $cfg = require __DIR__ . '/../config/env.php';
+foreach (['name','email','phone','consultant','date','time','consultationType','paymentMethod'] as $field) {
+    if (isset($_POST[$field]) && !is_string($_POST[$field])) {
+        http_response_code(400); echo json_encode(['success'=>false,'message'=>'Invalid form field.']); exit;
+    }
+}
 
 // ---------- Collect fields ----------
 $name             = trim($_POST['name'] ?? '');
@@ -29,6 +35,12 @@ $paymentMethod    = trim($_POST['paymentMethod'] ?? '');
 
 // ---------- Validation ----------
 $errors = [];
+foreach (['name'=>150,'email'=>180,'phone'=>40,'consultant'=>120,'date'=>10,'time'=>20,'consultationType'=>120,'paymentMethod'=>60] as $field => $limit) {
+    if (!is_string($_POST[$field] ?? null) || strlen($_POST[$field]) > $limit) $errors[] = 'Invalid field: ' . $field;
+}
+$parsedDate = DateTimeImmutable::createFromFormat('!Y-m-d', $date);
+if (!$parsedDate || $parsedDate->format('Y-m-d') !== $date) $errors[] = 'Valid date is required';
+if (!preg_match('/^(?:(?:0?[1-9]|1[0-2]):[0-5][0-9] (?:AM|PM)|(?:[01][0-9]|2[0-3]):[0-5][0-9])$/', $time)) $errors[] = 'Valid time is required';
 
 if ($name === '')             $errors[] = 'Name is required';
 if ($email === '' || !filter_var($email, FILTER_VALIDATE_EMAIL)) $errors[] = 'Valid email is required';
@@ -112,6 +124,7 @@ $isPaid = $isPayAtClinic ? 0 : 0;   // both start unpaid until admin marks paid
 // ---------- Insert ----------
 try {
     $db = getDB();
+    $db->beginTransaction();
 
     $stmt = $db->prepare("
         INSERT INTO bookings
@@ -137,6 +150,9 @@ try {
     ]);
 
     $id = (int) $db->lastInsertId();
+    (new EmailService($db, $cfg))->queue($id, ['admin_notification']);
+    $db->commit();
+    deliverBookingEmails($db, $id);
 
     echo json_encode([
         'success' => true,
@@ -144,10 +160,11 @@ try {
         'data'    => ['id' => $id],
     ]);
 } catch (Exception $e) {
+    if (isset($db) && $db->inTransaction()) $db->rollBack();
+    error_log('clinic: booking_save_failed');
     http_response_code(500);
     echo json_encode([
         'success' => false,
         'message' => 'Could not save booking',
-        'error'   => $e->getMessage(),
     ]);
 }

@@ -1,58 +1,11 @@
-# Fertility Clinic – PHP Backend
+# Fertility Clinic by AJ backend
 
-## Quick Start
+PHP 8.2+, MySQL/MariaDB, PHPMailer and bcrypt admin authentication.
 
-### 1. Database
-Open phpMyAdmin / MySQL and run the entire file:
+See [SMTP implementation and Hostinger deployment](SMTP_IMPLEMENTATION.md) for configuration, database setup, exact commands, testing and the complete file inventory.
 
-```
-database.sql
-```
+Secrets belong only in the ignored backend .env. The local .env has been configured; copy it privately to your server and replace the local database settings with your Hostinger database details. Never commit it.
 
-### 2. Config
-Edit `config/env.php`:
+Fresh database: select the database in phpMyAdmin and import database.sql. Existing database: run php scripts/migrate.php; do not replace your existing records. Then run php scripts/init-admin.php.
 
-- `db_pass` → your MySQL password (empty for XAMPP default)
-- `admin_username` / `admin_password` → change admin login
-- `jwt_secret` → change in production
-
-### 3. Run Backend
-
-**Option A – PHP built-in server (recommended for dev):**
-```bash
-cd fertility-backend
-php -S localhost:8000 router.php
-```
-
-**Option B – XAMPP:**
-- Put `fertility-backend` inside `htdocs/`
-- Access: `http://localhost/fertility-backend/api/...`
-
-### 4. Frontend
-Frontend already points to `http://localhost:8000`
-
-```bash
-cd fertility-site-main
-npm install
-npm run dev
-```
-
-### Admin Login
-- URL: http://localhost:3000/admin/login
-- Username: `admin`
-- Password: `Admin@12345`
-
-### API Endpoints
-
-| Method | Endpoint | Auth | Description |
-|--------|----------|------|-------------|
-| POST | /api/book.php | No | Submit booking (multipart) |
-| POST | /api/admin/login.php | No | Login → JWT |
-| GET | /api/admin/bookings.php | JWT | List + filter + search |
-| GET | /api/admin/booking-detail.php?id= | JWT | Single booking |
-| POST | /api/admin/update-status.php | JWT | Update status |
-
-### Status Values
-- `pending` – online payment, waiting verification
-- `paid` – verified paid
-- `paid_at_clinic` – will pay at clinic
+The frontend uses localhost:8000 in development and /fertility-backend in production unless NEXT_PUBLIC_API_URL is set before building. PHP must run separately from the Next.js Node process.
