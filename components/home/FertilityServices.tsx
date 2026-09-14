@@ -460,6 +460,16 @@ export default function FertilityServices() {
                   "--card-delay": `${index * 70}ms`,
                 } as React.CSSProperties
               }
+              onClick={() => setActive(service)}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  setActive(service);
+                }
+              }}
+              aria-label={`Learn more about ${service.title}`}
             >
               <div
                 className={styles.cardBg}

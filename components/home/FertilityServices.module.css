@@ -216,16 +216,12 @@
   );
 }
 
-.card > .badge,
-.card > .serviceNumber,
-.card > .iconWrap,
-.card > .cardBody,
-.card > .cardShine {
+.card > .iconWrap {
   display: none;
 }
-.cardShineHidden {
-  position: relative;
-  z-index: 2;
+/* Keep badge, serviceNumber, cardBody visible for attractive overlay (like reference cards) */
+.cardShine {
+  display: none;
 }
 
 /* Color variants – only keep accent for badge/line */
@@ -904,9 +900,6 @@
   .btnPrimary,
   .btnArrow,
   .cardShine {
-  display: none;
-}
-.cardShineHidden {
     transition: none !important;
   }
 }
