@@ -13,137 +13,140 @@ const typingPhrases = [
 
 const stats = [
   {
-    value: "10,000+",
-    title: "Families Helped",
-    icon: "family",
+    icon: "years",
+    value: 15,
+    suffix: "+",
+    label: "Years",
+    sub: "of fertility care experience",
   },
   {
-    value: "15+ Years",
-    title: "Of Excellence",
-    icon: "award",
+    icon: "families",
+    value: 5000,
+    suffix: "+",
+    label: "successful families",
+    sub: "",
+    format: true,
   },
   {
-    value: "Advanced",
-    title: "Fertility Lab",
-    icon: "lab",
+    icon: "satisfaction",
+    value: 98,
+    suffix: "%",
+    label: "patient satisfaction",
+    sub: "",
   },
   {
-    value: "High Success",
-    title: "Rates",
-    icon: "shield",
+    icon: "patient",
+    value: null,
+    suffix: "",
+    label: "Patient-First",
+    sub: "compassionate, personalised care",
   },
 ];
 
-const features = [
-  {
-    title: "Expert Specialists",
-    text: "Highly experienced fertility experts dedicated to you.",
-    icon: "specialist",
-  },
-  {
-    title: "Advanced Technology",
-    text: "Cutting-edge technology for higher success rates.",
-    icon: "technology",
-  },
-  {
-    title: "Personalized Care",
-    text: "Tailored treatment plans for your unique journey.",
-    icon: "care",
-  },
-  {
-    title: "Complete Confidentiality",
-    text: "Your privacy & comfort are our top priority.",
-    icon: "lock",
-  },
-];
-
-function FeatureIcon({ type }: { type: string }) {
-  if (type === "specialist") {
+function StatIcon({ type }: { type: string }) {
+  if (type === "years") {
     return (
-      <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
-        <circle cx="24" cy="16" r="7" />
-        <path d="M10 39c1.8-8 6.5-12 14-12s12.2 4 14 12" />
-        <path d="M8 20c2-2 4-3 7-3M40 20c-2-2-4-3-7-3" />
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <circle cx="12" cy="8" r="3.2" />
+        <path d="M5.5 19.5c1.2-3.8 3.6-5.5 6.5-5.5s5.3 1.7 6.5 5.5" />
       </svg>
     );
   }
-
-  if (type === "technology") {
+  if (type === "families") {
     return (
-      <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
-        <path d="M16 9h10" />
-        <path d="M20 9v8l-8 15h24l-8-15V9" />
-        <path d="M16 26h16" />
-        <path d="M9 37h30" />
-        <path d="M29 12l5-5" />
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 20s-6.5-4-6.5-8.8A3.9 3.9 0 0 1 12 7.8a3.9 3.9 0 0 1 6.5 3.4C18.5 16 12 20 12 20Z" />
       </svg>
     );
   }
-
-  if (type === "care") {
+  if (type === "satisfaction") {
     return (
-      <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
-        <path d="M8 29c7-5 14-4 20 1 4 3 8 3 12 0" />
-        <path d="M8 29v8c7-3 14-2 20 2 4 2 8 2 12-1" />
-        <path d="M24 13c-5-7-14 1-8 7l8 8 8-8c6-6-3-14-8-7Z" />
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 3.5 18.5 6v5.2c0 4.6-2.8 8.2-6.5 9.8-3.7-1.6-6.5-5.2-6.5-9.8V6L12 3.5Z" />
+        <path d="m9 12 2 2 4-4" />
       </svg>
     );
   }
-
   return (
-    <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
-      <rect x="13" y="21" width="22" height="19" rx="4" />
-      <path d="M18 21v-5a6 6 0 0 1 12 0v5" />
-      <path d="M24 28v5" />
-      <circle cx="24" cy="27.5" r="1.5" />
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M12 21c0-4 2.5-6 4.5-8.2 1.5-1.6 2-3 1.4-4.6-.5-1.4-1.8-2.2-3.4-2.2-1.2 0-2.2.5-2.5 1.4-.3-.9-1.3-1.4-2.5-1.4-1.6 0-2.9.8-3.4 2.2-.6 1.6-.1 3 1.4 4.6C9.5 15 12 17 12 21Z" />
+      <path d="M12 21V12" />
     </svg>
   );
 }
 
-function StatIcon({ type }: { type: string }) {
-  if (type === "family") {
-    return (
-      <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
-        <circle cx="18" cy="17" r="6" />
-        <circle cx="31" cy="18" r="5" />
-        <path d="M7 38c1-7 5-11 11-11s10 4 11 11" />
-        <path d="M27 29c6 0 10 3 11 9" />
-      </svg>
-    );
-  }
+function useCountUp(target: number | null, active: boolean, duration = 1600) {
+  const [count, setCount] = useState(0);
 
-  if (type === "award") {
-    return (
-      <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
-        <path d="M16 7h16v12c0 6-3 10-8 10s-8-4-8-10V7Z" />
-        <path d="m18 29-3 12 9-5 9 5-3-12" />
-        <path d="M20 13h8M24 10v6" />
-      </svg>
-    );
-  }
+  useEffect(() => {
+    if (target === null || !active) return;
 
-  if (type === "lab") {
-    return (
-      <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
-        <path d="M18 7h12" />
-        <path d="M21 7v11L12 37h24l-9-19V7" />
-        <path d="M16 29h16" />
-        <circle cx="25" cy="24" r="2" />
-      </svg>
-    );
-  }
+    let start: number | null = null;
+    let frame = 0;
+
+    const step = (ts: number) => {
+      if (start === null) start = ts;
+      const progress = Math.min((ts - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setCount(Math.floor(eased * target));
+      if (progress < 1) frame = requestAnimationFrame(step);
+    };
+
+    frame = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(frame);
+  }, [target, active, duration]);
+
+  return count;
+}
+
+function StatItem({
+  item,
+  active,
+}: {
+  item: (typeof stats)[0];
+  active: boolean;
+}) {
+  const count = useCountUp(item.value, active);
+
+  const display =
+    item.value === null
+      ? null
+      : item.format
+        ? count.toLocaleString()
+        : String(count);
+
+  const title =
+    item.value === null
+      ? item.label
+      : item.icon === "years"
+        ? `${display}${item.suffix} ${item.label}`
+        : `${display}${item.suffix}`;
+
+  const subtitle =
+    item.value === null
+      ? item.sub
+      : item.icon === "years"
+        ? item.sub
+        : item.label;
 
   return (
-    <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
-      <path d="M24 6 38 11v10c0 9-5 16-14 21C15 37 10 30 10 21V11l14-5Z" />
-      <path d="m17 24 5 5 10-11" />
-    </svg>
+    <div className={styles.statCard}>
+      <div className={styles.statIconWrap}>
+        <StatIcon type={item.icon} />
+      </div>
+      <div className={styles.statBody}>
+        <strong>{title}</strong>
+        <span>{subtitle}</span>
+      </div>
+    </div>
   );
 }
 
 export default function Hero() {
   const heroRef = useRef<HTMLElement | null>(null);
   const cursorRef = useRef<HTMLDivElement | null>(null);
+  const statsRef = useRef<HTMLDivElement | null>(null);
+  const [statsActive, setStatsActive] = useState(false);
 
   const [phraseIndex, setPhraseIndex] = useState(0);
   const [typedText, setTypedText] = useState("");
@@ -152,19 +155,15 @@ export default function Hero() {
   useEffect(() => {
     const hero = heroRef.current;
     const cursor = cursorRef.current;
-
     if (!hero || !cursor) return;
 
     let animationFrame = 0;
 
     const handleMouseMove = (event: MouseEvent) => {
       const rect = hero.getBoundingClientRect();
-
       const x = event.clientX - rect.left;
       const y = event.clientY - rect.top;
-
       cancelAnimationFrame(animationFrame);
-
       animationFrame = requestAnimationFrame(() => {
         cursor.style.transform = `translate3d(${x - 26}px, ${y - 26}px, 0)`;
       });
@@ -190,33 +189,22 @@ export default function Hero() {
       hero.removeEventListener("mouseleave", handleMouseLeave);
     };
   }, []);
+
   useEffect(() => {
     const phrase = typingPhrases[phraseIndex];
-
     const typingSpeed = isDeleting ? 55 : 95;
-
-    const pause =
-      !isDeleting && typedText === phrase
-        ? 1700
-        : 0;
+    const pause = !isDeleting && typedText === phrase ? 1700 : 0;
 
     const timer = window.setTimeout(() => {
       if (!isDeleting && typedText === phrase) {
         setIsDeleting(true);
         return;
       }
-
       if (isDeleting && typedText === "") {
         setIsDeleting(false);
-
-        setPhraseIndex(
-          (current) =>
-            (current + 1) % typingPhrases.length
-        );
-
+        setPhraseIndex((current) => (current + 1) % typingPhrases.length);
         return;
       }
-
       setTypedText(
         isDeleting
           ? phrase.slice(0, typedText.length - 1)
@@ -227,18 +215,28 @@ export default function Hero() {
     return () => window.clearTimeout(timer);
   }, [typedText, isDeleting, phraseIndex]);
 
-  return (
-   <section
-  ref={heroRef}
-  className={styles.hero}
-  id="hero"
->
-      {/* =================================================
-          BACKGROUND IMAGE
-      ================================================= */}
+  useEffect(() => {
+    const el = statsRef.current;
+    if (!el) return;
 
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setStatsActive(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.35 }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <section ref={heroRef} className={styles.hero} id="hero">
       <Image
-        src="/public/bg1.png"
+        src="/bg1.png"
         alt=""
         fill
         priority
@@ -247,38 +245,22 @@ export default function Hero() {
       />
 
       <div className={styles.backgroundOverlay} />
-
       <div className={styles.backgroundGlow} />
       <div className={styles.backgroundGlowTwo} />
-
       <div className={styles.noise} />
-
-      {/* =================================================
-          DECORATIVE ORBITS
-      ================================================= */}
 
       <div className={styles.orbitLarge} />
       <div className={styles.orbitSmall} />
 
-      {/* =================================================
-          HERO CONTENT
-      ================================================= */}
-
       <div className={`container ${styles.container}`}>
         <div className={styles.heroContent}>
           <div className={styles.eyebrow}>
-            <span className={styles.heartIcon}>
-              ♡
-            </span>
-
-            <span>
-              Compassionate care. Advanced science. Better tomorrows.
-            </span>
+            <span className={styles.heartIcon}>♡</span>
+            <span>Compassionate care. Advanced science. Better tomorrows.</span>
           </div>
 
           <h1 className={styles.heading}>
             <span>Turning Hope</span>
-
             <span className={styles.headingSecond}>
               Into{" "}
               <em className={styles.scriptText}>
@@ -299,23 +281,26 @@ export default function Hero() {
             and unwavering support — every step of the way.
           </div>
 
-          {/* =================================================
-              ONLY ONE HERO BUTTON
-          ================================================= */}
-
           <div className={styles.heroAction}>
-            <Link
-              href="/book-consultation"
-              className={styles.mainBooking}
-            >
-              <span>Book Your Consultation</span>
-
+            <Link href="/book-consultation" className={styles.mainBooking}>
+              <span>Book a consultation</span>
               <i>
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  aria-hidden="true"
-                >
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path
+                    d="M5 12h14M13 6l6 6-6 6"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </i>
+            </Link>
+
+            <Link href="#treatments" className={styles.secondaryBtn}>
+              <span>Explore treatments</span>
+              <i>
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
                   <path
                     d="M5 12h14M13 6l6 6-6 6"
                     stroke="currentColor"
@@ -327,89 +312,27 @@ export default function Hero() {
               </i>
             </Link>
           </div>
-
-          {/* =================================================
-              STATS
-          ================================================= */}
-
-          <div className={styles.stats}>
-            {stats.map((stat, index) => (
-              <div
-                className={styles.stat}
-                key={stat.title}
-                style={
-                  {
-                    "--delay": `${index * 0.12}s`,
-                  } as React.CSSProperties
-                }
-              >
-                <div className={styles.statIcon}>
-                  <StatIcon type={stat.icon} />
-                </div>
-
-                <div className={styles.statText}>
-                  <strong>{stat.value}</strong>
-                  <span>{stat.title}</span>
-                </div>
-
-                {index !== stats.length - 1 && (
-                  <span className={styles.statDivider} />
-                )}
-              </div>
-            ))}
-          </div>
         </div>
+      </div>
 
-        {/* =================================================
-            QUOTE CARD
-        ================================================= */}
-
-
-        {/* =================================================
-            FEATURE STRIP
-        ================================================= */}
-
-        <div className={styles.featureStrip}>
-          {features.map((feature, index) => (
-            <div
-              className={styles.feature}
-              key={feature.title}
-              style={
-                {
-                  "--delay": `${0.35 + index * 0.12}s`,
-                } as React.CSSProperties
-              }
-            >
-              <div className={styles.featureIcon}>
-                <FeatureIcon type={feature.icon} />
-              </div>
-
-              <div className={styles.featureContent}>
-                <h3>{feature.title}</h3>
-                <p>{feature.text}</p>
-              </div>
-
-              {index !== features.length - 1 && (
-                <span className={styles.featureDivider} />
-              )}
-            </div>
+      {/* Overlapping stats banner */}
+      <div className={styles.statsBannerWrap}>
+        <div ref={statsRef} className={styles.statsBanner}>
+          {stats.map((item) => (
+            <StatItem key={item.icon} item={item} active={statsActive} />
           ))}
         </div>
       </div>
 
-      {/* =================================================
-          CURSOR DETAIL
-      ================================================= */}
-
-     <div
-  ref={cursorRef}
-  className={styles.cursorDetail}
-  aria-hidden="true"
->
-  <span />
-  <span />
-  <span className={styles.cursorDot} />
-</div>
+      <div
+        ref={cursorRef}
+        className={styles.cursorDetail}
+        aria-hidden="true"
+      >
+        <span />
+        <span />
+        <span className={styles.cursorDot} />
+      </div>
     </section>
   );
 }
