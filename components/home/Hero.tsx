@@ -238,7 +238,7 @@ export default function Hero() {
       ================================================= */}
 
       <Image
-        src="/bg1.jpg"
+        src="/public/bg1.png"
         alt=""
         fill
         priority
