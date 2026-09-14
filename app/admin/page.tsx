@@ -110,7 +110,7 @@ export default function AdminDashboard() {
                   </td>
                   <td>
                     <Link
-                      href={`/admin/bookings/${b.id}`}
+                      href={`/admin/bookings?id=${b.id}`}
                       className={styles.viewBtn}
                     >
                       View
