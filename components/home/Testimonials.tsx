@@ -1,5 +1,6 @@
 "use client";
 
+import { useRef, useState, useEffect, useCallback } from "react";
 import styles from "./Testimonials.module.css";
 
 const reviews = [
@@ -62,21 +63,76 @@ function ReviewCard({
 }
 
 export default function Testimonials() {
-  const loop = [...reviews, ...reviews];
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [canPrev, setCanPrev] = useState(false);
+  const [canNext, setCanNext] = useState(true);
+
+  const updateArrows = useCallback(() => {
+    const el = trackRef.current;
+    if (!el) return;
+    const { scrollLeft, scrollWidth, clientWidth } = el;
+    setCanPrev(scrollLeft > 4);
+    setCanNext(scrollLeft + clientWidth < scrollWidth - 4);
+  }, []);
+
+  useEffect(() => {
+    const el = trackRef.current;
+    if (!el) return;
+    updateArrows();
+    el.addEventListener("scroll", updateArrows, { passive: true });
+    window.addEventListener("resize", updateArrows);
+    return () => {
+      el.removeEventListener("scroll", updateArrows);
+      window.removeEventListener("resize", updateArrows);
+    };
+  }, [updateArrows]);
+
+  const scrollByCard = (dir: -1 | 1) => {
+    const el = trackRef.current;
+    if (!el) return;
+    const card = el.querySelector(`.${styles.card}`) as HTMLElement | null;
+    const gap = 18;
+    const amount = card ? card.offsetWidth + gap : 320;
+    el.scrollBy({ left: dir * amount, behavior: "smooth" });
+  };
 
   return (
     <section className={styles.section} id="testimonials">
-      <div className={styles.header}>
-        <span className={styles.eyebrow}>Patient Testimonials</span>
-        <h2>Real stories. Lasting hope.</h2>
-        <p>Hear from the people who have trusted us with their dreams.</p>
-      </div>
+      <div className={styles.inner}>
+        <div className={styles.header}>
+          <span className={styles.eyebrow}>Patient Testimonials</span>
+          <h2>Real stories. Lasting hope.</h2>
+          <p>Hear from the people who have trusted us with their dreams.</p>
+        </div>
 
-      <div className={styles.marquee}>
-        <div className={styles.track}>
-          {loop.map((item, i) => (
-            <ReviewCard key={`${item.name}-${i}`} {...item} />
-          ))}
+        <div className={styles.sliderWrap}>
+          <button
+            type="button"
+            className={`${styles.arrow} ${styles.arrowPrev}`}
+            onClick={() => scrollByCard(-1)}
+            disabled={!canPrev}
+            aria-label="Previous testimonials"
+          >
+            ‹
+          </button>
+
+          <div className={styles.viewport}>
+            <div ref={trackRef} className={styles.track}>
+              {reviews.map((item) => (
+                <ReviewCard key={item.name} {...item} />
+              ))}
+            </div>
+          </div>
+
+          <button
+            type="button"
+            className={`${styles.arrow} ${styles.arrowNext}`}
+            onClick={() => scrollByCard(1)}
+            disabled={!canNext}
+            aria-label="Next testimonials"
+          >
+            ›
+          </button>
         </div>
       </div>
     </section>
