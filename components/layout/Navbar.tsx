@@ -6,11 +6,11 @@ import { useEffect, useState } from "react";
 import styles from "./Navbar.module.css";
 
 const navLinks = [
-  { label: "Home", href: "#home" },
-  { label: "Treatments", href: "#treatments" },
-  { label: "Consultant", href: "#consultant" },
-  { label: "FAQs", href: "#faqs" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", href: "/#home" },
+  { label: "Treatments", href: "/#treatments" },
+  { label: "Consultant", href: "/#consultant" },
+  { label: "FAQs", href: "/#faqs" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 export default function Navbar() {
@@ -59,7 +59,7 @@ export default function Navbar() {
 
         {/* Logo */}
         <Link
-          href="#home"
+          href="/#home"
           className={styles.logo}
           onClick={closeMenu}
           aria-label="Fertility Clinic by AJ"
@@ -99,7 +99,7 @@ export default function Navbar() {
 
         {/* Desktop CTA */}
         <Link
-          href="#contact"
+          href="/book-consultation"
           className={styles.cta}
           onClick={closeMenu}
         >
@@ -157,7 +157,7 @@ export default function Navbar() {
 
         {/* Mobile CTA */}
         <Link
-          href="#contact"
+          href="/book-consultation"
           className={styles.mobileCta}
           onClick={closeMenu}
         >

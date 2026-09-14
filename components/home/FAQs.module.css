@@ -179,12 +179,16 @@
 }
 
 .bannerArt {
-  min-height: 160px;
-  border-radius: 18px;
-  background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.4), transparent),
-    url("/11.jpg") center / cover no-repeat;
   position: relative;
+  min-height: 200px;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #eef2f5;
+}
+
+.bannerImage {
+  object-fit: cover;
+  object-position: center;
 }
 
 .note {
