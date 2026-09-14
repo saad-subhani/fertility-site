@@ -2478,3 +2478,200 @@
     font-size: 10px;
   }
 }
+
+/* =====================================================
+   MOBILE FIXES – readable + layout + image + stats
+===================================================== */
+
+@media (max-width: 850px) {
+  .hero {
+    min-height: auto;
+    padding-bottom: 0;
+    overflow: visible;
+  }
+
+  .backgroundImage {
+    object-position: 65% center !important;
+  }
+
+  .backgroundOverlay {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(5, 18, 31, 0.72) 0%,
+        rgba(5, 20, 33, 0.55) 40%,
+        rgba(4, 16, 27, 0.88) 100%
+      ),
+      linear-gradient(
+        90deg,
+        rgba(5, 18, 31, 0.85) 0%,
+        rgba(5, 20, 33, 0.45) 60%,
+        rgba(5, 17, 28, 0.35) 100%
+      );
+  }
+
+  .container {
+    padding: 110px 20px 48px;
+  }
+
+  .heading {
+    font-size: clamp(36px, 9vw, 48px) !important;
+    line-height: 1.05 !important;
+  }
+
+  .description {
+    font-size: 15px !important;
+    line-height: 1.65 !important;
+    max-width: 100%;
+  }
+
+  .eyebrow > span:last-child {
+    font-size: 12px !important;
+    letter-spacing: 0.06em !important;
+  }
+
+  .mainBooking {
+    min-height: 52px;
+    font-size: 14px !important;
+    padding-left: 20px;
+  }
+
+  .secondaryBtn {
+    font-size: 14px !important;
+  }
+
+  /* Stats banner – stay overlapping but readable */
+  .statsBannerWrap {
+    position: relative;
+    transform: none;
+    bottom: auto;
+    margin-top: -28px;
+    margin-bottom: 8px;
+    padding: 0 16px;
+    z-index: 30;
+  }
+
+  .statsBanner {
+    grid-template-columns: 1fr 1fr;
+    border-radius: 20px;
+    gap: 0;
+  }
+
+  .statCard {
+    min-height: 96px;
+    padding: 16px 12px;
+  }
+
+  .statCard:nth-child(2)::after {
+    display: none;
+  }
+
+  .statIconWrap {
+    width: 40px;
+    height: 40px;
+  }
+
+  .statIconWrap svg {
+    width: 36px;
+    height: 36px;
+  }
+
+  .statBody strong {
+    font-size: 15px !important;
+  }
+
+  .statBody span {
+    font-size: 12px !important;
+    max-width: 140px;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero {
+    min-height: 100svh;
+  }
+
+  .container {
+    padding: 100px 16px 40px;
+  }
+
+  .heading {
+    font-size: clamp(32px, 10vw, 42px) !important;
+  }
+
+  .description {
+    font-size: 14px !important;
+    margin-top: 16px;
+  }
+
+  .eyebrow > span:last-child {
+    font-size: 11px !important;
+  }
+
+  .heartIcon {
+    font-size: 18px !important;
+  }
+
+  .mainBooking {
+    width: 100%;
+    justify-content: space-between;
+    font-size: 13.5px !important;
+  }
+
+  .secondaryBtn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .heroAction {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .statsBannerWrap {
+    margin-top: -20px;
+    padding: 0 12px;
+  }
+
+  .statsBanner {
+    border-radius: 18px;
+  }
+
+  .statCard {
+    min-height: 88px;
+    padding: 14px 10px;
+    gap: 6px;
+  }
+
+  .statBody strong {
+    font-size: 14px !important;
+  }
+
+  .statBody span {
+    font-size: 11px !important;
+  }
+}
+
+@media (max-width: 390px) {
+  .container {
+    padding: 92px 14px 36px;
+  }
+
+  .heading {
+    font-size: 30px !important;
+  }
+
+  .description {
+    font-size: 13.5px !important;
+  }
+
+  .statBody strong {
+    font-size: 13px !important;
+  }
+
+  .statBody span {
+    font-size: 10.5px !important;
+  }
+}

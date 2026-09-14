@@ -270,3 +270,267 @@
     font-size: 0.8rem;
   }
 }
+
+/* Pending & Clinic badges */
+.pending {
+  background: #fff3e0;
+  color: #e65100;
+}
+
+.clinic {
+  background: #e3f2fd;
+  color: #1565c0;
+}
+
+/* Toolbar – filters + search */
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.filterBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border: 1px solid #e0d5cc;
+  background: #fff;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-family: inherit;
+  font-weight: 500;
+  color: #5c4a3f;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.filterBtn:hover {
+  background: #faf6f2;
+  border-color: #c4b5a8;
+}
+
+.filterActive {
+  background: #2c1810;
+  border-color: #2c1810;
+  color: #fff;
+}
+
+.filterActive:hover {
+  background: #3d2418;
+  border-color: #3d2418;
+  color: #fff;
+}
+
+.filterCount {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  background: rgba(0, 0, 0, 0.08);
+}
+
+.filterActive .filterCount {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.searchForm {
+  display: flex;
+  gap: 8px;
+}
+
+.searchInput {
+  padding: 9px 14px;
+  border: 1px solid #e0d5cc;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-family: inherit;
+  min-width: 220px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.searchInput:focus {
+  border-color: #8b5e3c;
+}
+
+.searchBtn {
+  padding: 9px 16px;
+  background: #8b5e3c;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-family: inherit;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.searchBtn:hover {
+  background: #6f4a2f;
+}
+
+/* Status update actions */
+.statusActions {
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid #f0e8e0;
+}
+
+.statusLabel {
+  margin: 0 0 10px;
+  font-size: 0.85rem;
+  color: #7a6a5f;
+  font-weight: 500;
+}
+
+.statusBtns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.statusBtn {
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  font-size: 0.85rem;
+  font-family: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.15s;
+}
+
+.statusBtn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.statusBtn:not(:disabled):hover {
+  transform: translateY(-1px);
+}
+
+.btnPending {
+  background: #fff3e0;
+  color: #e65100;
+  border-color: #ffe0b2;
+}
+
+.btnPaid {
+  background: #e6f7ed;
+  color: #1a7a45;
+  border-color: #b2dfdb;
+}
+
+.btnClinic {
+  background: #e3f2fd;
+  color: #1565c0;
+  border-color: #bbdefb;
+}
+
+/* Screenshot thumbnail – clickable */
+.screenshotThumb {
+  max-width: 280px;
+  max-height: 200px;
+  border-radius: 10px;
+  border: 1px solid #e0d5cc;
+  cursor: zoom-in;
+  transition: box-shadow 0.2s, transform 0.2s;
+  object-fit: cover;
+}
+
+.screenshotThumb:hover {
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.15);
+  transform: scale(1.02);
+}
+
+/* Fancy Lightbox */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.88);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  animation: fadeIn 0.2s ease;
+  cursor: zoom-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.lightboxImg {
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  object-fit: contain;
+  cursor: default;
+  animation: scaleIn 0.25s ease;
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.92); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.lightboxClose {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  width: 44px;
+  height: 44px;
+  border: none;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  font-size: 1.75rem;
+  line-height: 1;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.lightboxClose:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+@media (max-width: 640px) {
+  .toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .searchForm {
+    width: 100%;
+  }
+
+  .searchInput {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .detailGrid {
+    grid-template-columns: 1fr;
+  }
+}

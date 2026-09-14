@@ -1179,3 +1179,84 @@
     font-size: 19px;
   }
 }
+
+/* =====================================================
+   MOBILE FIXES – modal scroll + section space + readable
+===================================================== */
+
+@media (max-width: 850px) {
+  .section {
+    padding-top: 48px !important;
+  }
+}
+
+@media (max-width: 560px) {
+  .modalOverlay {
+    padding: 12px;
+    align-items: flex-end;
+    place-items: end center;
+  }
+
+  .modal {
+    width: 100%;
+    max-height: 88vh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 20px 20px 0 0;
+    margin-bottom: 0;
+  }
+
+  .modalHeader {
+    padding: 18px 18px 0;
+    position: sticky;
+    top: 0;
+    background: #fff;
+    z-index: 2;
+  }
+
+  .modalBody {
+    padding: 12px 18px 8px;
+  }
+
+  .modalFooter {
+    position: sticky;
+    bottom: 0;
+    background: #fff;
+    padding: 12px 18px 20px;
+    flex-direction: column;
+  }
+
+  .modalPrimary,
+  .modalSecondary {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .modalHeader h3 {
+    font-size: 18px;
+  }
+
+  .modalOverview,
+  .modalList li {
+    font-size: 14px;
+  }
+
+  .cardTitle {
+    font-size: 14px !important;
+  }
+
+  .cardDesc {
+    font-size: 12px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding-top: 40px !important;
+  }
+
+  .header h2 {
+    font-size: clamp(26px, 7vw, 34px) !important;
+  }
+}

@@ -18,8 +18,15 @@ type Booking = {
   consultation_type: string;
   payment_method: string;
   payment_screenshot: string | null;
+  status: "pending" | "paid" | "paid_at_clinic";
   is_paid: number;
   created_at: string;
+};
+
+const STATUS_LABELS: Record<string, string> = {
+  pending: "Pending",
+  paid: "Paid",
+  paid_at_clinic: "Pay at Clinic",
 };
 
 export default function BookingDetailPage() {
@@ -30,8 +37,10 @@ export default function BookingDetailPage() {
   const [booking, setBooking] = useState<Booking | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [updating, setUpdating] = useState(false);
+  const [lightbox, setLightbox] = useState(false);
 
-  useEffect(() => {
+  const load = () => {
     const token = localStorage.getItem("adminToken");
     if (!token) {
       router.replace("/admin/login");
@@ -53,7 +62,39 @@ export default function BookingDetailPage() {
       })
       .catch((err) => setError(err.message || "Failed to load"))
       .finally(() => setLoading(false));
+  };
+
+  useEffect(() => {
+    load();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id, router]);
+
+  const updateStatus = async (status: string) => {
+    if (!booking) return;
+    const token = localStorage.getItem("adminToken");
+    if (!token) return;
+
+    setUpdating(true);
+    try {
+      const res = await fetch(`${API}/api/admin/update-status.php`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ id: booking.id, status }),
+      });
+      const data = await res.json();
+      if (!data.success) throw new Error(data.message);
+      setBooking((prev) =>
+        prev ? { ...prev, status: status as Booking["status"], is_paid: status === "paid" ? 1 : 0 } : prev
+      );
+    } catch (err) {
+      alert(err instanceof Error ? err.message : "Update failed");
+    } finally {
+      setUpdating(false);
+    }
+  };
 
   if (loading) {
     return <div className={styles.empty}>Loading...</div>;
@@ -63,6 +104,13 @@ export default function BookingDetailPage() {
     return <div className={styles.empty}>{error || "Not found"}</div>;
   }
 
+  const statusClass =
+    booking.status === "paid"
+      ? styles.paid
+      : booking.status === "paid_at_clinic"
+      ? styles.clinic
+      : styles.pending;
+
   return (
     <>
       <Link href="/admin" className={styles.backLink}>
@@ -70,16 +118,20 @@ export default function BookingDetailPage() {
       </Link>
 
       <div className={styles.detailCard}>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            flexWrap: "wrap",
+            gap: 12,
+          }}
+        >
           <h1 style={{ margin: 0, fontSize: "1.5rem", color: "#2c1810" }}>
             Booking #{booking.id}
           </h1>
-          <span
-            className={`${styles.badge} ${
-              booking.is_paid ? styles.paid : styles.free
-            }`}
-          >
-            {booking.is_paid ? "Paid" : "Free"}
+          <span className={`${styles.badge} ${statusClass}`}>
+            {STATUS_LABELS[booking.status] || booking.status}
           </span>
         </div>
 
@@ -118,26 +170,90 @@ export default function BookingDetailPage() {
           </div>
           <div className={styles.detailItem}>
             <span>Booked At</span>
-            <strong>
-              {new Date(booking.created_at).toLocaleString()}
-            </strong>
+            <strong>{new Date(booking.created_at).toLocaleString()}</strong>
           </div>
         </div>
 
+        {/* Status actions */}
+        <div className={styles.statusActions}>
+          <p className={styles.statusLabel}>Update Status:</p>
+          <div className={styles.statusBtns}>
+            <button
+              type="button"
+              disabled={updating || booking.status === "pending"}
+              className={`${styles.statusBtn} ${styles.btnPending}`}
+              onClick={() => updateStatus("pending")}
+            >
+              Pending
+            </button>
+            <button
+              type="button"
+              disabled={updating || booking.status === "paid"}
+              className={`${styles.statusBtn} ${styles.btnPaid}`}
+              onClick={() => updateStatus("paid")}
+            >
+              Mark as Paid
+            </button>
+            <button
+              type="button"
+              disabled={updating || booking.status === "paid_at_clinic"}
+              className={`${styles.statusBtn} ${styles.btnClinic}`}
+              onClick={() => updateStatus("paid_at_clinic")}
+            >
+              Pay at Clinic
+            </button>
+          </div>
+        </div>
+
+        {/* Payment Screenshot with Lightbox */}
         {booking.payment_screenshot && (
           <div className={styles.screenshotBox}>
             <h3>Payment Screenshot</h3>
-            <p style={{ margin: "0 0 8px", color: "#7a6a5f", fontSize: "0.85rem" }}>
-              File: {booking.payment_screenshot}
+            <p
+              style={{
+                margin: "0 0 12px",
+                color: "#7a6a5f",
+                fontSize: "0.85rem",
+              }}
+            >
+              Click image to view full size
             </p>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={`${API}/uploads/payments/${booking.payment_screenshot}`}
               alt="Payment screenshot"
+              className={styles.screenshotThumb}
+              onClick={() => setLightbox(true)}
             />
           </div>
         )}
       </div>
+
+      {/* Fancy Lightbox */}
+      {lightbox && booking.payment_screenshot && (
+        <div
+          className={styles.lightbox}
+          onClick={() => setLightbox(false)}
+          role="dialog"
+          aria-modal="true"
+        >
+          <button
+            type="button"
+            className={styles.lightboxClose}
+            onClick={() => setLightbox(false)}
+            aria-label="Close"
+          >
+            ×
+          </button>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={`${API}/uploads/payments/${booking.payment_screenshot}`}
+            alt="Payment screenshot full"
+            className={styles.lightboxImg}
+            onClick={(e) => e.stopPropagation()}
+          />
+        </div>
+      )}
     </>
   );
 }

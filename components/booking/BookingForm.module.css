@@ -1719,3 +1719,38 @@
     grid-template-columns: 1fr 1fr;
   }
 }
+/* Mobile readable text */
+@media (max-width: 650px) {
+  .stepLabel,
+  .fieldLabel,
+  label {
+    font-size: 13px !important;
+  }
+
+  input,
+  select,
+  textarea,
+  .input,
+  .select {
+    font-size: 16px !important; /* prevents iOS zoom */
+  }
+
+  .stepTitle,
+  h2, h3 {
+    font-size: 20px !important;
+  }
+
+  .helper,
+  .hint,
+  small {
+    font-size: 12px !important;
+  }
+
+  button,
+  .btn,
+  .nextBtn,
+  .prevBtn {
+    font-size: 14px !important;
+    min-height: 48px;
+  }
+}
