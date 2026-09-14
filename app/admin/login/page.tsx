@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import styles from "./login.module.css";
 
@@ -42,6 +43,11 @@ export default function AdminLoginPage() {
 
   return (
     <div className={styles.page}>
+      <Link href="/" className={styles.backLink} aria-label="Back to clinic website">
+        <span aria-hidden="true">←</span>
+        Back to Clinic
+      </Link>
+
       <form className={styles.card} onSubmit={handleSubmit}>
         <h1>Admin Login</h1>
         <p>Sign in to manage consultation bookings</p>

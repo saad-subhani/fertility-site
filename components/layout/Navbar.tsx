@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import styles from "./Navbar.module.css";
 
 const navLinks = [
@@ -14,8 +15,10 @@ const navLinks = [
 ];
 
 export default function Navbar() {
+  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const useSolidNavbar = pathname !== "/";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -52,7 +55,7 @@ export default function Navbar() {
   return (
     <header
       className={`${styles.navbar} ${
-        scrolled ? styles.navbarScrolled : ""
+        scrolled || useSolidNavbar ? styles.navbarScrolled : ""
       }`}
     >
       <div className={styles.inner}>
