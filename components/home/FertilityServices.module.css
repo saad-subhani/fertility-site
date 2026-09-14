@@ -244,7 +244,20 @@
 ===================================================== */
 
 .serviceNumber {
-  display: none !important;
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  z-index: 2;
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.22);
+  letter-spacing: -0.04em;
+  pointer-events: none;
+}
+
+.card:hover .serviceNumber {
+  color: rgba(255, 255, 255, 0.35);
 }
 
 
