@@ -109,9 +109,17 @@
 
 .stepWrap {
   display: flex;
-  align-items: center;
+  align-items: stretch;
   flex: 1;
   min-width: 0;
+}
+
+.stepWrap .card {
+  height: 100%;
+}
+
+.stepWrap .arrow {
+  align-self: center;
 }
 
 .card {
