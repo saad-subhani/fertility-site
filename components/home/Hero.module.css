@@ -1601,9 +1601,13 @@
 
   .heroAction {
     margin-top: 25px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
   }
 
   .mainBooking {
+    min-width: 0;
     min-height: 55px;
 
     padding-left: 20px;
@@ -1616,6 +1620,15 @@
   .mainBooking i {
     width: 37px;
     height: 37px;
+  }
+
+  .secondaryBtn {
+    min-width: 0;
+    min-height: 55px;
+    justify-content: center;
+    padding: 5px 12px;
+    gap: 7px;
+    font-size: 9px;
   }
 
   .stats {

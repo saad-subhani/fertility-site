@@ -1,6 +1,9 @@
 .section {
   padding: 80px 0 100px;
-  background: #ffffff;
+  background:
+    radial-gradient(circle at 12% 16%, rgba(95, 160, 185, 0.2), transparent 28%),
+    radial-gradient(circle at 88% 78%, rgba(224, 105, 139, 0.14), transparent 30%),
+    #102f52;
   overflow: hidden;
   width: 100%;
   max-width: 100%;
@@ -30,7 +33,7 @@
 
 .header h2 {
   margin: 0 0 10px;
-  color: #143a58;
+  color: #ffffff;
   font-size: clamp(26px, 3.2vw, 36px);
   font-weight: 700;
   letter-spacing: -0.03em;
@@ -38,7 +41,7 @@
 
 .header p {
   margin: 0;
-  color: #6b7c85;
+  color: rgba(255, 255, 255, 0.74);
   font-size: 15px;
 }
 
@@ -175,19 +178,39 @@
   }
 
   .sliderWrap {
-    gap: 8px;
+    display: block;
+  }
+
+  .viewport {
+    width: 100%;
   }
 
   .arrow {
+    position: absolute;
+    top: 50%;
+    z-index: 2;
     width: 38px;
     height: 38px;
     font-size: 24px;
+    transform: translateY(-50%);
+  }
+
+  .arrow:hover:not(:disabled) {
+    transform: translateY(-50%) scale(1.05);
+  }
+
+  .arrowPrev {
+    left: 6px;
+  }
+
+  .arrowNext {
+    right: 6px;
   }
 
   .card {
     /* 1 card on mobile */
     width: 100%;
-    padding: 20px 18px 18px;
+    padding: 24px 46px 22px;
   }
 
   .quote {

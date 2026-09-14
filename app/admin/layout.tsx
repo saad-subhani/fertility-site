@@ -20,7 +20,7 @@ export default function AdminLayout({
   const pathname = usePathname();
   const router = useRouter();
   const token = useSyncExternalStore(subscribeToStorage, getToken, getServerToken);
-  const isLogin = pathname === "/admin/login";
+  const isLogin = pathname.replace(/\/$/, "") === "/admin/login";
   const ready = isLogin || !!token;
 
   useEffect(() => {

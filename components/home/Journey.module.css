@@ -3,9 +3,9 @@
   overflow: hidden;
   padding: 88px 0 96px;
   background:
-    radial-gradient(circle at 10% 18%, rgba(169, 210, 189, 0.12), transparent 30%),
-    radial-gradient(circle at 90% 75%, rgba(183, 210, 237, 0.14), transparent 28%),
-    #fafbff;
+    radial-gradient(circle at 10% 18%, rgba(95, 160, 185, 0.22), transparent 30%),
+    radial-gradient(circle at 90% 75%, rgba(224, 105, 139, 0.14), transparent 28%),
+    #102f52;
 }
 
 .blobOne,
@@ -63,7 +63,7 @@
 
 .title {
   margin: 0 0 16px;
-  color: #143a58;
+  color: #ffffff;
   font-family: "DM Sans", sans-serif;
   font-size: clamp(28px, 3.4vw, 40px);
   font-weight: 700;
@@ -73,7 +73,7 @@
 
 .desc {
   margin: 0 0 28px;
-  color: #5a6b74;
+  color: rgba(255, 255, 255, 0.76);
   font-family: "DM Sans", sans-serif;
   font-size: 15px;
   line-height: 1.7;
@@ -86,13 +86,13 @@
   min-height: 48px;
   padding: 0 22px;
   border-radius: 999px;
-  background: #102f52;
-  color: #fff;
+  background: #ef8da5;
+  color: #102f52;
   font-family: "DM Sans", sans-serif;
   font-size: 13px;
   font-weight: 600;
   text-decoration: none;
-  box-shadow: 0 10px 24px rgba(16, 47, 82, 0.16);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
@@ -217,7 +217,24 @@
     width: min(100% - 28px, 1180px);
   }
 
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .stepWrap {
+    display: flex;
+    align-items: stretch;
+    width: auto;
+  }
+
+  .stepWrap:last-child {
+    grid-column: 1 / -1;
+  }
+
   .card {
+    width: 100%;
     min-height: 190px;
     padding: 24px 16px 20px;
   }

@@ -5,6 +5,13 @@
     #f8faf8;
 }
 
+.nextStepSection {
+  margin-top: 0;
+  padding: 72px 0;
+  background: #ffffff;
+  border: 0;
+}
+
 .container {
   width: min(100% - 48px, 1160px);
   margin: 0 auto;
