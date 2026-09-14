@@ -51,10 +51,8 @@ if ($time === '')             $errors[] = 'Time is required';
 if ($consultationType === '') $errors[] = 'Consultation type is required';
 if ($paymentMethod === '')    $errors[] = 'Payment method is required';
 
-$isPayAtClinic = (strcasecmp($paymentMethod, 'Pay at Clinic') === 0);
-
-if (!$isPayAtClinic && empty($_FILES['paymentScreenshot']['name'])) {
-    $errors[] = 'Payment screenshot is required for online payment';
+if (empty($_FILES['paymentScreenshot']['name'])) {
+    $errors[] = 'Payment screenshot is required';
 }
 
 if (!empty($errors)) {
@@ -66,7 +64,7 @@ if (!empty($errors)) {
 // ---------- Handle file upload ----------
 $screenshotFilename = null;
 
-if (!$isPayAtClinic && !empty($_FILES['paymentScreenshot']['name'])) {
+if (!empty($_FILES['paymentScreenshot']['name'])) {
     $file = $_FILES['paymentScreenshot'];
 
     if ($file['error'] !== UPLOAD_ERR_OK) {
