@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import Link from "next/link";
 import styles from "./FertilityServices.module.css";
 
@@ -498,75 +499,78 @@ export default function FertilityServices() {
         </div>
       </div>
 
-      {active && (
-        <div
-          className={styles.modalOverlay}
-          onClick={() => setActive(null)}
-          role="presentation"
-        >
+      {active &&
+        typeof document !== "undefined" &&
+        createPortal(
           <div
-            className={styles.modal}
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="service-modal-title"
-            onClick={(e) => e.stopPropagation()}
+            className={styles.modalOverlay}
+            onClick={() => setActive(null)}
+            role="presentation"
           >
-            <button
-              type="button"
-              className={styles.modalClose}
-              onClick={() => setActive(null)}
-              aria-label="Close"
+            <div
+              className={styles.modal}
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="service-modal-title"
+              onClick={(e) => e.stopPropagation()}
             >
-              ×
-            </button>
-
-            <div className={styles.modalHeader}>
-              <div className={styles.modalIcon}>
-                <ServiceIcon name={active.icon} />
-              </div>
-              <div>
-                <span className={styles.modalEyebrow}>Service detail</span>
-                <h3 id="service-modal-title">{active.title}</h3>
-              </div>
-            </div>
-
-            <div className={styles.modalBody}>
-              <p className={styles.modalOverview}>{active.details.overview}</p>
-
-              <h4 className={styles.modalSub}>What to expect</h4>
-              <ul className={styles.modalList}>
-                {active.details.points.map((point) => (
-                  <li key={point}>{point}</li>
-                ))}
-              </ul>
-
-              <div className={styles.modalMeta}>
-                <div>
-                  <strong>Ideal for</strong>
-                  <p>{active.details.idealFor}</p>
-                </div>
-                <div>
-                  <strong>Timeline</strong>
-                  <p>{active.details.duration}</p>
-                </div>
-              </div>
-            </div>
-
-            <div className={styles.modalFooter}>
               <button
                 type="button"
-                className={styles.modalSecondary}
+                className={styles.modalClose}
                 onClick={() => setActive(null)}
+                aria-label="Close"
               >
-                Close
+                ×
               </button>
-              <Link href="/book-consultation" className={styles.modalPrimary}>
-                Book a consultation
-              </Link>
+
+              <div className={styles.modalHeader}>
+                <div className={styles.modalIcon}>
+                  <ServiceIcon name={active.icon} />
+                </div>
+                <div>
+                  <span className={styles.modalEyebrow}>Service detail</span>
+                  <h3 id="service-modal-title">{active.title}</h3>
+                </div>
+              </div>
+
+              <div className={styles.modalBody}>
+                <p className={styles.modalOverview}>{active.details.overview}</p>
+
+                <h4 className={styles.modalSub}>What to expect</h4>
+                <ul className={styles.modalList}>
+                  {active.details.points.map((point) => (
+                    <li key={point}>{point}</li>
+                  ))}
+                </ul>
+
+                <div className={styles.modalMeta}>
+                  <div>
+                    <strong>Ideal for</strong>
+                    <p>{active.details.idealFor}</p>
+                  </div>
+                  <div>
+                    <strong>Timeline</strong>
+                    <p>{active.details.duration}</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className={styles.modalFooter}>
+                <button
+                  type="button"
+                  className={styles.modalSecondary}
+                  onClick={() => setActive(null)}
+                >
+                  Close
+                </button>
+                <Link href="/book-consultation" className={styles.modalPrimary}>
+                  Book a consultation
+                </Link>
+              </div>
             </div>
-          </div>
-        </div>
-      )}
+          </div>,
+          document.body
+        )}
     </section>
   );
 }

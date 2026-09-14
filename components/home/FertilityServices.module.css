@@ -949,9 +949,9 @@
 .modal {
   position: relative;
   z-index: 200001;
-  width: min(100%, 560px);
-  max-height: min(88vh, 720px);
-  overflow: auto;
+  width: min(100%, 540px);
+  max-height: none;
+  overflow: hidden;
   background: #ffffff;
   border-radius: 24px;
   box-shadow:
@@ -983,8 +983,8 @@
 .modalHeader {
   display: flex;
   align-items: center;
-  gap: 16px;
-  padding: 28px 28px 0;
+  gap: 14px;
+  padding: 22px 24px 0;
 }
 
 .modalIcon {
@@ -1017,14 +1017,14 @@
 }
 
 .modalBody {
-  padding: 20px 28px 8px;
+  padding: 14px 24px 4px;
 }
 
 .modalOverview {
-  margin: 0 0 20px;
+  margin: 0 0 14px;
   color: #4a5d66;
-  font-size: 14.5px;
-  line-height: 1.7;
+  font-size: 13.5px;
+  line-height: 1.55;
 }
 
 .modalSub {
@@ -1043,11 +1043,11 @@
 
 .modalList li {
   position: relative;
-  margin-bottom: 10px;
-  padding-left: 22px;
+  margin-bottom: 7px;
+  padding-left: 20px;
   color: #4a5d66;
-  font-size: 13.5px;
-  line-height: 1.55;
+  font-size: 13px;
+  line-height: 1.45;
 }
 
 .modalList li::before {
@@ -1064,13 +1064,13 @@
 .modalMeta {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 14px;
-  margin-bottom: 8px;
+  gap: 10px;
+  margin-bottom: 4px;
 }
 
 .modalMeta > div {
-  padding: 14px 16px;
-  border-radius: 14px;
+  padding: 12px 14px;
+  border-radius: 12px;
   background: #f6f8fa;
   border: 1px solid rgba(16, 47, 82, 0.06);
 }
@@ -1097,7 +1097,7 @@
   flex-wrap: wrap;
   justify-content: flex-end;
   gap: 10px;
-  padding: 16px 28px 24px;
+  padding: 12px 24px 18px;
   border-top: 1px solid rgba(16, 47, 82, 0.06);
 }
 
@@ -1157,7 +1157,8 @@
 @media (max-width: 560px) {
   .modal {
     border-radius: 18px;
-    max-height: 90vh;
+    max-height: none;
+    overflow: hidden;
   }
 
   .modalHeader,

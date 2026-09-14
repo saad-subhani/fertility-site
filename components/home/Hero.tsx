@@ -45,79 +45,111 @@ const stats = [
 
 function StatIcon({ type }: { type: string }) {
   if (type === "years") {
-    // Professional user / specialist icon
     return (
-      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <circle cx="12" cy="8" r="3.25" stroke="currentColor" strokeWidth="1.5" />
+      <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+        <circle cx="24" cy="24" r="22" fill="url(#statYearsBg)" />
+        <circle cx="24" cy="17" r="6.5" stroke="#1a4a6e" strokeWidth="2" />
         <path
-          d="M5.5 19.25c.85-3.4 3.15-5.25 6.5-5.25s5.65 1.85 6.5 5.25"
-          stroke="currentColor"
-          strokeWidth="1.5"
+          d="M12 35.5c1.6-6 5.4-9 12-9s10.4 3 12 9"
+          stroke="#1a4a6e"
+          strokeWidth="2"
           strokeLinecap="round"
         />
+        <defs>
+          <linearGradient id="statYearsBg" x1="8" y1="6" x2="40" y2="42">
+            <stop stopColor="#E8F2F8" />
+            <stop offset="1" stopColor="#D6E8F4" />
+          </linearGradient>
+        </defs>
       </svg>
     );
   }
   if (type === "families") {
-    // Clean heart icon
     return (
-      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+        <circle cx="24" cy="24" r="22" fill="url(#statHeartBg)" />
         <path
-          d="M12 20.25S4.75 15.4 4.75 10.2A4.05 4.05 0 0 1 12 7.15a4.05 4.05 0 0 1 7.25 3.05c0 5.2-7.25 10.05-7.25 10.05Z"
-          stroke="currentColor"
-          strokeWidth="1.5"
+          d="M24 36s-10.5-6.8-10.5-14.2A5.9 5.9 0 0 1 24 16.2a5.9 5.9 0 0 1 10.5 5.6C34.5 29.2 24 36 24 36Z"
+          fill="#F2A0B4"
+          fillOpacity="0.35"
+          stroke="#1a4a6e"
+          strokeWidth="2"
           strokeLinejoin="round"
         />
+        <defs>
+          <linearGradient id="statHeartBg" x1="8" y1="6" x2="40" y2="42">
+            <stop stopColor="#FDECF1" />
+            <stop offset="1" stopColor="#F8D9E3" />
+          </linearGradient>
+        </defs>
       </svg>
     );
   }
   if (type === "satisfaction") {
-    // Shield with check
     return (
-      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+        <circle cx="24" cy="24" r="22" fill="url(#statShieldBg)" />
         <path
-          d="M12 3.5 19 6.2v5.4c0 4.85-3 8.55-7 10.15-4-1.6-7-5.3-7-10.15V6.2L12 3.5Z"
-          stroke="currentColor"
-          strokeWidth="1.5"
+          d="M24 12.5 34 15.8v7.2c0 6.4-4 11.2-10 13.3-6-2.1-10-6.9-10-13.3v-7.2L24 12.5Z"
+          fill="#9BB8AD"
+          fillOpacity="0.28"
+          stroke="#1a4a6e"
+          strokeWidth="2"
           strokeLinejoin="round"
         />
         <path
-          d="m9.2 12.1 1.9 1.9 3.7-3.8"
-          stroke="currentColor"
-          strokeWidth="1.5"
+          d="m18.8 24.2 3.2 3.2 6.6-6.8"
+          stroke="#1a4a6e"
+          strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
         />
+        <defs>
+          <linearGradient id="statShieldBg" x1="8" y1="6" x2="40" y2="42">
+            <stop stopColor="#EAF5F0" />
+            <stop offset="1" stopColor="#D5EBE1" />
+          </linearGradient>
+        </defs>
       </svg>
     );
   }
-  // Plant / growth – patient-first care
   return (
-    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+      <circle cx="24" cy="24" r="22" fill="url(#statPlantBg)" />
       <path
-        d="M12 21V11.5"
-        stroke="currentColor"
-        strokeWidth="1.5"
+        d="M24 36V22"
+        stroke="#1a4a6e"
+        strokeWidth="2"
         strokeLinecap="round"
       />
       <path
-        d="M12 14.5c-2.8 0-5.2-1.6-6.2-4.1-.2-.6.3-1.2.9-1.1 3.2.4 5.3 2.4 5.3 5.2Z"
-        stroke="currentColor"
-        strokeWidth="1.5"
+        d="M24 26c-4.2 0-7.6-2.2-8.8-5.6-.3-.8.4-1.5 1.2-1.4 4.4.5 7.6 3.2 7.6 7Z"
+        fill="#9BB8AD"
+        fillOpacity="0.35"
+        stroke="#1a4a6e"
+        strokeWidth="1.8"
         strokeLinejoin="round"
       />
       <path
-        d="M12 12.5c2.5-.2 4.8-1.6 5.9-3.9.3-.6-.2-1.2-.8-1.1-2.9.5-5.1 2.3-5.1 5Z"
-        stroke="currentColor"
-        strokeWidth="1.5"
+        d="M24 24c3.6-.2 6.8-2.1 8.2-5 .4-.8-.3-1.6-1.1-1.4-4 .6-7.1 3-7.1 6.4Z"
+        fill="#F2A0B4"
+        fillOpacity="0.3"
+        stroke="#1a4a6e"
+        strokeWidth="1.8"
         strokeLinejoin="round"
       />
       <path
-        d="M12 11.5c0-2.4 1.2-4.5 3.1-5.8.5-.3 1.1.1 1 .7-.3 2.4-1.8 4.4-4.1 5.1Z"
-        stroke="currentColor"
-        strokeWidth="1.5"
+        d="M24 22.5c0-3.2 1.6-5.8 4-7.4.6-.4 1.4.2 1.3 1-0.4 3-2.3 5.5-5.3 6.4Z"
+        stroke="#1a4a6e"
+        strokeWidth="1.8"
         strokeLinejoin="round"
       />
+      <defs>
+        <linearGradient id="statPlantBg" x1="8" y1="6" x2="40" y2="42">
+          <stop stopColor="#EEF7F2" />
+          <stop offset="1" stopColor="#DCEFE6" />
+        </linearGradient>
+      </defs>
     </svg>
   );
 }
