@@ -17,7 +17,8 @@
 
   background: #071827;
 
-  padding-bottom: 0;
+  /* room for top half of stats banner inside hero */
+  padding-bottom: 56px;
 }
 
 /* =====================================================
@@ -28,11 +29,9 @@
   position: absolute !important;
 
   inset: 0;
-  bottom: -90px;
 
   width: 100%;
-  height: auto;
-  min-height: calc(100% + 90px);
+  height: 100%;
 
   object-fit: cover;
   object-position: center center;
@@ -40,15 +39,12 @@
   z-index: 0;
 
   pointer-events: none;
-
-  transform: scale(1.01);
 }
 
 .backgroundOverlay {
   position: absolute;
 
   inset: 0;
-  bottom: -90px;
 
   z-index: 1;
 
@@ -2349,6 +2345,7 @@
   left: 0;
   right: 0;
   bottom: 0;
+  /* exact half on hero, half on section below */
   transform: translateY(50%);
   z-index: 30;
   pointer-events: none;
@@ -2457,7 +2454,7 @@
 
 @media (max-width: 560px) {
   .statsBannerWrap {
-    transform: translateY(40%);
+    transform: translateY(50%);
     padding: 0 14px;
   }
 
