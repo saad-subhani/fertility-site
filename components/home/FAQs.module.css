@@ -108,7 +108,7 @@
 .title {
   margin: 0;
   color: var(--text-dark);
-  font-family: "Playfair Display", serif;
+  font-family: "DM Sans", sans-serif;
   font-size: clamp(42px, 5vw, 64px);
   line-height: 1.05;
   font-weight: 600;

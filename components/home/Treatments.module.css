@@ -85,7 +85,7 @@
 .label {
   color: #557f80;
 
-  font-family: "Archivo", sans-serif;
+  font-family: "DM Sans", sans-serif;
 
   font-size: 11px;
   font-weight: 700;
@@ -136,7 +136,7 @@
 
   color: #102f52;
 
-  font-family: "Archivo", sans-serif;
+  font-family: "DM Sans", sans-serif;
 
   font-size: clamp(48px, 5.2vw, 72px);
 
@@ -164,7 +164,7 @@
 
   color: #687576;
 
-  font-family: "Sora", sans-serif;
+  font-family: "DM Sans", sans-serif;
 
   font-size: 14px;
 
@@ -354,7 +354,7 @@
 .phase span {
   color: #102f52;
 
-  font-family: "Archivo", sans-serif;
+  font-family: "DM Sans", sans-serif;
 
   font-size: 17px;
 
@@ -366,7 +366,7 @@
 .phase small {
   color: rgba(16, 47, 82, 0.48);
 
-  font-family: "Archivo", sans-serif;
+  font-family: "DM Sans", sans-serif;
 
   font-size: 9px;
 
@@ -436,7 +436,7 @@
 
   color: rgba(16, 47, 82, 0.55);
 
-  font-family: "Archivo", sans-serif;
+  font-family: "DM Sans", sans-serif;
 
   font-size: 10px;
 
@@ -456,7 +456,7 @@
 
   color: #102f52;
 
-  font-family: "Archivo", sans-serif;
+  font-family: "DM Sans", sans-serif;
 
   font-size: clamp(46px, 6vw, 82px);
 
@@ -478,7 +478,7 @@
 
   color: rgba(16, 47, 82, 0.68);
 
-  font-family: "Sora", sans-serif;
+  font-family: "DM Sans", sans-serif;
 
   font-size: 14px;
 
@@ -500,7 +500,7 @@
 
   color: #102f52;
 
-  font-family: "Archivo", sans-serif;
+  font-family: "DM Sans", sans-serif;
 
   font-size: 12px;
 
@@ -557,7 +557,7 @@
 
   color: rgba(16, 47, 82, 0.055);
 
-  font-family: "Archivo", sans-serif;
+  font-family: "DM Sans", sans-serif;
 
   font-size: clamp(180px, 25vw, 350px);
 
@@ -590,7 +590,7 @@
 .cardBottom > span {
   color: rgba(16, 47, 82, 0.48);
 
-  font-family: "Archivo", sans-serif;
+  font-family: "DM Sans", sans-serif;
 
   font-size: 10px;
 
@@ -656,7 +656,7 @@
 .ctaLabel {
   color: rgba(255, 255, 255, 0.55);
 
-  font-family: "Archivo", sans-serif;
+  font-family: "DM Sans", sans-serif;
 
   font-size: 10px;
 
@@ -670,7 +670,7 @@
 
   color: white;
 
-  font-family: "Archivo", sans-serif;
+  font-family: "DM Sans", sans-serif;
 
   font-size: clamp(28px, 3vw, 42px);
 
@@ -709,7 +709,7 @@
 
   color: #102f52;
 
-  font-family: "Archivo", sans-serif;
+  font-family: "DM Sans", sans-serif;
 
   font-size: 12px;
 

@@ -29,7 +29,7 @@
   z-index: 1;
   overflow: visible;
   padding: 100px 0 110px;
-  padding-top: 90px;
+  padding-top: 100px;
   margin-top: 0;
   background:
     radial-gradient(
@@ -96,7 +96,7 @@
   gap: 12px;
   margin-bottom: 22px;
   color: #6d817d;
-  font-family: var(--font-archivo), sans-serif;
+  font-family: "DM Sans", sans-serif;
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.18em;
@@ -111,7 +111,7 @@
 .header h2 {
   margin: 0;
   color: #102f52;
-  font-family: var(--font-archivo), sans-serif;
+  font-family: "DM Sans", sans-serif;
   font-size: clamp(40px, 5vw, 68px);
   font-weight: 500;
   line-height: 1.05;
@@ -129,7 +129,7 @@
   max-width: 690px;
   margin: 27px auto 0;
   color: #617078;
-  font-family: var(--font-sora), sans-serif;
+  font-family: "DM Sans", sans-serif;
   font-size: 15px;
   line-height: 1.9;
 }
@@ -302,7 +302,7 @@
 .sectionLabel p {
   margin: 0;
   color: #6d817d;
-  font-family: var(--font-archivo), sans-serif;
+  font-family: "DM Sans", sans-serif;
   font-size: 10px;
   font-weight: 700;
   letter-spacing: 0.2em;
@@ -311,7 +311,7 @@
 .story h3 {
   margin: 0;
   color: #102f52;
-  font-family: var(--font-archivo), sans-serif;
+  font-family: "DM Sans", sans-serif;
   font-size: clamp(34px, 4vw, 50px);
   font-weight: 500;
   line-height: 1.08;
@@ -327,7 +327,7 @@
 .story p {
   margin: 21px 0 0;
   color: #66737a;
-  font-family: var(--font-sora), sans-serif;
+  font-family: "DM Sans", sans-serif;
   font-size: 14px;
   line-height: 1.9;
 }
@@ -372,14 +372,14 @@
 
 .storyAccent strong {
   color: #102f52;
-  font-family: var(--font-archivo), sans-serif;
+  font-family: "DM Sans", sans-serif;
   font-size: 13px;
   font-weight: 600;
 }
 
 .storyAccent span:not(.accentIcon) {
   color: #7b8589;
-  font-family: var(--font-sora), sans-serif;
+  font-family: "DM Sans", sans-serif;
   font-size: 11px;
   line-height: 1.6;
 }
@@ -470,7 +470,7 @@
 
 .highlightNumber {
   color: #a2acae;
-  font-family: var(--font-archivo), sans-serif;
+  font-family: "DM Sans", sans-serif;
   font-size: 10px;
   font-weight: 600;
   letter-spacing: 0.12em;
@@ -485,7 +485,7 @@
 .highlightContent h4 {
   margin: 0;
   color: #102f52;
-  font-family: var(--font-archivo), sans-serif;
+  font-family: "DM Sans", sans-serif;
   font-size: 17px;
   font-weight: 600;
   letter-spacing: -0.015em;
@@ -494,7 +494,7 @@
 .highlightContent p {
   margin: 10px 0 0;
   color: #768187;
-  font-family: var(--font-sora), sans-serif;
+  font-family: "DM Sans", sans-serif;
   font-size: 11px;
   line-height: 1.75;
 }
@@ -551,7 +551,7 @@
 
 .statNumber {
   color: #a4b3b0;
-  font-family: var(--font-archivo), sans-serif;
+  font-family: "DM Sans", sans-serif;
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.1em;
@@ -565,14 +565,14 @@
 
 .statText strong {
   color: #102f52;
-  font-family: var(--font-archivo), sans-serif;
+  font-family: "DM Sans", sans-serif;
   font-size: 13px;
   font-weight: 600;
 }
 
 .statText span {
   color: #899295;
-  font-family: var(--font-sora), sans-serif;
+  font-family: "DM Sans", sans-serif;
   font-size: 10px;
 }
 
@@ -614,7 +614,7 @@
   flex: 1;
   margin: 0;
   color: #7a8589;
-  font-family: var(--font-sora), sans-serif;
+  font-family: "DM Sans", sans-serif;
   font-size: 12px;
   line-height: 1.7;
 }

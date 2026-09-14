@@ -78,7 +78,7 @@
 
   color: var(--text-dark);
 
-  font-family: "Playfair Display", serif;
+  font-family: "DM Sans", sans-serif;
 
   font-size: clamp(42px, 5vw, 60px);
 
@@ -403,7 +403,7 @@ a.infoValue:hover {
 .stepHeader h2 {
   color: var(--text-dark);
 
-  font-family: "Playfair Display", serif;
+  font-family: "DM Sans", sans-serif;
 
   font-size: 28px;
 
@@ -578,7 +578,7 @@ a.infoValue:hover {
 
   color: var(--primary);
 
-  font-family: "Playfair Display", serif;
+  font-family: "DM Sans", sans-serif;
 
   font-size: 15px;
   font-weight: 700;
@@ -1548,7 +1548,7 @@ a.infoValue:hover {
 .successCard h1 {
   margin-top: 13px;
 
-  font-family: "Playfair Display", serif;
+  font-family: "DM Sans", sans-serif;
 
   color: var(--text-dark);
 

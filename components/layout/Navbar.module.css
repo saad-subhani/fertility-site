@@ -136,7 +136,7 @@
 
   color: rgba(255, 255, 255, 0.72);
 
-  font-family: var(--font-archivo, Arial, sans-serif);
+  font-family: "DM Sans", sans-serif;
   font-size: 12px;
   font-weight: 500;
   letter-spacing: 0.08em;
@@ -201,7 +201,7 @@
   background: #e2b489;
   color: #071727;
 
-  font-family: var(--font-archivo, Arial, sans-serif);
+  font-family: "DM Sans", sans-serif;
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.04em;
@@ -581,7 +581,7 @@
 
     color: rgba(255, 255, 255, 0.82);
 
-    font-family: var(--font-archivo, Arial, sans-serif);
+    font-family: "DM Sans", sans-serif;
     font-size: 13px;
     font-weight: 500;
 
@@ -637,7 +637,7 @@
     background: #e2b489;
     color: #071727;
 
-    font-family: var(--font-archivo, Arial, sans-serif);
+    font-family: "DM Sans", sans-serif;
 
     font-size: 11px;
     font-weight: 600;

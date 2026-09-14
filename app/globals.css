@@ -2,7 +2,7 @@
    GOOGLE FONTS
 ===================================================== */
 
-@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap");
 
 
 /* =====================================================
@@ -10,6 +10,7 @@
 ===================================================== */
 
 :root {
+  --font-main: "DM Sans", sans-serif;
 
   /* Brand */
   --primary: rgb(16, 47, 82);
@@ -271,7 +272,7 @@ p {
 
 .section-title {
   margin-top: 15px;
-  font-family: "Playfair Display", serif;
+  font-family: "DM Sans", sans-serif;
   font-size: clamp(38px, 5vw, 60px);
   line-height: 1.08;
   font-weight: 600;

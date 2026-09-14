@@ -45,32 +45,79 @@ const stats = [
 
 function StatIcon({ type }: { type: string }) {
   if (type === "years") {
+    // Professional user / specialist icon
     return (
       <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <circle cx="12" cy="8" r="3.2" />
-        <path d="M5.5 19.5c1.2-3.8 3.6-5.5 6.5-5.5s5.3 1.7 6.5 5.5" />
+        <circle cx="12" cy="8" r="3.25" stroke="currentColor" strokeWidth="1.5" />
+        <path
+          d="M5.5 19.25c.85-3.4 3.15-5.25 6.5-5.25s5.65 1.85 6.5 5.25"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+        />
       </svg>
     );
   }
   if (type === "families") {
+    // Clean heart icon
     return (
       <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <path d="M12 20s-6.5-4-6.5-8.8A3.9 3.9 0 0 1 12 7.8a3.9 3.9 0 0 1 6.5 3.4C18.5 16 12 20 12 20Z" />
+        <path
+          d="M12 20.25S4.75 15.4 4.75 10.2A4.05 4.05 0 0 1 12 7.15a4.05 4.05 0 0 1 7.25 3.05c0 5.2-7.25 10.05-7.25 10.05Z"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinejoin="round"
+        />
       </svg>
     );
   }
   if (type === "satisfaction") {
+    // Shield with check
     return (
       <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <path d="M12 3.5 18.5 6v5.2c0 4.6-2.8 8.2-6.5 9.8-3.7-1.6-6.5-5.2-6.5-9.8V6L12 3.5Z" />
-        <path d="m9 12 2 2 4-4" />
+        <path
+          d="M12 3.5 19 6.2v5.4c0 4.85-3 8.55-7 10.15-4-1.6-7-5.3-7-10.15V6.2L12 3.5Z"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinejoin="round"
+        />
+        <path
+          d="m9.2 12.1 1.9 1.9 3.7-3.8"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
       </svg>
     );
   }
+  // Plant / growth – patient-first care
   return (
     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path d="M12 21c0-4 2.5-6 4.5-8.2 1.5-1.6 2-3 1.4-4.6-.5-1.4-1.8-2.2-3.4-2.2-1.2 0-2.2.5-2.5 1.4-.3-.9-1.3-1.4-2.5-1.4-1.6 0-2.9.8-3.4 2.2-.6 1.6-.1 3 1.4 4.6C9.5 15 12 17 12 21Z" />
-      <path d="M12 21V12" />
+      <path
+        d="M12 21V11.5"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
+      <path
+        d="M12 14.5c-2.8 0-5.2-1.6-6.2-4.1-.2-.6.3-1.2.9-1.1 3.2.4 5.3 2.4 5.3 5.2Z"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M12 12.5c2.5-.2 4.8-1.6 5.9-3.9.3-.6-.2-1.2-.8-1.1-2.9.5-5.1 2.3-5.1 5Z"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M12 11.5c0-2.4 1.2-4.5 3.1-5.8.5-.3 1.1.1 1 .7-.3 2.4-1.8 4.4-4.1 5.1Z"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinejoin="round"
+      />
     </svg>
   );
 }
@@ -242,6 +289,7 @@ export default function Hero() {
         priority
         sizes="100vw"
         className={styles.backgroundImage}
+        style={{ objectFit: "cover", objectPosition: "center" }}
       />
 
       <div className={styles.backgroundOverlay} />
