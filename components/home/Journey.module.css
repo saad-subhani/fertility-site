@@ -3,9 +3,9 @@
   overflow: hidden;
   padding: 88px 0 96px;
   background:
-    radial-gradient(circle at 12% 20%, rgba(169, 210, 189, 0.18), transparent 32%),
-    radial-gradient(circle at 88% 70%, rgba(255, 230, 236, 0.35), transparent 30%),
-    #f7faf8;
+    radial-gradient(circle at 10% 18%, rgba(169, 210, 189, 0.12), transparent 30%),
+    radial-gradient(circle at 90% 75%, rgba(183, 210, 237, 0.14), transparent 28%),
+    #fafbff;
 }
 
 .blobOne,
@@ -13,7 +13,7 @@
   position: absolute;
   border-radius: 50%;
   pointer-events: none;
-  filter: blur(40px);
+  filter: blur(50px);
 }
 
 .blobOne {
@@ -21,7 +21,7 @@
   height: 280px;
   top: -80px;
   left: -60px;
-  background: rgba(169, 210, 189, 0.25);
+  background: rgba(169, 210, 189, 0.14);
 }
 
 .blobTwo {
@@ -29,7 +29,7 @@
   height: 220px;
   bottom: -60px;
   right: 8%;
-  background: rgba(224, 105, 139, 0.08);
+  background: rgba(183, 210, 237, 0.12);
 }
 
 .container {
