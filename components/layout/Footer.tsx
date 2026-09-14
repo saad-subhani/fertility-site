@@ -67,7 +67,6 @@ export default function Footer() {
             <h3>Let&apos;s Connect</h3>
 
             <div className={styles.social}>
-              <h4>Social</h4>
               <div className={styles.socialIcons}>
                 <a href="https://www.facebook.com/profile.php?id=61567219496373" target="_blank" rel="noreferrer" aria-label="Facebook">
                   <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
