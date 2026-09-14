@@ -128,7 +128,7 @@
 .grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 28px;
+  gap: 18px;
   margin-bottom: 48px;
 }
 
@@ -152,8 +152,8 @@
   min-height: 260px;
   aspect-ratio: 4 / 3;
 
-  border: 1px solid rgba(16, 47, 82, 0.12);
-  border-radius: 20px;
+  border: none;
+  border-radius: 16px;
   background: #0a1628;
 
   opacity: 0;
@@ -168,17 +168,17 @@
     transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
     box-shadow 0.4s ease;
   box-shadow:
-    0 8px 24px rgba(16, 47, 82, 0.14),
-    0 2px 8px rgba(16, 47, 82, 0.08);
+    0 4px 20px rgba(0, 0, 0, 0.12),
+    0 1px 4px rgba(0, 0, 0, 0.06);
   cursor: pointer;
 }
 
 .card:hover {
   z-index: 2;
-  transform: translateY(-6px);
+  transform: translateY(-5px);
   box-shadow:
-    0 22px 48px rgba(16, 47, 82, 0.2),
-    0 6px 16px rgba(16, 47, 82, 0.1);
+    0 12px 32px rgba(0, 0, 0, 0.18),
+    0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 /* Background image – fully visible */
@@ -198,17 +198,17 @@
   transform: scale(1.08);
 }
 
-/* Dark gradient from bottom only (reference style) */
+/* Dark gradient – stronger so each card looks clean & separate like reference */
 .cardOverlay {
   position: absolute;
   inset: 0;
   z-index: 1;
   background: linear-gradient(
     180deg,
-    rgba(8, 20, 35, 0.15) 0%,
-    rgba(8, 20, 35, 0.25) 40%,
-    rgba(8, 20, 35, 0.78) 78%,
-    rgba(6, 16, 28, 0.92) 100%
+    rgba(6, 14, 26, 0.25) 0%,
+    rgba(6, 14, 26, 0.35) 30%,
+    rgba(6, 14, 26, 0.82) 70%,
+    rgba(4, 10, 20, 0.95) 100%
   );
   transition: background 0.35s ease;
 }
@@ -216,10 +216,10 @@
 .card:hover .cardOverlay {
   background: linear-gradient(
     180deg,
-    rgba(8, 20, 35, 0.2) 0%,
-    rgba(8, 20, 35, 0.35) 35%,
-    rgba(8, 20, 35, 0.82) 75%,
-    rgba(6, 16, 28, 0.95) 100%
+    rgba(6, 14, 26, 0.3) 0%,
+    rgba(6, 14, 26, 0.42) 30%,
+    rgba(6, 14, 26, 0.88) 70%,
+    rgba(4, 10, 20, 0.97) 100%
   );
 }
 
