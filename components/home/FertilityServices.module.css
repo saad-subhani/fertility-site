@@ -128,13 +128,13 @@
 .grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 28px;
+  gap: 20px;
   margin-bottom: 48px;
 }
 
 
 /* =====================================================
-   CARD – reference style: full image + bottom text
+   CARD – clean separate blocks like testimonials
 ===================================================== */
 
 .card {
@@ -152,9 +152,9 @@
   min-height: 240px;
   aspect-ratio: 4 / 3;
 
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(16, 47, 82, 0.06);
   border-radius: 18px;
-  background: #fff;
+  background: #fbfaf8;
 
   opacity: 0;
   transform: translateY(18px);
@@ -165,20 +165,16 @@
   animation-delay: var(--card-delay);
 
   transition:
-    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 0.4s ease;
-  box-shadow:
-    0 6px 24px rgba(16, 47, 82, 0.1),
-    0 2px 8px rgba(0, 0, 0, 0.04);
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s ease;
+  box-shadow: 0 8px 24px rgba(16, 47, 82, 0.06);
   cursor: pointer;
 }
 
 .card:hover {
   z-index: 2;
-  transform: translateY(-6px);
-  box-shadow:
-    0 16px 40px rgba(16, 47, 82, 0.14),
-    0 6px 16px rgba(0, 0, 0, 0.06);
+  transform: translateY(-5px);
+  box-shadow: 0 14px 36px rgba(16, 47, 82, 0.1);
 }
 
 /* Background image – fully visible */
