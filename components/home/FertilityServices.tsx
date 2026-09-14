@@ -296,18 +296,13 @@ export default function FertilityServices() {
         <div className={styles.header}>
           <div className={styles.eyebrowWrap}>
             <span className={styles.eyebrow}>Our Services</span>
-            <span className={styles.eyebrowDot} />
           </div>
 
-          <h2>
-            Every path to parenthood,
-            <br />
-            <span>supported by us</span>
-          </h2>
+          <h2>How we can help</h2>
 
           <p>
-            From your very first consultation to the moment you hold your
-            baby — we are with you every step of the way.
+            We offer a full range of fertility and reproductive healthcare services,
+            tailored to your unique needs and goals.
           </p>
         </div>
 

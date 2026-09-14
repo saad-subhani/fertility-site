@@ -6,7 +6,7 @@
   position: relative;
   z-index: 1;
   padding: 86px 0 96px;
-  padding-top: 100px;
+  padding-top: 140px;
   background:
     radial-gradient(
       circle at 8% 15%,
@@ -69,19 +69,19 @@
   display: inline-flex;
   align-items: center;
   gap: 9px;
-  margin-bottom: 16px;
-  padding: 7px 13px;
+  margin-bottom: 18px;
+  padding: 8px 16px;
   border-radius: 999px;
-  background: rgba(255, 224, 239, 0.72);
-  border: 1px solid rgba(224, 81, 124, 0.08);
+  background: rgba(255, 230, 236, 0.95);
+  border: none;
 }
 
 .eyebrow {
-  color: #e0517c;
+  color: #c45b78;
   font-family: "DM Sans", sans-serif;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.09em;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
@@ -97,13 +97,13 @@
 }
 
 .header h2 {
-  margin: 0 0 15px;
-  color: #102f52;
+  margin: 0 0 14px;
+  color: #1a3557;
   font-family: "DM Sans", sans-serif;
-  font-size: clamp(30px, 4vw, 43px);
-  font-weight: 700;
-  line-height: 1.13;
-  letter-spacing: -0.04em;
+  font-size: clamp(28px, 3.6vw, 40px);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
 }
 
 .header h2 span {
@@ -112,12 +112,12 @@
 }
 
 .header p {
-  max-width: 570px;
+  max-width: 560px;
   margin: 0 auto;
-  color: #687576;
+  color: #6b7c85;
   font-family: "DM Sans", sans-serif;
-  font-size: 14px;
-  line-height: 1.75;
+  font-size: 15px;
+  line-height: 1.7;
 }
 
 
