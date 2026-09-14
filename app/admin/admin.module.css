@@ -5,6 +5,9 @@
 }
 
 .sidebar {
+  position: sticky;
+  top: 0;
+  height: 100vh;
   width: 240px;
   background: #2c1810;
   color: #fff;
@@ -238,6 +241,8 @@
   }
 
   .sidebar {
+    position: static;
+    height: auto;
     width: 100%;
     flex-direction: row;
     align-items: center;
