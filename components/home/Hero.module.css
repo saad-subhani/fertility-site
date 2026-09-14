@@ -2486,6 +2486,7 @@
 @media (max-width: 850px) {
   .hero {
     min-height: auto;
+    flex-direction: column;
     padding-bottom: 0;
     overflow: visible;
   }
