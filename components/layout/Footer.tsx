@@ -66,22 +66,6 @@ export default function Footer() {
 
             <h3>Let&apos;s Connect</h3>
 
-            <p className={styles.plainText}>
-              Fertility Clinic by AJ
-              <br />
-              Your Clinic Address,
-              <br />
-              City, Pakistan
-            </p>
-
-            <a href="mailto:fertilityclinic@gmail.com" className={styles.underlineLink}>
-              fertilityclinic@gmail.com
-            </a>
-
-            <p className={styles.plainText}>
-              Phone: +92 345 4766104
-            </p>
-
             <div className={styles.social}>
               <h4>Social</h4>
               <div className={styles.socialIcons}>
@@ -99,6 +83,15 @@ export default function Footer() {
                 </a>
               </div>
             </div>
+
+            <a href="mailto:fertilityclinic@gmail.com" className={styles.underlineLink}>
+              fertilityclinic@gmail.com
+            </a>
+
+            <p className={styles.plainText}>
+              Phone: +92 345 4766104
+            </p>
+
           </div>
 
           {/* ================= WHO WE ARE ================= */}
