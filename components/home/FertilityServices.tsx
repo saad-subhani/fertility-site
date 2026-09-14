@@ -478,37 +478,22 @@ export default function FertilityServices() {
               />
               <div className={styles.cardOverlay} aria-hidden="true" />
 
-              {service.badge && (
-                <span className={styles.badge}>
-                  <span className={styles.badgeDot} />
-                  {service.badge}
-                </span>
-              )}
-
               <span className={styles.serviceNumber}>{service.id}</span>
-
-              <div className={styles.iconWrap}>
-                <div className={styles.icon}>
-                  <ServiceIcon name={service.icon} />
-                </div>
-              </div>
 
               <div className={styles.cardBody}>
                 <h3 className={styles.cardTitle}>{service.title}</h3>
-                <div className={styles.cardLine} />
-                <p className={styles.cardDesc}>{service.description}</p>
-
                 <button
                   type="button"
                   className={styles.cardLink}
-                  onClick={() => setActive(service)}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setActive(service);
+                  }}
                   aria-label={`Learn more about ${service.title}`}
                 >
                   <span className={styles.arrow}>→</span>
                 </button>
               </div>
-
-              <div className={styles.cardShine} />
             </article>
           ))}
         </div>
