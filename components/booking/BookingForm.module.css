@@ -1719,38 +1719,34 @@
     grid-template-columns: 1fr 1fr;
   }
 }
-/* Mobile readable text */
+
+/* Mobile readable text – CSS modules: only local classes */
 @media (max-width: 650px) {
-  .stepLabel,
-  .fieldLabel,
-  label {
+  .field label {
     font-size: 13px !important;
   }
 
-  input,
-  select,
-  textarea,
-  .input,
-  .select {
-    font-size: 16px !important; /* prevents iOS zoom */
+  .field input,
+  .field select,
+  .field textarea {
+    font-size: 16px !important;
   }
 
-  .stepTitle,
-  h2, h3 {
+  .stepHeader h2 {
     font-size: 20px !important;
   }
 
-  .helper,
-  .hint,
-  small {
-    font-size: 12px !important;
+  .stepHeader p {
+    font-size: 13px !important;
   }
 
-  button,
-  .btn,
-  .nextBtn,
-  .prevBtn {
+  .nextButton,
+  .prevButton {
     font-size: 14px !important;
     min-height: 48px;
+  }
+
+  .label {
+    font-size: 12px !important;
   }
 }
