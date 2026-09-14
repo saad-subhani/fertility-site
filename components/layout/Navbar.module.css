@@ -56,28 +56,31 @@
 
 
 /* =====================================================
-   SCROLLED NAVBAR
+   SCROLLED NAVBAR – floating dark bar, slightly off top
 ===================================================== */
 
 .navbarScrolled {
-  padding: 12px 28px;
+  /* gap from very top so it feels detached */
+  padding: 14px 28px 10px;
 }
 
 .navbarScrolled .inner {
   min-height: 58px;
-  padding: 0 18px;
+  padding: 0 20px;
 
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
 
-  background: rgba(7, 23, 39, 0.78);
+  /* solid dark so it reads clearly over light sections */
+  background: rgba(6, 18, 32, 0.92);
 
-  backdrop-filter: blur(22px);
-  -webkit-backdrop-filter: blur(22px);
+  backdrop-filter: blur(24px) saturate(1.2);
+  -webkit-backdrop-filter: blur(24px) saturate(1.2);
 
   box-shadow:
-    0 20px 55px rgba(0, 0, 0, 0.18),
-    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    0 12px 40px rgba(0, 0, 0, 0.28),
+    0 4px 12px rgba(0, 0, 0, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
 .navbarScrolled .inner::after {
@@ -470,7 +473,8 @@
     width: 100% !important;
     max-width: 100% !important;
 
-    padding: 8px 10px !important;
+    /* slight gap from top */
+    padding: 12px 12px 8px !important;
 
     box-sizing: border-box !important;
   }
@@ -481,21 +485,22 @@
 
     min-height: 54px !important;
 
-    padding: 0 10px !important;
+    padding: 0 12px !important;
 
     box-sizing: border-box !important;
 
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 999px;
 
-    background: rgba(7, 23, 39, 0.92);
+    background: rgba(6, 18, 32, 0.94);
 
-    backdrop-filter: blur(22px);
-    -webkit-backdrop-filter: blur(22px);
+    backdrop-filter: blur(24px) saturate(1.2);
+    -webkit-backdrop-filter: blur(24px) saturate(1.2);
 
     box-shadow:
-      0 20px 55px rgba(0, 0, 0, 0.18),
-      inset 0 1px 0 rgba(255, 255, 255, 0.06);
+      0 12px 36px rgba(0, 0, 0, 0.28),
+      0 4px 12px rgba(0, 0, 0, 0.12),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08);
   }
 
   .navbarScrolled .logoImage {
@@ -691,14 +696,14 @@
   /* ---------- SCROLLED PHONE ---------- */
 
   .navbarScrolled {
-    padding: 7px 8px !important;
+    padding: 10px 10px 6px !important;
   }
 
   .navbarScrolled .inner {
     min-height: 52px !important;
-    padding: 0 8px !important;
+    padding: 0 10px !important;
 
-    border-radius: 17px !important;
+    border-radius: 999px !important;
   }
 
   .navbarScrolled .logoImage {
