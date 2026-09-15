@@ -82,6 +82,8 @@ export default function Contact() {
   const nextStep = () => {
     setStep((previous) =>
       Math.min(previous + 1, 4)
+    );
+  };
 
   const previousStep = () => {
     setStep((previous) =>
