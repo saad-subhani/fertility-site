@@ -306,7 +306,7 @@ export default function Contact() {
         ===================================================== */}
 
         <div className={styles.progress}>
-          {[1, 2, 3, 4, 5].map((number) => (
+          {[1, 2, 3, 4].map((number) => (
             <div
               key={number}
               className={`${styles.progressItem} ${
@@ -325,10 +325,9 @@ export default function Contact() {
 
               <span>
                 {number === 1 && "Details"}
-                {number === 2 && "Consultant"}
-                {number === 3 && "Date & Time"}
-                {number === 4 && "Type"}
-                {number === 5 && "Payment"}
+                {number === 2 && "Date & Time"}
+                {number === 3 && "Type"}
+                {number === 4 && "Payment"}
               </span>
             </div>
           ))}
@@ -835,7 +834,7 @@ export default function Contact() {
                 <div className={styles.step}>
 
                   <div className={styles.stepHeader}>
-                    <span>05</span>
+                    <span>04</span>
 
                     <div>
                       <h2>
