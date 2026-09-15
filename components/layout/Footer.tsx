@@ -103,7 +103,7 @@ export default function Footer() {
 
             <ul>
               {whoWeAre.map((link) => (
-                <li key={link.href}>
+                <li key={`${link.href}-${link.label}`}>
                   <Link href={link.href} className={styles.underlineLink}>
                     {link.label}
                   </Link>
@@ -119,7 +119,7 @@ export default function Footer() {
 
             <ul>
               {ourServices.map((link) => (
-                <li key={link.href}>
+                <li key={`${link.href}-${link.label}`}>
                   <Link href={link.href} className={styles.underlineLink}>
                     {link.label}
                   </Link>
@@ -134,7 +134,7 @@ export default function Footer() {
 
             <ul>
               {resources.map((link) => (
-                <li key={link.href}>
+                <li key={`${link.href}-${link.label}`}>
                   <Link href={link.href} className={styles.underlineLink}>
                     {link.label}
                   </Link>

@@ -18,23 +18,19 @@ type FormData = {
   paymentScreenshot: File | null;
 };
 
+const DEFAULT_CONSULTANT = "Dr. Amjad Islam";
+
 const initialData: FormData = {
   name: "",
   email: "",
   phone: "",
-  consultant: "",
+  consultant: DEFAULT_CONSULTANT,
   date: "",
   time: "",
   consultationType: "",
   paymentMethod: "",
   paymentScreenshot: null,
 };
-
-const consultants = [
-  "Dr. Ayesha Javed",
-  "Dr. Sarah Ahmed",
-  "Dr. Fatima Khan",
-];
 
 const consultationTypes = [
   "Initial Fertility Consultation",
@@ -86,7 +82,7 @@ export default function BookingForm() {
 
   const nextStep = () => {
     setStep((previous) =>
-      Math.min(previous + 1, 5)
+      Math.min(previous + 1, 4)
     );
   };
 
@@ -300,7 +296,7 @@ export default function BookingForm() {
         {/* PROGRESS */}
 
         <div className={styles.progress}>
-          {[1, 2, 3, 4, 5].map((number) => (
+          {[1, 2, 3, 4].map((number) => (
             <div
               key={number}
               className={`${styles.progressItem} ${
@@ -319,10 +315,9 @@ export default function BookingForm() {
 
               <span>
                 {number === 1 && "Details"}
-                {number === 2 && "Consultant"}
-                {number === 3 && "Date & Time"}
-                {number === 4 && "Type"}
-                {number === 5 && "Payment"}
+                {number === 2 && "Date & Time"}
+                {number === 3 && "Type"}
+                {number === 4 && "Payment"}
               </span>
             </div>
           ))}
@@ -440,106 +435,6 @@ export default function BookingForm() {
                   <span>02</span>
 
                   <div>
-                    <h2>Choose Consultant</h2>
-                    <p>
-                      Select the specialist you would like
-                      to consult.
-                    </p>
-                  </div>
-                </div>
-
-                <div className={styles.options}>
-                  {consultants.map(
-                    (consultant) => (
-                      <button
-                        type="button"
-                        key={consultant}
-                        className={`${styles.option} ${
-                          formData.consultant ===
-                          consultant
-                            ? styles.selected
-                            : ""
-                        }`}
-                        onClick={() =>
-                          updateField(
-                            "consultant",
-                            consultant
-                          )
-                        }
-                      >
-                        <div
-                          className={styles.avatar}
-                        >
-                          Dr
-                        </div>
-
-                        <div
-                          className={
-                            styles.optionContent
-                          }
-                        >
-                          <strong>
-                            {consultant}
-                          </strong>
-
-                          <span>
-                            Fertility Consultant
-                          </span>
-                        </div>
-
-                        <div
-                          className={styles.radio}
-                        >
-                          {formData.consultant ===
-                          consultant
-                            ? "✓"
-                            : ""}
-                        </div>
-                      </button>
-                    )
-                  )}
-                </div>
-
-                <div
-                  className={styles.navigation}
-                >
-                  <button
-                    type="button"
-                    className={
-                      styles.backButton
-                    }
-                    onClick={previousStep}
-                  >
-                    ← Back
-                  </button>
-
-                  <button
-                    type="button"
-                    className={
-                      styles.nextButton
-                    }
-                    onClick={nextStep}
-                    disabled={
-                      !formData.consultant
-                    }
-                  >
-                    Continue →
-                  </button>
-                </div>
-              </div>
-            )}
-
-            {/* =================================================
-                STEP 3
-            ================================================= */}
-
-            {step === 3 && (
-              <div className={styles.step}>
-
-                <div className={styles.stepHeader}>
-                  <span>03</span>
-
-                  <div>
                     <h2>
                       Select Date & Time
                     </h2>
@@ -644,14 +539,14 @@ export default function BookingForm() {
             )}
 
             {/* =================================================
-                STEP 4
+                STEP 3
             ================================================= */}
 
-            {step === 4 && (
+            {step === 3 && (
               <div className={styles.step}>
 
                 <div className={styles.stepHeader}>
-                  <span>04</span>
+                  <span>03</span>
 
                   <div>
                     <h2>
@@ -741,10 +636,10 @@ export default function BookingForm() {
             )}
 
             {/* =================================================
-                STEP 5 - PAYMENT
+                STEP 4 - PAYMENT
             ================================================= */}
 
-            {step === 5 && (
+            {step === 4 && (
               <div className={styles.step}>
 
                 <div className={styles.stepHeader}>

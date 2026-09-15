@@ -1,12 +1,14 @@
 .shell {
   display: flex;
   min-height: 100vh;
+  align-items: flex-start;
   background: #f5f0eb;
 }
 
 .sidebar {
   position: sticky;
   top: 0;
+  align-self: flex-start;
   height: 100vh;
   width: 240px;
   background: #2c1810;
@@ -75,7 +77,7 @@
 .main {
   flex: 1;
   padding: 32px;
-  overflow: auto;
+  overflow: visible;
 }
 
 .loading {
@@ -176,6 +178,47 @@
   text-align: center;
   padding: 48px 24px;
   color: #7a6a5f;
+}
+
+.paginationBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 18px;
+  padding: 14px 18px;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  color: #5c4a3f;
+  font-size: 0.9rem;
+}
+
+.paginationControls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.paginationBtn {
+  border: 1px solid #dcc9bc;
+  background: #fff;
+  color: #2c1810;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font: inherit;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.paginationBtn:hover:not(:disabled) {
+  background: #f9f2ee;
+  border-color: #c6ad96;
+}
+
+.paginationBtn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
 }
 
 /* Detail page */
