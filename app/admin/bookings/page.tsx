@@ -55,12 +55,12 @@ export default function BookingDetailPage() {
       .then(async (res) => {
         if (res.status === 401) { localStorage.removeItem("adminToken"); router.replace("/admin/login"); return; }
         const data = await res.json();
-        if (!data.success) throw new Error(data.message);
+        if (!res.ok || !data.success) throw new Error(data.message || "Backend unavailable. Check the PHP API and database.");
         setBooking(data.data);
         const b = data.data;
         setAppointment({ consultant: b.consultant || "", date: String(b.date || "").slice(0, 10), time: b.time || "", consultation_type: b.consultation_type || "", appointment_mode: b.appointment_mode || (b.consultation_type === "Online Consultation" ? "online" : "clinic"), meeting_url: b.meeting_url || "", clinic_address: b.clinic_address || "" });
       })
-      .catch((err) => setError(err.message || "Failed to load"))
+      .catch((err) => setError(err.message || "Backend unavailable. Check the PHP API and database."))
       .finally(() => setLoading(false));
   };
 

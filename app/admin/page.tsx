@@ -50,10 +50,12 @@ export default function AdminDashboard() {
           return;
         }
         const data = await res.json();
-        if (!data.success) throw new Error(data.message);
+        if (!res.ok || !data.success) {
+          throw new Error(data.message || "Backend unavailable. Check the PHP API and database.");
+        }
         setBookings(data.data);
       })
-      .catch((err) => setError(err.message || "Failed to load"))
+      .catch((err) => setError(err.message || "Backend unavailable. Check the PHP API and database."))
       .finally(() => setLoading(false));
   }, [router]);
 
